@@ -1,0 +1,13 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+.section { padding-block: v.$space-section; }
+.section--tint { background: v.$color-tint; }
+.section--blue { background: v.$color-blue; color: v.$color-white; .h-1, .h-2, .h-3 { color: v.$color-white; } }
+.section--dark { background: v.$color-dark; color: v.$color-white; .h-1, .h-2, .h-3 { color: v.$color-white; } }
+.split { display: grid; gap: clamp(1.75rem, 4vw, 4.5rem); align-items: center; @include m.up(lg) { grid-template-columns: 1fr 1fr; } }
+.split--top { align-items: start; }
+.split--reverse > :first-child { @include m.up(lg) { order: 2; } }
+.prose { max-width: 70ch; p { text-wrap: pretty; } }
+.stack > * + * { margin-top: clamp(1rem, 2vw, 1.75rem); }
+.media { border-radius: v.$radius-md; overflow: hidden; img { width: 100%; height: 100%; object-fit: cover; } &--tall { aspect-ratio: 4 / 5; } &--wide { aspect-ratio: 3 / 2; } }
+.section--flush-top { padding-top: 0; }

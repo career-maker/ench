@@ -1,0 +1,2 @@
+@use '../abstracts/variables' as v;
+.container { width: 100%; max-width: calc(v.$container + 2 * v.$gutter); margin-inline: auto; padding-inline: v.$gutter; }

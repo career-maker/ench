@@ -1,0 +1,23 @@
+@use '../abstracts/variables' as v;
+// Premium buttons: fill wipes up from below, arrow glides out diagonally, soft lift + glow, tactile press.
+.btn { --btn-fill: #{v.$color-blue-dark}; position: relative; isolation: isolate; overflow: hidden; display: inline-flex; align-items: center; justify-content: center; gap: 0.75rem; padding: 0.875rem 1.875rem; border-radius: v.$radius-pill; border: 1px solid transparent; font-size: 1.25rem; font-weight: 400; letter-spacing: 0.04em; line-height: 1.2; cursor: pointer;
+  transition: color 0.5s v.$ease, border-color 0.5s v.$ease, transform 0.5s v.$ease, box-shadow 0.5s v.$ease, background-color 0.5s v.$ease;
+  &::before { content: ''; position: absolute; inset: -1px; z-index: -1; border-radius: inherit; background: var(--btn-fill); transform: translateY(102%); transition: transform 0.6s v.$ease; }
+  &::after { content: ''; width: 0.625rem; height: 0.625rem; flex: none; background: currentColor; clip-path: polygon(0 0, 100% 0, 100% 100%, 82% 100%, 82% 26%, 6% 100%, 0 94%, 74% 18%, 0 18%); transition: transform 0.5s v.$ease, color 0.5s v.$ease; }
+  &:hover { transform: translateY(-3px); } &:hover::before { transform: none; } &:hover::after { transform: translate(3px, -3px) scale(1.15); }
+  &:active { transform: translateY(0) scale(0.97); transition-duration: 0.12s; }
+  &--primary { background: v.$color-blue; color: v.$color-white; &:hover { box-shadow: 0 0.75rem 1.75rem rgba(6, 88, 167, 0.35); } }
+  &--outline { --btn-fill: #{v.$color-blue}; border-color: v.$color-blue; color: v.$color-ink; &::after { color: v.$color-red; } &:hover { color: v.$color-white; box-shadow: 0 0.75rem 1.75rem rgba(6, 88, 167, 0.25); &::after { color: v.$color-white; } } }
+  &--white { --btn-fill: #{v.$color-blue}; background: v.$color-white; color: v.$color-ink; &::after { color: v.$color-red; } &:hover { color: v.$color-white; box-shadow: 0 0.75rem 2rem rgba(0, 20, 50, 0.35); &::after { color: v.$color-white; } } }
+  // Liquid-glass: translucent tint, strong blur + saturation, bright rim light and soft drop shadow
+  &--glass { --btn-fill: rgba(255, 255, 255, 0.3); color: v.$color-white; background: linear-gradient(135deg, rgba(255, 255, 255, 0.26), rgba(255, 255, 255, 0.06) 55%, rgba(255, 255, 255, 0.16)); border-color: rgba(255, 255, 255, 0.38);
+    backdrop-filter: blur(0.9rem) saturate(170%); -webkit-backdrop-filter: blur(0.9rem) saturate(170%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55), inset 0 -1px 0 rgba(255, 255, 255, 0.12), inset 0 0 1.25rem rgba(255, 255, 255, 0.08), 0 0.5rem 1.5rem rgba(0, 30, 40, 0.22);
+    &:hover { box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7), inset 0 0 1.5rem rgba(255, 255, 255, 0.14), 0 0.9rem 2rem rgba(0, 30, 40, 0.3); } }
+  &[disabled] { opacity: 0.6; cursor: not-allowed; transform: none; &::before { display: none; } }
+}
+.icon-btn { display: inline-grid; place-items: center; flex: none; width: 3rem; height: 3rem; border-radius: 50%; background: v.$color-red; color: v.$color-white; transition: transform 0.5s v.$ease, box-shadow 0.5s v.$ease;
+  svg { width: 1.125rem; height: 1.125rem; transition: transform 0.5s v.$ease; } }
+.icon-btn--diag svg { transform: rotate(-45deg); }
+a:hover > .icon-btn, a:hover .icon-btn, button:hover > .icon-btn { transform: scale(1.1); box-shadow: 0 0.5rem 1.25rem rgba(232, 55, 42, 0.45); }
+a:hover .icon-btn--diag svg { transform: rotate(-45deg) translateX(0.15rem); }

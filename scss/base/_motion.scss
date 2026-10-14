@@ -1,0 +1,38 @@
+@use '../abstracts/variables' as v;
+// Title / banner / slider motion. Everything here is gated behind .anim-ready (set by JS)
+// and disabled for prefers-reduced-motion, so content is never hidden without JS.
+
+// ---- Titles: words rise out of a mask with a soft blur-in, staggered ----
+.word { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: 0.14em; margin-bottom: -0.14em; }
+.word__inner { display: inline-block; will-change: transform; }
+.anim-ready [data-split] .word__inner { transform: translateY(115%) rotate(2.5deg); opacity: 0; filter: blur(0.35rem);
+  transition: transform 0.95s v.$ease calc(var(--i, 0) * 70ms), opacity 0.8s ease calc(var(--i, 0) * 70ms), filter 0.8s ease calc(var(--i, 0) * 70ms); }
+.anim-ready [data-split].is-in .word__inner { transform: none; opacity: 1; filter: none; }
+
+// ---- Hero / banners ----
+@keyframes kenburns { from { transform: scale(1.12); } to { transform: scale(1); } }
+@keyframes rise { from { opacity: 0; transform: translateY(1.5rem); } to { opacity: 1; transform: none; } }
+@keyframes sweep { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+.anim-ready .hero__slide.is-active { animation: kenburns 9s ease-out both; }
+.anim-ready .hero .breadcrumbs, .anim-ready .hero .eyebrow { animation: rise 0.9s v.$ease 0.1s both; }
+.anim-ready .hero__sub { animation: rise 0.9s v.$ease 0.85s both; }
+.anim-ready .hero__actions { animation: rise 0.9s v.$ease 1.05s both; }
+.anim-ready .hero__dots { animation: rise 0.9s v.$ease 1.2s both; }
+.anim-ready .hero__rail { animation: rise 1s v.$ease 1.4s both; }
+.anim-ready .site-header { animation: rise 0.8s v.$ease backwards; }
+.anim-ready .cta__bg { transform: scale(1.12); transition: transform 2.4s v.$ease; }
+.anim-ready .cta.is-in .cta__bg { transform: scale(1); }
+.anim-ready .cta__ghost { opacity: 0; transform: translateY(1.5rem); transition: opacity 1.4s ease 0.2s, transform 1.4s v.$ease 0.2s; }
+.anim-ready .cta.is-in .cta__ghost { opacity: 1; transform: none; }
+
+// ---- Sliders ----
+.locations__photo img { transition: opacity 0.35s ease, transform 0.6s v.$ease; }
+.locations__photo img.is-swapping { opacity: 0; transform: scale(1.04); }
+.hero__dots button { transition: transform 0.3s v.$ease; &:hover { transform: scale(1.4); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-ready [data-split] .word__inner { transform: none; opacity: 1; filter: none; transition: none; }
+  .anim-ready .hero__slide.is-active, .anim-ready .hero__sub, .anim-ready .hero__actions, .anim-ready .hero__dots,
+  .anim-ready .hero__rail, .anim-ready .site-header, .anim-ready .hero .breadcrumbs, .anim-ready .hero .eyebrow { animation: none; }
+  .anim-ready .cta__bg, .anim-ready .cta__ghost { transform: none; opacity: 1; transition: none; }
+}

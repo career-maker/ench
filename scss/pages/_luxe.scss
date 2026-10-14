@@ -1,0 +1,2 @@
+@use '../abstracts/variables' as v;
+.luxe-band { &:nth-of-type(even) { background: v.$color-tint; } }

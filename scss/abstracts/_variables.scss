@@ -1,0 +1,28 @@
+// Values measured/estimated from Design.pdf (120rem artboard). See docs/design-system.md.
+$color-blue: #0658a7;
+$color-blue-dark: #04447f;
+$color-red: #e8372a;
+$color-ink: #111111;
+$color-text: #2b2b2b;
+$color-muted: #6b6b6b;
+$color-tint: #f4f8fe;
+$color-dark: #1a1717;
+$color-white: #fff;
+$color-line: #dfe6ef;
+
+$font-serif: 'Libre Caslon Display', 'Times New Roman', serif;
+$font-sans: 'Figtree', 'Helvetica Neue', Arial, sans-serif;
+
+$container: 106.25rem;
+$gutter: clamp(1.25rem, 5.7vw, 6.875rem);
+
+$radius-sm: 0.5rem;
+$radius-md: 0.875rem;
+$radius-pill: 62.4375rem;
+
+$shadow-card: 0 1.125rem 2.5rem rgba(6, 40, 90, 0.12);
+$ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+$t-fast: 0.2s $ease;
+$t-med: 0.45s $ease;
+
+$space-section: clamp(3.5rem, 7vw, 7.5rem);

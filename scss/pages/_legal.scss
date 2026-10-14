@@ -1,0 +1,15 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+.legal { background: linear-gradient(180deg, #fff, v.$color-tint 160%);
+  &__grid { display: grid; gap: clamp(1.5rem, 3vw, 3rem); @include m.up(lg) { grid-template-columns: 22rem 1fr; align-items: start; } }
+  &__note { position: sticky; top: 7rem; padding: 1.4rem 1.5rem; border-left: 3px solid v.$color-red; border-radius: 0 v.$radius-md v.$radius-md 0; background: v.$color-white; box-shadow: 0 0.75rem 1.75rem rgba(6, 40, 90, 0.08); font-size: 1rem; }
+  &__date { margin-top: 0.75rem; color: v.$color-muted; font-size: 0.95rem; }
+  &__body { max-width: 62rem; h2 { margin: 2.2rem 0 0.7rem; font-size: 1.6rem; &:first-child { margin-top: 0; } } a { color: v.$color-blue; text-decoration: underline; text-underline-offset: 0.2em; } }
+  .ticks { margin-top: 0.75rem; } }
+.site-footer__legal a { transition: color 0.3s ease; &:hover { color: #fff; text-decoration: underline; } }
+
+// 404
+.notfound { min-height: clamp(34rem, 52vw, 50rem);
+  &__inner { padding-block: 9rem 4rem; }
+  &__code { font-family: v.$font-serif; font-size: clamp(5rem, 14vw, 13rem); line-height: 0.9; color: transparent; -webkit-text-stroke: 1px rgba(255, 255, 255, 0.7); margin-bottom: 0.5rem; } }

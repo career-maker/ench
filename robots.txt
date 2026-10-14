@@ -1,0 +1,4 @@
+# BETA / STAGING: block all crawling. Before launch, replace this file with the production version
+# in docs/robots.production.txt and set STAGING = false in scripts/build-pages.mjs.
+User-agent: *
+Disallow: /

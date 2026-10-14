@@ -1,0 +1,24 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+.hero { position: relative; display: flex; align-items: flex-end; min-height: clamp(35rem, 56.25vw, 67.5rem); color: v.$color-white; isolation: isolate; overflow: hidden;
+  &__slides { position: absolute; inset: 0; z-index: -2; }
+  &__slide { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1s v.$ease; &.is-active { opacity: 1; } }
+  &::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to bottom, rgba(0, 20, 40, 0.35), rgba(0, 20, 40, 0.05) 40%, rgba(0, 20, 40, 0.45)); }
+  &__inner { width: 100%; padding-block: clamp(7.5rem, 12vw, 12.5rem) clamp(3rem, 7vw, 8.125rem); }
+  &__title { max-width: 12em; color: v.$color-white; }
+  &__sub { margin-top: 2.3rem; font-size: 1.2rem; max-width: 56ch; }
+  &__actions { margin-top: 3.1rem; display: flex; flex-wrap: wrap; gap: 1rem; }
+  &__dots { display: flex; gap: 2.2rem; padding-left: 0.4rem; margin-top: 3.5rem; button { width: 0.625rem; height: 0.625rem; border-radius: 50%; background: rgba(255, 255, 255, 0.7); position: relative; &[aria-current='true']::after { content: ''; position: absolute; inset: -7px; border: 2px solid v.$color-white; border-radius: 50%; } } }
+  &__rail { position: absolute; right: 2.08vw; bottom: 10.4vw; display: none; flex-direction: column; align-items: center; gap: 1.375rem; @include m.up(lg) { display: flex; } }
+  &__vertical { writing-mode: vertical-rl; transform: rotate(180deg); display: flex; gap: 0.5rem; font-size: 1.0625rem; letter-spacing: 0.04em; }
+  &__contacts { display: grid; gap: 0.25rem; a { display: grid; place-items: center; width: clamp(2.125rem, 2.1vw, 2.5rem); aspect-ratio: 1; border-radius: 0.25rem; color: v.$color-white; svg { width: 1.25rem; height: 1.25rem; } &:nth-child(1) { background: v.$color-red; } &:nth-child(2) { background: v.$color-blue; } &:nth-child(3) { background: #1f9d55; } } }
+  &--inner { min-height: clamp(23.75rem, 32vw, 35rem); &::after { background: linear-gradient(to bottom, rgba(0, 20, 40, 0.5), rgba(0, 20, 40, 0.35) 45%, rgba(0, 20, 40, 0.6)); } }
+  &--inner &__inner { padding-block: clamp(8.125rem, 12vw, 11.875rem) clamp(2.25rem, 4vw, 4.5rem); }
+  &--inner &__title { max-width: 18em; }
+}
+.hero__crumbs { margin-bottom: 1.125rem; }
+// Hero text block as placed in Design.pdf / Figma
+.hero__title { font-size: clamp(2rem, 6vw, 4.07rem); line-height: 1.12; }
+.hero__sub { margin-top: 1.45rem; }
+.hero__actions { margin-top: 2.8rem; }
+.hero__actions { margin-top: 3.1rem; .btn { padding: 0.7rem 1.9rem; } }

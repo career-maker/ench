@@ -1,0 +1,2 @@
+@use '../abstracts/variables' as v;
+.social { display: flex; gap: clamp(0.625rem, 2vw, 1.875rem); a, li > span { display: grid; place-items: center; width: 2.5rem; height: 2.5rem; color: v.$color-white; border-radius: 50%; transition: background v.$t-fast; &:hover { background: rgba(255, 255, 255, 0.14); } } svg { width: 1.375rem; height: 1.375rem; } }

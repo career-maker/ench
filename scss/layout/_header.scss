@@ -1,0 +1,19 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+.site-header { position: fixed; inset: 0 0 auto 0; z-index: 100; transition: transform 0.55s v.$ease, background-color 0.4s ease, padding 0.4s v.$ease, box-shadow 0.4s ease; padding-block: clamp(0.875rem, 1.5625vw, 1.875rem) 0; color: v.$color-white; }
+.site-header__inner { display: flex; align-items: flex-start; justify-content: space-between; gap: 1.5rem; }
+.site-header__logo { display: block; width: clamp(9.375rem, 15.625vw, 18.75rem); flex: none; position: relative; z-index: 95; img { width: 100%; height: auto; } }
+.menu-toggle { display: none; position: relative; z-index: 95; width: 2.875rem; height: 2.875rem; border-radius: v.$radius-sm; background: rgba(0, 0, 0, 0.35); color: v.$color-white;
+  span, span::before, span::after { content: ''; display: block; width: 1.375rem; height: 2px; background: currentColor; margin-inline: auto; position: relative; transition: transform v.$t-fast, background v.$t-fast; }
+  span::before { position: absolute; top: -7px; left: 0; } span::after { position: absolute; top: 0.4375rem; left: 0; }
+  &[aria-expanded='true'] span { background: transparent; &::before { transform: translateY(0.4375rem) rotate(45deg); } &::after { transform: translateY(-7px) rotate(-45deg); } }
+  @include m.down(lg) { display: block; }
+}
+
+// Sticky header: hides while scrolling down, returns (with a glass backdrop) while scrolling up
+.site-header.is-hidden { transform: translateY(-110%); }
+.site-header.is-stuck { padding-block: 0.6rem; background: rgba(10, 22, 38, 0.78); backdrop-filter: blur(0.9rem) saturate(150%); -webkit-backdrop-filter: blur(0.9rem) saturate(150%); box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.18);
+  .nav__list { margin-top: 0; }
+  .site-header__logo { width: clamp(8rem, 12.5vw, 15rem); } }
+body.is-menu-open .site-header { transform: none; }
+@media (prefers-reduced-motion: reduce) { .site-header { transition: none; } }

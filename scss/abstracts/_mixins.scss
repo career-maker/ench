@@ -1,0 +1,7 @@
+@use 'functions' as fn;
+@mixin up($name) { @media (min-width: fn.bp($name)) { @content; } }
+@mixin down($name) { @media (max-width: fn.bp($name) - 0.02px) { @content; } }
+@mixin visually-hidden {
+  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}

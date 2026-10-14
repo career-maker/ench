@@ -1,0 +1,42 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+.mice-intro { background: linear-gradient(180deg, #fff, v.$color-tint 120%);
+  &__grid { display: grid; gap: clamp(2rem, 4vw, 4.5rem); align-items: stretch; @include m.up(lg) { grid-template-columns: 1.05fr 0.95fr; } }
+  &__text { display: flex; flex-direction: column; align-items: flex-start; gap: 1.4rem; padding-block: 0.5rem; }
+  &__title { max-width: 20ch; }
+  &__lead { position: relative; padding-left: 1.4rem; font-size: 1.375rem; line-height: 1.4; color: v.$color-ink; &::before { content: ''; position: absolute; left: 0; top: 0.2em; bottom: 0.2em; width: 3px; border-radius: 3px; background: linear-gradient(v.$color-red, v.$color-blue); } }
+  &__facts { display: grid; gap: 0.9rem; width: 100%; grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+    li { display: grid; gap: 0.25rem; padding: 1.1rem 1.25rem; background: v.$color-white; border: 1px solid v.$color-line; border-radius: v.$radius-md; transition: transform 0.5s v.$ease, box-shadow 0.5s v.$ease, border-color 0.4s ease; }
+    li:hover { transform: translateY(-0.35rem); border-color: v.$color-blue; box-shadow: 0 1rem 2rem rgba(6, 88, 167, 0.14); }
+    strong { font-family: v.$font-serif; font-weight: 400; font-size: 2rem; line-height: 1; color: v.$color-blue; }
+    span { font-size: 0.975rem; line-height: 1.35; color: v.$color-muted; } }
+  &__photo { position: relative; margin: 0; border-radius: 1.25rem; overflow: hidden; min-height: 26rem; box-shadow: 0 1.75rem 3.5rem rgba(6, 40, 90, 0.2);
+    img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 1.4s v.$ease; }
+    &:hover img { transform: scale(1.06); } }
+  &__badge { position: absolute; left: 1rem; right: 1rem; bottom: 1rem; display: grid; gap: 0.1rem; padding: 1rem 1.25rem; color: v.$color-white; font-family: v.$font-serif; font-size: 1.25rem; line-height: 1.25;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.08)); backdrop-filter: blur(0.9rem) saturate(160%); -webkit-backdrop-filter: blur(0.9rem) saturate(160%); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: v.$radius-md; } }
+
+// What We Deliver: auto-scrolling photo cards (pauses on hover/focus; static + swipeable with reduced motion)
+.mice-capabilities { background: linear-gradient(180deg, v.$color-tint, #fff 85%); overflow: hidden; }
+.photo-marquee { overflow: hidden; padding-block: 0.5rem 1.5rem;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent); mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
+  &__track { display: flex; width: max-content; animation: photo-scroll 55s linear infinite; will-change: transform; }
+  &:hover &__track, &:focus-within &__track { animation-play-state: paused; }
+  &__set { display: flex; gap: 1.5rem; padding-right: 1.5rem; flex: none; } }
+@keyframes photo-scroll { to { transform: translateX(-50%); } }
+
+.photo-card { position: relative; flex: none; width: clamp(15rem, 20vw, 20rem); aspect-ratio: 3 / 4; border-radius: 1.1rem; overflow: hidden; color: v.$color-white; isolation: isolate; box-shadow: 0 1rem 2.2rem rgba(6, 40, 90, 0.16);
+  transition: transform 0.6s v.$ease, box-shadow 0.6s v.$ease;
+  img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transition: transform 1.1s v.$ease; }
+  &::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to top, rgba(4, 18, 40, 0.92) 0%, rgba(4, 18, 40, 0.55) 38%, rgba(4, 18, 40, 0) 68%); }
+  &::after { content: ''; position: absolute; left: 1.4rem; bottom: 0; width: 2.6rem; height: 3px; background: v.$color-red; transition: width 0.6s v.$ease; }
+  &__num { position: absolute; top: 1.1rem; left: 1.2rem; font-family: v.$font-serif; font-size: 1.4rem; line-height: 1; padding: 0.45rem 0.7rem; border-radius: 999px; background: rgba(255, 255, 255, 0.16); backdrop-filter: blur(0.5rem); border: 1px solid rgba(255, 255, 255, 0.3); }
+  &__body { position: absolute; inset: auto 0 0 0; padding: 1.4rem 1.4rem 1.6rem; }
+  &__title { font-family: v.$font-serif; font-weight: 400; font-size: clamp(1.35rem, 1.6vw, 1.65rem); line-height: 1.15; margin-bottom: 0.5rem; color: v.$color-white; }
+  &__text { font-size: 1rem; line-height: 1.4; max-height: 0; opacity: 0; transform: translateY(0.75rem); transition: max-height 0.6s v.$ease, opacity 0.5s ease, transform 0.6s v.$ease; }
+  &:hover { transform: translateY(-0.6rem); box-shadow: 0 1.6rem 3rem rgba(6, 40, 90, 0.28); img { transform: scale(1.1); } &::after { width: 6rem; } }
+  &:hover &__text { max-height: 8rem; opacity: 1; transform: none; } }
+@media (hover: none) { .photo-card__text { max-height: 8rem; opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .photo-marquee { overflow-x: auto; mask-image: none; -webkit-mask-image: none; } .photo-marquee__track { animation: none; } .photo-marquee__set[aria-hidden='true'] { display: none; } }
+@include m.down(md) { .photo-card { width: 15.5rem; } .photo-marquee__track { animation-duration: 45s; } }

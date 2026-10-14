@@ -1,0 +1,17 @@
+<!doctype html><meta charset="utf-8"><body><pre id="out">running</pre>
+<script>
+const pages=['index','about','services','leisure','celebrations-events','destination-weddings','milestone-birthdays','family-reunions','parties','luxe-experiences','mice','contact','gallery'];
+const widths=[1920,1440,1280,1024,768,414,360];
+(async()=>{const res=[];
+for(const w of widths){for(const p of pages){
+ const f=document.createElement('iframe');f.style.cssText=`width:${w}px;height:900px;border:0;position:absolute;left:0;top:0`;
+ f.src='/'+p+'.html';document.body.append(f);
+ await new Promise(r=>f.onload=r);await new Promise(r=>setTimeout(r,150));
+ const d=f.contentDocument.documentElement;
+ const over=d.scrollWidth-d.clientWidth;
+ const wide=[...f.contentDocument.querySelectorAll('body *')].filter(e=>e.getBoundingClientRect().right>w+1&&!e.closest('.ticker,.logo-row,.hero__slides,.site-footer__mark,.nav')).slice(0,2).map(e=>e.className||e.tagName);
+ res.push(`${w} ${p} ${over>0?'OVERFLOW '+over+' '+wide:'ok'}`);
+ f.remove();}}
+document.getElementById('out').textContent=res.filter(x=>!x.endsWith(' ok')).join('\n')||'ALL OK';
+document.title='done';})();
+</script>

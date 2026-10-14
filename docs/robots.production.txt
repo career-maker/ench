@@ -1,0 +1,6 @@
+# Production robots.txt (use at launch, together with STAGING = false in scripts/build-pages.mjs)
+User-agent: *
+Allow: /
+Disallow: /scripts/
+Disallow: /docs/
+Sitemap: https://www.enchantiveasia.com/sitemap.xml

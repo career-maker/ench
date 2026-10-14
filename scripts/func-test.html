@@ -1,0 +1,21 @@
+<!doctype html><meta charset="utf-8"><pre id="o">running</pre>
+<iframe id="f" style="width:414px;height:800px"></iframe>
+<script>
+const f=document.getElementById('f'),r=[];const wait=ms=>new Promise(x=>setTimeout(x,ms));
+(async()=>{
+ f.src='/contact.html';await new Promise(x=>f.onload=x);await wait(300);
+ const d=f.contentDocument,w=f.contentWindow;
+ d.querySelector('form [type=submit]').click();await wait(100);
+ r.push('invalid submit status: '+d.querySelector('.form-status').className+' | errors='+d.querySelectorAll('.has-error').length);
+ d.getElementById('f-name').value='A';d.getElementById('f-email').value='a@b.co';d.getElementById('f-service').value='MICE';d.getElementById('f-msg').value='hi';
+ d.querySelector('form [type=submit]').click();await wait(100);
+ r.push('valid submit status: '+d.querySelector('.form-status').className);
+ const t=d.querySelector('.menu-toggle');t.click();await wait(100);
+ r.push('menu open: '+t.getAttribute('aria-expanded')+' '+d.getElementById('site-nav').classList.contains('is-open'));
+ d.querySelector('.nav__item--has-sub .nav__toggle').click();await wait(50);
+ r.push('submenu open: '+d.querySelector('.nav__item--has-sub').classList.contains('is-open'));
+ d.querySelector('.nav__sub a').addEventListener('click',e=>e.preventDefault());
+ d.querySelector('.nav__sub a').click();await wait(50);
+ r.push('menu closed after link: '+!d.getElementById('site-nav').classList.contains('is-open'));
+ document.getElementById('o').textContent=r.join('\n');})();
+</script>

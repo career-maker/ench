@@ -1,0 +1,20 @@
+{
+  "name": "enchantive-asia",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Enchantive Asia static website (HTML + Sass)",
+  "scripts": {
+    "html": "node scripts/build-pages.mjs",
+    "sass": "sass --no-source-map scss/main.scss css/main.css",
+    "sass:min": "sass --no-source-map --style=compressed scss/main.scss css/main.min.css",
+    "sass:watch": "sass --watch scss/main.scss css/main.css",
+    "build": "npm run sass && npm run sass:min && npm run html",
+    "check": "node scripts/check-links.mjs",
+    "serve": "npx --yes http-server . -p 8080 -c-1"
+  },
+  "devDependencies": {
+    "@fontsource/outfit": "^5.0.0",
+    "@fontsource/playfair-display": "^5.0.0",
+    "sass": "^1.77.0"
+  }
+}

@@ -1,0 +1,11 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+.form { display: grid; gap: 1.25rem; @include m.up(md) { grid-template-columns: 1fr 1fr; } &__full { grid-column: 1 / -1; } }
+.field { display: grid; gap: 0.375rem; align-content: start; label { font-weight: 400; color: v.$color-ink; } .req { color: v.$color-red; }
+  input, select, textarea { width: 100%; padding: 0.8125rem 1rem; border: 1px solid #b9c4d3; border-radius: v.$radius-sm; background: v.$color-white; font-weight: 300; transition: border-color v.$t-fast, box-shadow v.$t-fast;
+    &:focus { outline: none; border-color: v.$color-blue; box-shadow: 0 0 0 3px rgba(6, 88, 167, 0.2); } }
+  textarea { min-height: 9.375rem; resize: vertical; }
+  &__error { min-height: 1.2em; font-size: 0.9375rem; color: #b3261e; }
+  &.has-error input, &.has-error select, &.has-error textarea { border-color: #b3261e; } }
+.form-status { grid-column: 1 / -1; padding: 0.875rem 1.125rem; border-radius: v.$radius-sm; &:empty { display: none; }
+  &--success { background: #e8f3ec; color: #14532d; border: 1px solid #9bd0ae; } &--error { background: #fdecea; color: #7a1710; border: 1px solid #f0a8a2; } &--info { background: #eaf2fb; color: #0b3a6b; border: 1px solid #a9c8ea; } }
