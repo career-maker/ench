@@ -15,6 +15,7 @@ function initAnimation() {
 
   initTitles(reduce);
   initBgFade(reduce);
+  initCoverflow(reduce);
   initBanners(reduce);
 
   const hero = document.querySelector('[data-hero]');
@@ -120,5 +121,34 @@ function initBgFade(reduce) {
       i = (i + 1) % imgs.length;
       imgs[i].classList.add('is-active');
     }, 6500);
+  });
+}
+
+// Coverflow: centre image with its neighbours peeking left/right; advances every 2s, endless loop.
+function initCoverflow(reduce) {
+  document.querySelectorAll('[data-coverflow]').forEach((box) => {
+    const slides = [...box.querySelectorAll('.coverflow__slide')];
+    const n = slides.length;
+    if (n < 3) return;
+    let cur = 0;
+    const roles = ['is-active', 'is-prev', 'is-next'];
+    const paint = (jumper) => {
+      slides.forEach((s, i) => {
+        const role = i === cur ? 'is-active' : i === (cur + n - 1) % n ? 'is-prev' : 'is-next';
+        if (s === jumper) { s.classList.add('is-jump'); }
+        s.classList.remove(...roles);
+        s.classList.add(role);
+        s.setAttribute('aria-hidden', String(role !== 'is-active'));
+      });
+      if (jumper) { jumper.getBoundingClientRect(); jumper.classList.remove('is-jump'); }
+    };
+    paint();
+    if (reduce) return;
+    setInterval(() => {
+      // the slide leaving the left side wraps to the right side without crossing the centre
+      const jumper = slides[(cur + n - 1) % n];
+      cur = (cur + 1) % n;
+      paint(jumper);
+    }, 2000);
   });
 }

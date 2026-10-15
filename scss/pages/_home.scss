@@ -175,15 +175,6 @@
 @media (hover: none) { .logo-row--accred li img, .logo-marquee__set li img { filter: none; } }
 @media (prefers-reduced-motion: reduce) { .logo-row--accred li, .logo-marquee__set li { transition: none; &::after { display: none; } img { transition: none; } } }
 
-// ---- Intro: full-section background slideshow (3 Unsplash photos, same 82% wash as before) ----
-.intro { position: relative; isolation: isolate; overflow: hidden; display: block;
-  &__bg { position: absolute; inset: 0; z-index: -2;
-    img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transform: scale(1.08); transition: opacity 1.6s ease, transform 8s linear; &.is-active { opacity: 1; transform: scale(1); } } }
-  &::before { content: ''; position: absolute; inset: 0; z-index: -1; background: rgba(247, 250, 255, 0.82); }
-  &__grid { display: grid; @include m.up(lg) { grid-template-columns: 857fr 1063fr; } }
-  &__right { &::before { content: none; } padding-block: clamp(2.25rem, 5vw, 5rem); @include m.up(lg) { align-items: center; } } }
-@media (prefers-reduced-motion: reduce) { .intro__bg img { transition: none; transform: none; } }
-
 // ---- More than a Destination: copy left, small cards carousel right ----
 .more { &__grid { display: grid; gap: 2rem clamp(2rem, 4vw, 4.5rem); align-items: center; @include m.up(lg) { grid-template-columns: 0.72fr 1.28fr; } }
   &__text { h2 { margin-bottom: 1.4rem; } p { max-width: 34rem; font-size: 1.15rem; line-height: 1.55; } } }
@@ -209,10 +200,6 @@
   .carousel__btn { border-color: rgba(6, 88, 167, 0.4); background: v.$color-white; color: v.$color-blue; box-shadow: 0 0.5rem 1.2rem rgba(6, 40, 90, 0.1);
     &:hover:not(:disabled) { background: v.$color-blue; border-color: v.$color-blue; color: #fff; } }
   .carousel__track .tile { box-shadow: 0 1rem 2rem rgba(6, 40, 90, 0.18); } }
-
-// Intro background: the three photos sit side by side as one 3x1 image (no slideshow)
-.intro__bg { display: grid; grid-template-columns: repeat(3, 1fr);
-  img { position: static; opacity: 1; transform: none; transition: none; width: 100%; height: 100%; object-fit: cover; } }
 
 // carousel: bigger cards; viewport has padding so the card shadows are never clipped into a visible box
 .carousel__viewport { padding: 1.25rem 1.25rem 2.75rem; margin: -1.25rem -1.25rem -2.75rem; border-radius: 0; }
@@ -259,3 +246,19 @@
     &::before { content: ''; position: absolute; left: 50%; top: 50%; width: 0.5rem; height: 0.5rem; border-top: 2px solid #fff; border-right: 2px solid #fff; transform: translate(-65%, -50%) rotate(45deg); } } }
 @media (hover: none) { .mice-gallery__cap { opacity: 1; transform: none; } .mice-gallery figure::before { opacity: 1; } }
 @media (prefers-reduced-motion: reduce) { .mice-gallery figure, .mice-gallery figure img, .mice-gallery figure::after { transition: none; } .mice-gallery:has(figure:hover) figure:not(:hover) { transform: none; opacity: 1; } }
+
+// carousel: horizontal only (no inner vertical scrollbar/scroll)
+.carousel__viewport { overflow-y: hidden; overscroll-behavior: auto; overscroll-behavior-x: contain; }
+
+// Iconic Locations photo: same premium hover as the MICE images (lift, zoom, light sweep, rim glow)
+.locations__photo { cursor: pointer; isolation: isolate; box-shadow: 0 0.9rem 1.8rem rgba(6, 40, 90, 0.14);
+  transition: transform 0.7s v.$ease, box-shadow 0.7s v.$ease;
+  img { transition: opacity 0.75s ease, transform 1.3s v.$ease, filter 0.8s ease; filter: saturate(0.92) brightness(0.98); }
+  &::before { content: ''; position: absolute; inset: 0; z-index: 3; pointer-events: none; background: linear-gradient(to top, rgba(4, 18, 40, 0.45), rgba(4, 18, 40, 0) 50%); opacity: 0; transition: opacity 0.6s ease; }
+  &::after { content: ''; position: absolute; inset: -20% auto -20% 0; width: 40%; z-index: 4; pointer-events: none; transform: translateX(-140%) skewX(-18deg);
+    background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.4), transparent); transition: transform 1.2s v.$ease; }
+  &:hover { transform: translateY(-0.7rem) scale(1.012); box-shadow: 0 2rem 3.5rem rgba(6, 40, 90, 0.3);
+    img { filter: saturate(1.12) brightness(1); }
+    .is-current { transform: scale(1.08); } .is-next.is-showing { transform: scale(1.08); }
+    &::before { opacity: 1; } &::after { transform: translateX(380%) skewX(-18deg); } } }
+@media (prefers-reduced-motion: reduce) { .locations__photo, .locations__photo img, .locations__photo::after { transition: none; } }
