@@ -5,3 +5,4 @@ initFooterAccordion();
 initForms();
 initAnimation();
 initGallery();
+initCarousels();

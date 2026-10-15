@@ -82,7 +82,7 @@
 // ---- small screens: tidy stacked layout with expandable link groups ----
 .site-footer__toggle[hidden] { display: none; }
 .site-footer__links a { transition: color 0.3s ease, padding-left 0.4s v.$ease; &:hover { text-decoration: none; padding-left: 0.4rem; color: #fff; } }
-@include m.down(md) {
+@include m.down(lg) {
   .site-footer {
     &__grid { display: block; padding-block: 3rem 1.5rem; }
     &__brand, &__grid > div:first-child { margin-bottom: 2rem; }
@@ -105,3 +105,8 @@
     &__mark { height: 5.2rem; }
   }
 }
+.site-footer__credit-link { display: inline-flex; align-items: center; transition: opacity 0.3s ease, transform 0.4s v.$ease; &:hover { opacity: 0.8; transform: translateY(-2px); } }
+
+// mobile accordion titles stayed invisible: the heading-split animation wraps words in overflow-hidden spans; show them plainly here
+@include m.down(lg) { .site-footer__group .site-footer__title .word { overflow: visible; }
+  .site-footer__group .site-footer__title .word__inner { transform: none !important; opacity: 1 !important; filter: none !important; } }

@@ -16,7 +16,7 @@
 <link rel="icon" href="assets/logos/enchantive-asia-logo-black.svg" type="image/svg+xml">
 <link rel="preload" href="assets/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/figtree-latin-300-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/main.min.css?v=mv8ivz4t">
+<link rel="stylesheet" href="css/main.min.css?v=mv9c1haa">
 <script>document.documentElement.classList.remove('no-js')</script>
 </head>
 <body>
@@ -84,19 +84,25 @@
 </section>
 
 <section class="intro" aria-labelledby="intro-title">
-  <div class="intro__left">
-    <div class="intro__stat">
-      <span class="intro__num" aria-hidden="true">15</span>
-      <p class="intro__num-label">Years of Experience<br>In Travel &amp; Hospitality.</p>
-    </div>
-    <h2 class="h-1 intro__title" id="intro-title"><span class="sr-only">15 years of experience in travel and hospitality. </span>Your Destination<br>Management Partner<br>For Thailand</h2>
+  <div class="intro__bg" aria-hidden="true">
+    <img src="assets/images/intro-wedding.webp" alt="" width="1920" height="1080" loading="lazy">
+    <img src="assets/images/intro-destination.webp" alt="" width="1920" height="1080" loading="lazy">
+    <img src="assets/images/intro-sightseeing.webp" alt="" width="1920" height="1080" loading="lazy">
   </div>
-  <div class="intro__right">
-    <img src="assets/images/handshake-partnership.webp" alt="" width="1600" height="678" loading="lazy">
-    <div class="prose">
-      <p>Built on strong relationships across thailand’s hospitality and travel landscape, we provide our partners with reliable solutions, responsive support, and consistently high service standards—ensuring every journey and event is delivered seamlessly from planning to completion.</p>
-      <p>Our strength lies in the details. from exclusive venue access, curated experiences for corporates, and theme-based meetings and events to supplier selection, itinerary design, logistics, operations, and on-ground coordination, our experienced team manages every element with precision and professionalism.</p>
-      <a class="btn btn--primary" href="about.html">Read More</a>
+  <div class="intro__grid">
+    <div class="intro__left">
+      <div class="intro__stat">
+        <span class="intro__num" aria-hidden="true">15</span>
+        <p class="intro__num-label">Years of Experience<br>In Travel &amp; Hospitality.</p>
+      </div>
+      <h2 class="h-1 intro__title" id="intro-title"><span class="sr-only">15 years of experience in travel and hospitality. </span>Your Destination<br>Management Partner<br>For Thailand</h2>
+    </div>
+    <div class="intro__right">
+      <div class="prose">
+        <p>Built on strong relationships across thailand’s hospitality and travel landscape, we provide our partners with reliable solutions, responsive support, and consistently high service standards—ensuring every journey and event is delivered seamlessly from planning to completion.</p>
+        <p>Our strength lies in the details. from exclusive venue access, curated experiences for corporates, and theme-based meetings and events to supplier selection, itinerary design, logistics, operations, and on-ground coordination, our experienced team manages every element with precision and professionalism.</p>
+        <a class="btn btn--primary" href="about.html">Read More</a>
+      </div>
     </div>
   </div>
 </section>
@@ -134,16 +140,24 @@
   </div>
 </section>
 
-<section class="section section--blue" aria-labelledby="more-title">
-  <div class="container">
-    <div class="section-heading">
+<section class="section more" aria-labelledby="more-title">
+  <div class="container more__grid">
+    <div class="more__text reveal">
       <h2 class="h-1" id="more-title">More than a Destination an<br>Experience</h2>
       <p>Discover thailand through unforgettable journeys, authentic local experiences, and thoughtfully curated travel experiences designed to inspire every traveller. experience the beauty, culture, and charm of asia through thoughtfully crafted journeys.</p>
     </div>
-    <div class="tile-grid tile-grid--cards">
-      <a class="tile tile--hover" href="celebrations-events.html"><img src="assets/images/beach-wedding-setup.webp" alt="Beachfront wedding dining table beneath a draped canopy" width="1200" height="800" loading="lazy"><span class="tile__label">Celebrations &amp; Experience</span><span class="tile__panel"><span><span class="tile__title">Celebrations &amp; Experience</span><span class="tile__text">Destination weddings, milestone birthdays, family reunions and parties, managed from venue to run of show.</span></span><span class="icon-btn icon-btn--diag" aria-hidden="true"><svg><use href="#i-arrow"/></svg></span></span></a>
-      <a class="tile tile--hover" href="leisure.html"><img src="assets/images/villa-infinity-lounge.webp" alt="Villa lounge overlooking the sea" width="1200" height="801" loading="lazy"><span class="tile__label">Leisure</span><span class="tile__panel"><span><span class="tile__title">Leisure</span><span class="tile__text">Discover memorable experiences, relaxing escapes, and exciting activities designed to make every leisure moment special.</span></span><span class="icon-btn icon-btn--diag" aria-hidden="true"><svg><use href="#i-arrow"/></svg></span></span></a>
-      <a class="tile tile--hover" href="luxe-experiences.html"><img src="assets/images/phi-phi-longtail-boats.webp" alt="Longtail boats in a turquoise Phi Phi lagoon" width="1200" height="800" loading="lazy"><span class="tile__label">Lux Experience</span><span class="tile__panel"><span><span class="tile__title">Lux Experience</span><span class="tile__text">Private yacht charters, estate and island buyouts and executive team retreats, delivered with discretion.</span></span><span class="icon-btn icon-btn--diag" aria-hidden="true"><svg><use href="#i-arrow"/></svg></span></span></a>
+    <div class="carousel" data-carousel>
+      <div class="carousel__viewport" tabindex="0" role="group" aria-roledescription="carousel" aria-label="Our experiences">
+        <div class="carousel__track">
+          <a class="tile tile--hover" href="celebrations-events.html"><img src="assets/images/beach-wedding-setup.webp" alt="Beachfront wedding dining table beneath a draped canopy" width="1200" height="800" loading="lazy"><span class="tile__label">Celebrations &amp; Experience</span><span class="tile__panel"><span><span class="tile__title">Celebrations &amp; Experience</span><span class="tile__text">Destination weddings, milestone birthdays, family reunions and parties, managed from venue to run of show.</span></span><span class="icon-btn icon-btn--diag" aria-hidden="true"><svg><use href="#i-arrow"/></svg></span></span></a>
+          <a class="tile tile--hover" href="leisure.html"><img src="assets/images/villa-infinity-lounge.webp" alt="Villa lounge overlooking the sea" width="1200" height="801" loading="lazy"><span class="tile__label">Leisure</span><span class="tile__panel"><span><span class="tile__title">Leisure</span><span class="tile__text">Discover memorable experiences, relaxing escapes, and exciting activities designed to make every leisure moment special.</span></span><span class="icon-btn icon-btn--diag" aria-hidden="true"><svg><use href="#i-arrow"/></svg></span></span></a>
+          <a class="tile tile--hover" href="luxe-experiences.html"><img src="assets/images/phi-phi-longtail-boats.webp" alt="Longtail boats in a turquoise Phi Phi lagoon" width="1200" height="800" loading="lazy"><span class="tile__label">Lux Experience</span><span class="tile__panel"><span><span class="tile__title">Lux Experience</span><span class="tile__text">Private yacht charters, estate and island buyouts and executive team retreats, delivered with discretion.</span></span><span class="icon-btn icon-btn--diag" aria-hidden="true"><svg><use href="#i-arrow"/></svg></span></span></a>
+        </div>
+      </div>
+      <div class="carousel__nav">
+        <button class="carousel__btn" type="button" data-dir="-1" aria-label="Previous"><span aria-hidden="true"></span></button>
+        <button class="carousel__btn carousel__btn--next" type="button" data-dir="1" aria-label="Next"><span aria-hidden="true"></span></button>
+      </div>
     </div>
   </div>
 </section>
@@ -308,15 +322,16 @@
         <li><span role="img" aria-label="LinkedIn (link to be added)"><svg aria-hidden="true"><use href="#i-linkedin"/></svg></span></li>
         <li><span role="img" aria-label="X (link to be added)"><svg aria-hidden="true"><use href="#i-x"/></svg></span></li>
       </ul>
-      <p class="site-footer__credit">Designed &amp; Developed By: <img src="assets/logos/intersmart.svg" alt="Intersmart" width="117" height="19" loading="lazy"></p>
+      <p class="site-footer__credit">Designed &amp; Developed By: <a class="site-footer__credit-link" href="http://intersmartsolution.com/" target="_blank" rel="noopener" aria-label="Intersmart (opens in a new tab)"><img src="assets/logos/intersmart.svg" alt="Intersmart" width="117" height="19" loading="lazy"></a></p>
     </div>
   </div>
 </footer>
 
-<script src="js/components/navigation.js?v=mv8ivz4t" defer></script>
-<script src="js/components/forms.js?v=mv8ivz4t" defer></script>
-<script src="js/components/animation.js?v=mv8ivz4t" defer></script>
-<script src="js/components/gallery.js?v=mv8ivz4t" defer></script>
-<script src="js/main.js?v=mv8ivz4t" defer></script>
+<script src="js/components/navigation.js?v=mv9c1haa" defer></script>
+<script src="js/components/forms.js?v=mv9c1haa" defer></script>
+<script src="js/components/animation.js?v=mv9c1haa" defer></script>
+<script src="js/components/gallery.js?v=mv9c1haa" defer></script>
+<script src="js/components/carousel.js?v=mv9c1haa" defer></script>
+<script src="js/main.js?v=mv9c1haa" defer></script>
 </body>
 </html>

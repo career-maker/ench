@@ -14,6 +14,7 @@ function initAnimation() {
   }
 
   initTitles(reduce);
+  initBgFade(reduce);
   initBanners(reduce);
 
   const hero = document.querySelector('[data-hero]');
@@ -66,7 +67,7 @@ function initAnimation() {
 function initTitles(reduce) {
   const root = document.documentElement;
   if (reduce || !('IntersectionObserver' in window)) return;
-  const targets = document.querySelectorAll('main h1, main h2, main h3:not(.photo-card__title), .site-footer__title');
+  const targets = document.querySelectorAll('main h1, main h2, main h3:not(.photo-card__title), .site-footer__title:not(.site-footer__group .site-footer__title)');
   const split = (node, counter) => {
     [...node.childNodes].forEach((child) => {
       if (child.nodeType === 3) {
@@ -106,4 +107,18 @@ function initBanners(reduce) {
     if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); }
   }), { threshold: 0.25 });
   ctas.forEach((c) => io.observe(c));
+}
+
+// Full-section background slideshow (crossfade, slow zoom) for [data-bgfade] containers.
+function initBgFade(reduce) {
+  document.querySelectorAll('[data-bgfade]').forEach((box) => {
+    const imgs = [...box.querySelectorAll('img')];
+    if (imgs.length < 2 || reduce) return;
+    let i = 0;
+    setInterval(() => {
+      imgs[i].classList.remove('is-active');
+      i = (i + 1) % imgs.length;
+      imgs[i].classList.add('is-active');
+    }, 6500);
+  });
 }

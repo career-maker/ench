@@ -59,6 +59,7 @@ ${footer}
 <script src="js/components/forms.js?v=${BUILD}" defer></script>
 <script src="js/components/animation.js?v=${BUILD}" defer></script>
 <script src="js/components/gallery.js?v=${BUILD}" defer></script>
+<script src="js/components/carousel.js?v=${BUILD}" defer></script>
 <script src="js/main.js?v=${BUILD}" defer></script>
 </body>
 </html>

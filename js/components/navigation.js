@@ -19,9 +19,9 @@ function initNavigation() {
   mq.addEventListener('change', () => setMenu(false));
 }
 
-// Footer link groups become accordions on small screens (<768px); plain lists above that.
+// Footer link groups become accordions on small screens (<992px); plain lists above that.
 function initFooterAccordion() {
-  const mq = window.matchMedia('(max-width: 767.98px)');
+  const mq = window.matchMedia('(max-width: 991.98px)');
   document.querySelectorAll('.site-footer__group').forEach((group) => {
     const title = group.querySelector('.site-footer__title');
     const list = group.querySelector('ul');
