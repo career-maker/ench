@@ -15,3 +15,6 @@ IDs used on mice.html (downloaded 2026-10-15, resized to WebP): 1511578314322-37
 
 ## Homepage intro background slideshow (Unsplash)
 IDs: 1772127822562-a898d9f5733c (Thai wedding ceremony setup, Krabi), 1664542777435-be75eb20ecd5 (Railay Beach, Krabi), 1568321385520-b9252021b491 (Wat Arun, Bangkok). Files: assets/images/intro-*.webp.
+
+## Homepage "15 years" collage
+assets/images/intro-karst.webp and intro-temple.webp were cropped from the client-supplied mock-up D:\downloads\Thailand Travel & Hospitality Experience.png (the card area of the karst photo was filled in). Replace with licensed originals if the source photos are available.

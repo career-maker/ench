@@ -262,3 +262,30 @@
     .is-current { transform: scale(1.08); } .is-next.is-showing { transform: scale(1.08); }
     &::before { opacity: 1; } &::after { transform: translateX(380%) skewX(-18deg); } } }
 @media (prefers-reduced-motion: reduce) { .locations__photo, .locations__photo img, .locations__photo::after { transition: none; } }
+
+// ---- "15 years" section: editorial collage (positions in % of a 2000x674 artboard) ----
+.heritage { background: #fefcfb; overflow: hidden;
+  &__stage { position: relative; width: 100%; max-width: 2000px; margin-inline: auto; display: grid;
+    @include m.up(lg) { display: block; aspect-ratio: 2000 / 674; } }
+  &__text { padding: clamp(2rem, 5vw, 4.5rem) v.$gutter;
+    @include m.up(lg) { position: absolute; left: 0; top: 0; width: 42.5%; height: 100%; padding: 0 0 0 5.4%; display: flex; flex-direction: column; justify-content: center; } }
+  &__stat { display: flex; align-items: center; gap: clamp(1rem, 2vw, 2.25rem); }
+  &__num { font-family: v.$font-serif; color: v.$color-blue; font-size: clamp(5rem, 9.4vw, 9.4rem); line-height: 0.85; }
+  &__label p { font-size: clamp(1.1rem, 1.75vw, 1.75rem); line-height: 1.3; color: v.$color-ink; }
+  &__rule { display: block; width: 5.7rem; height: 2px; margin-top: 1.5rem; background: #bb9d6f; }
+  &__title { margin-top: clamp(1.25rem, 3vw, 3rem); font-size: clamp(2.1rem, 4vw, 4.4rem); line-height: 1.18; }
+  &__vline { display: none; @include m.up(lg) { display: block; position: absolute; left: 40.85%; top: 14%; height: 44.5%; width: 1px; background: #bb9d6f; z-index: 4; } }
+  &__karst { margin: 0; overflow: hidden;
+    img { width: 100%; height: 100%; object-fit: cover; }
+    @include m.up(lg) { position: absolute; left: 42.4%; top: 0; width: 57.6%; height: 50.5%; } }
+  &__olive { display: none; @include m.up(lg) { display: block; position: absolute; left: 42.4%; top: 34.4%; width: 13.6%; height: 55.4%; background: #7b8662; } }
+  &__temple { margin: 0; overflow: hidden; box-shadow: 0 1rem 2.5rem rgba(40, 30, 10, 0.2);
+    img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s v.$ease; } &:hover img { transform: scale(1.06); }
+    @include m.up(lg) { position: absolute; left: 38.1%; top: 41.3%; width: 16.5%; height: 58.7%; z-index: 2; }
+    @include m.down(lg) { display: none; } }
+  &__card { background: #efebe6; padding: clamp(1.5rem, 3vw, 3rem) v.$gutter;
+    p { font-size: 1.1rem; line-height: 1.5; color: v.$color-text; }
+    .btn { margin-top: 1.5rem; }
+    @include m.up(lg) { position: absolute; left: 56%; top: 31.5%; width: 37.1%; height: 65.3%; padding: 0 4.1% 0 3%; z-index: 3; display: flex; flex-direction: column; justify-content: center; box-shadow: 0 1.25rem 3rem rgba(40, 30, 10, 0.12); p { font-size: 1.12rem; } p + p { margin-top: 1rem; } } }
+  // lower-right paper tint behind the card
+  @include m.up(lg) { &__stage::after { content: ''; position: absolute; left: 42.4%; top: 50.5%; right: 0; bottom: 0; background: #e8e1d6; z-index: 0; } } }
