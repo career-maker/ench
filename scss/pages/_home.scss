@@ -263,109 +263,98 @@
     &::before { opacity: 1; } &::after { transform: translateX(380%) skewX(-18deg); } } }
 @media (prefers-reduced-motion: reduce) { .locations__photo, .locations__photo img, .locations__photo::after { transition: none; } }
 
-// ---- "15 years": layered photo collage + palm leaves (stage scales with container width via cqw) ----
-.heritage { background: #fbf9f5; padding-block: clamp(2rem, 4vw, 5rem); overflow: hidden; position: relative;
-  &__stage { container-type: inline-size; position: relative; width: 100%; max-width: 1900px; margin-inline: auto;
-    @include m.up(lg) { aspect-ratio: 1902 / 827; } }
-  &__text { padding: clamp(2rem, 5vw, 4rem) v.$gutter 1rem;
-    @include m.up(lg) { position: absolute; left: 6.3%; top: 19.5%; width: 39.5%; padding: 0; } }
-  &__stat { display: flex; align-items: center; gap: 2.5cqw; }
-  &__num { font-family: v.$font-serif; color: v.$color-blue; font-size: clamp(5.5rem, 6.8cqw, 9rem); line-height: 0.82; }
-  &__label { font-size: clamp(1.05rem, 1.45cqw, 1.6rem); line-height: 1.3; color: v.$color-ink; padding-left: 2.2cqw; border-left: 1px solid rgba(17, 17, 17, 0.2); }
-  &__title { margin-top: 3.2cqw; font-size: clamp(2.2rem, 3.7cqw, 4.5rem); line-height: 1.12; letter-spacing: -0.01em; }
-  &__bar { display: block; margin-top: 3.4cqw; width: 15.5cqw; height: 3px; background: linear-gradient(90deg, v.$color-blue 0 21%, rgba(6, 88, 167, 0.35) 21%); }
-  &__visual { position: relative; z-index: 1; padding: 0 v.$gutter clamp(2rem, 4vw, 3rem);
-    @include m.up(lg) { position: static; padding: 0; } }
-  &__back, &__front, &__frame, &__card, &__leaf, &__ghost { position: absolute; }
-  &__back { margin: 0; overflow: hidden; left: 58%; top: 7%; width: 34.9%; height: 40%; opacity: 0.9;
-    img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 0; } }
-  &__frame { left: 43.4%; top: 11.2%; width: 12.3%; height: 49.5%; border-top: 3px solid #d4b27a; border-left: 3px solid #d4b27a; }
-  &__front { margin: 0; overflow: hidden; left: 45.7%; top: 14.4%; width: 43.9%; height: 65.7%; box-shadow: 0 1.5rem 3rem rgba(30, 24, 12, 0.12);
-    img { width: 100%; height: 100%; object-fit: cover; object-position: 40% 50%; transition: transform 1.8s v.$ease; } &:hover img { transform: scale(1.04); } }
-  &__card { left: 67.5%; top: 31.9%; width: 28.5%; height: 56.4%; background: #fff; padding: 2.2cqw 2.2cqw; display: flex; flex-direction: column; justify-content: center; box-shadow: 0 1.4rem 3.2rem rgba(30, 24, 12, 0.14); z-index: 3;
-    p { font-size: clamp(0.95rem, 1.03cqw, 1.2rem); line-height: 1.62; color: v.$color-text; } p + p { margin-top: 1.1cqw; }
-    .btn { margin-top: 1.6cqw; align-self: flex-start; } }
-  &__leaf { left: 36.8%; top: 37.5%; width: 15%; z-index: 4; pointer-events: none; filter: drop-shadow(0 0.6rem 0.8rem rgba(30, 24, 12, 0.18)); transform: scaleX(-1) rotate(-12deg); transform-origin: 80% 70%; }
-  &__ghost { left: 52%; top: 80%; width: 14.5%; opacity: 0.12; filter: blur(6px); pointer-events: none; transform: rotate(20deg); z-index: 0; }
-  // mobile / tablet: stacked photo + card, leaves as a small accent
-  @include m.down(lg) {
-    &__back, &__frame, &__ghost { display: none; }
-    &__front, &__card { position: relative; left: auto; top: auto; width: auto; height: auto; }
-    &__front { aspect-ratio: 16 / 10; }
-    &__card { margin: -2.5rem 1rem 0; padding: 1.5rem; }
-    &__leaf { left: auto; right: 0; top: -2rem; width: 28%; transform: scaleX(-1) rotate(-12deg); } } }
-.heritage { &__leaf { left: 37.4%; top: 36%; width: 11.5%; transform: rotate(6deg); transform-origin: 50% 50%; }
-  &__card { height: auto; min-height: 56.4%; padding: 2.4cqw 2.4cqw 2.2cqw; }
-  @include m.down(lg) { &__leaf { left: auto; right: 0; top: -2rem; width: 28%; transform: scaleX(-1) rotate(-6deg); } &__card { min-height: 0; } } }
-.heritage { &__card { left: 66%; top: 30%; width: 31%; min-height: 0; height: 61%; padding: 2.2cqw 2.4cqw;
-    p { font-size: clamp(0.9rem, 0.93cqw, 1.15rem); line-height: 1.58; } p + p { margin-top: 0.9cqw; } .btn { margin-top: 1.3cqw; padding: 0.7cqw 1.7cqw; font-size: clamp(0.95rem, 1cqw, 1.2rem); } }
-  @include m.down(lg) { &__card { height: auto; } } }
-// back photo: soft, hazy and faded like the reference; faint watermark mountain at the right edge
-.heritage__back { opacity: 0.55; -webkit-mask-image: linear-gradient(to bottom, #000 40%, transparent 100%); mask-image: linear-gradient(to bottom, #000 40%, transparent 100%);
-  img { filter: blur(0.5cqw) saturate(0.8); transform: scale(1.12); } }
-.heritage__mark { position: absolute; right: 0; top: 19%; width: 12.5%; opacity: 0.2; mix-blend-mode: multiply; pointer-events: none; z-index: 0;
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 55%); mask-image: linear-gradient(to right, transparent, #000 55%); }
-@include m.down(lg) { .heritage__mark { display: none; } }
-.heritage__mark { -webkit-mask-image: radial-gradient(ellipse 85% 70% at 100% 50%, #000 25%, transparent 72%); mask-image: radial-gradient(ellipse 85% 70% at 100% 50%, #000 25%, transparent 72%); opacity: 0.28; top: 15%; width: 14%; }
+// ---- "15 years": 4-photo mosaic background, navy scrim, text + white card ----
+// "Your Destination Management Partner" – four service panels form the backdrop (MICE / Celebrations / Leisure / Luxe).
+// Each panel is labelled along the bottom; hovering/focusing a label widens and lights up its panel.
+.heritage { --gold: #d9b977; position: relative; overflow: hidden; isolation: isolate; background: #071a2e; color: #fff;
+  min-height: max(56rem, 100svh); display: flex; flex-direction: column;
 
-// white section; handshake photo faintly visible behind the text card
-.heritage { background: #fff; }
-.heritage__card { overflow: hidden; isolation: isolate;
-  &-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
-  &::before { content: ''; position: absolute; inset: 0; z-index: -1; background: rgba(255, 255, 255, 0.86); } }
+  // Backdrop panels
+  &__mosaic { position: absolute; inset: 0; z-index: -2; display: flex; gap: 1px; background: rgba(217, 185, 119, 0.35); }
+  &__panel { position: relative; flex: 1 1 0; min-width: 0; overflow: hidden; background: #071a2e; transition: flex-grow 0.9s v.$ease;
+    img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.85) brightness(0.9); transform: scale(1.06);
+      transition: filter 0.9s v.$ease, transform 1.6s v.$ease; animation: heritage-drift 18s ease-in-out infinite alternate; }
+    &:nth-child(2) img { animation-delay: -4.5s; } &:nth-child(3) img { animation-delay: -9s; } &:nth-child(4) img { animation-delay: -13.5s; } }
 
-// back photo: sharp but pale (low opacity, no blur) as in the reference
-.heritage__back { opacity: 0.32; -webkit-mask-image: none; mask-image: none;
-  img { filter: none; transform: none; object-position: 50% 10%; } }
-.heritage__card-bg { object-position: 50% 45%; }
+  // Legibility: deep navy at the top for the copy, clearing through the middle, darkening again under the labels
+  &::before { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+    background:
+      linear-gradient(180deg, rgba(7, 26, 46, 0.94) 0%, rgba(7, 26, 46, 0.82) 38%, rgba(7, 26, 46, 0.3) 62%, rgba(7, 26, 46, 0.15) 74%, rgba(7, 26, 46, 0.85) 100%),
+      radial-gradient(60% 50% at 20% 25%, rgba(6, 88, 167, 0.35), transparent 70%); }
 
-// card back to plain white; handshake photo sits faintly behind the whole section
-.heritage__card { overflow: visible; isolation: auto; &::before { content: none; } }
-.heritage { isolation: isolate; }
+  // Copy
+  &__stage { width: 100%; max-width: v.$container; margin-inline: auto; padding: clamp(4.5rem, 8vw, 8rem) v.$gutter 0;
+    display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: clamp(2.5rem, 6vw, 7.5rem); align-items: start; }
+  &__intro { display: flex; flex-direction: column; gap: 1.75rem; }
+  &__eyebrow { display: flex; align-items: center; gap: 1rem; margin: 0; font-size: 0.875rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold);
+    &::before { content: ''; width: 3rem; height: 1px; background: currentColor; } }
+  &__title { margin: 0; color: #fff; font-size: clamp(2.25rem, 4.2vw, 4rem); line-height: 1.12; font-weight: 400; }
+  &__accent { color: var(--gold); }
+  &__stat { display: flex; align-items: center; gap: 1.5rem; margin-top: 0.75rem; }
+  &__num { font-family: v.$font-serif; font-size: clamp(4rem, 6.5vw, 6.25rem); line-height: 0.85; color: transparent; -webkit-text-stroke: 1px rgba(255, 255, 255, 0.85); }
+  &__label { margin: 0; padding-left: 1.5rem; border-left: 1px solid rgba(255, 255, 255, 0.35); font-size: clamp(1rem, 1.3vw, 1.25rem); line-height: 1.45; font-weight: 300; color: rgba(255, 255, 255, 0.85); }
+  &__body { display: flex; flex-direction: column; gap: 1.25rem; padding-top: clamp(0rem, 3vw, 3.25rem);
+    p { margin: 0; font-size: 1.0625rem; line-height: 1.75; font-weight: 300; color: rgba(255, 255, 255, 0.78); }
+    .btn { align-self: flex-start; margin-top: 0.75rem; } }
+  & &__lead { font-family: v.$font-serif; font-size: clamp(1.25rem, 1.6vw, 1.625rem); line-height: 1.5; color: #fff; }
 
-// pure white section background (handshake removed)
+  // Service labels – one per backdrop panel, aligned to it
+  &__purposes { display: flex; margin-top: auto; padding-top: clamp(3rem, 8vw, 9rem); border-top: 0;
+    li { flex: 1 1 0; min-width: 0; display: flex; transition: flex-grow 0.9s v.$ease; } }
+  &__purpose { position: relative; flex: 1; display: grid; grid-template-columns: auto 1fr auto; grid-template-areas: 'idx name go' '. desc desc'; column-gap: 1rem; row-gap: 0.5rem; align-items: baseline;
+    padding: 1.75rem clamp(1.25rem, 2.2vw, 2.5rem) 2.25rem; color: #fff; border-top: 1px solid rgba(255, 255, 255, 0.25);
+    &::before { content: ''; position: absolute; left: 0; right: 0; top: -1px; height: 2px; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform 0.7s v.$ease; }
+    &:focus-visible { outline: 2px solid var(--gold); outline-offset: -4px; } }
+  &__idx { grid-area: idx; font-size: 0.8125rem; letter-spacing: 0.16em; color: var(--gold); font-weight: 500; }
+  &__name { grid-area: name; font-family: v.$font-serif; font-size: clamp(1.25rem, 1.7vw, 1.75rem); line-height: 1.2; }
+  &__desc { grid-area: desc; font-size: 0.9375rem; line-height: 1.5; font-weight: 300; color: rgba(255, 255, 255, 0.72); }
+  &__go { grid-area: go; align-self: center; width: 1.25rem; height: 1.25rem; color: var(--gold); transform: rotate(-45deg); transition: transform 0.5s v.$ease; }
+  &__purpose:hover::before, &__purpose:focus-visible::before { transform: scaleX(1); }
+  &__purpose:hover &__go, &__purpose:focus-visible &__go { transform: rotate(-45deg) translateX(0.3rem); }
+}
 
-// ---- premium hover for the collage photos: lift, zoom, de-fade, light sweep, soft glow ----
-.heritage__front, .heritage__back { cursor: pointer; isolation: isolate;
-  transition: transform 0.8s v.$ease, box-shadow 0.8s v.$ease, opacity 0.8s ease;
-  img { transition: transform 1.6s v.$ease, filter 0.8s ease; }
-  &::after { content: ''; position: absolute; inset: -20% auto -20% 0; width: 38%; z-index: 2; pointer-events: none; transform: translateX(-150%) skewX(-18deg);
-    background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.45), transparent); transition: transform 1.3s v.$ease; } }
-.heritage__front { z-index: 2;
-  &:hover { transform: translateY(-0.9rem) scale(1.015); box-shadow: 0 2.2rem 4rem rgba(6, 40, 90, 0.28);
-    img { transform: scale(1.09); filter: saturate(1.1) brightness(1.02); }
-    &::after { transform: translateX(420%) skewX(-18deg); } } }
-.heritage__back { z-index: 1;
-  &:hover { opacity: 0.85; transform: translate(0.5rem, -0.6rem); box-shadow: 0 1.6rem 3rem rgba(6, 40, 90, 0.2);
-    img { transform: scale(1.08); }
-    &::after { transform: translateX(420%) skewX(-18deg); } } }
-// frame nudges with the front photo
-.heritage__visual:has(.heritage__front:hover) .heritage__frame { transform: translate(-0.5rem, -0.5rem); }
-.heritage__frame { transition: transform 0.8s v.$ease; }
-@media (prefers-reduced-motion: reduce) { .heritage__front, .heritage__back, .heritage__front img, .heritage__back img, .heritage__frame { transition: none; } .heritage__front::after, .heritage__back::after { display: none; } }
+// Hover/focus a service: its panel and label column widen together, the other panels dim.
+@media (hover: hover) and (min-width: 992px) {
+  @for $i from 1 through 4 {
+    .heritage:has(.heritage__purposes li:nth-child(#{$i}) :is(a:hover, a:focus-visible)) {
+      .heritage__panel:nth-child(#{$i}), .heritage__purposes li:nth-child(#{$i}) { flex-grow: 1.7; }
+      .heritage__panel:nth-child(#{$i}) img { filter: saturate(1.1) brightness(1.05); transform: scale(1); }
+      .heritage__panel:not(:nth-child(#{$i})) img { filter: saturate(0.5) brightness(0.55); }
+    }
+  }
+}
+@keyframes heritage-drift { from { transform: scale(1.06) translate3d(0, 0, 0); } to { transform: scale(1.14) translate3d(0, -2%, 0); } }
 
-// tighter spacing below the collage; faint palm-leaf watermark in the lower-left corner
-.heritage { padding-bottom: 0;
-  &__stage { @include m.up(lg) { margin-bottom: -5vw; } }
-  &::after { content: ''; position: absolute; left: -2%; bottom: -4%; width: 24%; aspect-ratio: 1000 / 873; background: url('../assets/images/palm-leaves.webp') center / contain no-repeat; opacity: 0.13; transform: rotate(8deg); pointer-events: none; z-index: 0; } }
-.heritage__text { position: relative; z-index: 1; }
-.ticker { padding-top: 3rem; }
-@include m.down(lg) { .heritage::after { width: 40%; bottom: -2%; } }
-.heritage { padding-bottom: 2.5rem; &__stage { @include m.up(lg) { margin-bottom: -3.2vw; } }
-  &::after { left: -4%; bottom: -11%; width: 22%; opacity: 0.12; } }
+// Below desktop the strips can't line up with the labels, so each service label carries its own panel image as a tile.
+$heritage-imgs: ('mice-intro-stage', 'intro-wedding', 'phi-phi-longtail-boats', 'villa-infinity-lounge');
+@include m.down(lg) {
+  .heritage { min-height: 0;
+    &__stage { grid-template-columns: 1fr; gap: 2.5rem; }
+    &__body { padding-top: 0; }
+    &::before { background: linear-gradient(180deg, rgba(7, 26, 46, 0.93) 0%, rgba(7, 26, 46, 0.86) 55%, rgba(7, 26, 46, 0.55) 72%, rgba(7, 26, 46, 0.88) 100%); }
+    &__purposes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; padding: 3.5rem v.$gutter 3.5rem; }
+    // Border lives on the overlay (not the link) so the photo never shows through it and the rim stays even.
+    &__purpose { min-height: 8.5rem; padding: 1.25rem; border: 0; border-radius: v.$radius-md; overflow: hidden; isolation: isolate; transform: translateZ(0);
+      grid-template-areas: 'idx name go' '. desc .'; align-content: end;
+      background: #071a2e center / cover no-repeat; background-clip: padding-box;
+      &::after { content: ''; position: absolute; inset: 0; z-index: -1; border: 1px solid rgba(255, 255, 255, 0.22); border-radius: inherit;
+        background: linear-gradient(90deg, rgba(7, 26, 46, 0.9) 0%, rgba(7, 26, 46, 0.55) 70%, rgba(7, 26, 46, 0.25) 100%); }
+      &::before { top: auto; bottom: 0; left: 1px; right: 1px; height: 2px; border-radius: 0 0 v.$radius-md v.$radius-md; } }
+    @for $i from 1 through 4 {
+      &__purposes li:nth-child(#{$i}) .heritage__purpose { background-image: url('../assets/images/#{nth($heritage-imgs, $i)}.webp'); }
+    }
+  }
+}
+@include m.down(md) {
+  .heritage {
+    &__eyebrow { letter-spacing: 0.16em; &::before { width: 1.5rem; } }
+    &__purposes { grid-template-columns: 1fr; padding-block: 3rem; }
+    &__purpose { min-height: 7.5rem; }
+    &__stat { gap: 1rem; } &__label { padding-left: 1rem; }
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .heritage__panel img { animation: none; transform: none; }
+}
 
-// misty karst landscape as the section's background frame (bottom, full width); old leaf / mark removed
-.heritage__mark { display: none; }
-.heritage { 
-  &::after { left: 0; right: 0; bottom: 0; width: 100%; aspect-ratio: 2000 / 552; background: url('../assets/images/misty-landscape.webp') center bottom / 100% 100% no-repeat; opacity: 0.6; transform: none; z-index: 0; }
-  &__stage { position: relative; z-index: 1; } }
-@include m.down(lg) { .heritage::after { width: 100%; opacity: 0.5; } }
-@include m.down(lg) { .heritage__card { position: relative; left: auto; top: auto; width: auto; height: auto; min-height: 0; padding: 1.5rem; margin: -2.5rem 1rem 0;
-    p { font-size: 1.02rem; line-height: 1.6; } p + p { margin-top: 0.9rem; } .btn { margin-top: 1.25rem; padding: 0.8rem 1.6rem; font-size: 1.05rem; } }
-  .heritage__front { aspect-ratio: 16 / 10; } }
-
-// full-colour seascape as the background frame, kept faint like a watermark
-.heritage::after { aspect-ratio: 2000 / 722; opacity: 0.2; }
-@include m.down(lg) { .heritage::after { opacity: 0.18; } }
-.heritage__front img { object-position: 50% 62%; }
-.heritage__back img { object-position: 50% 12%; }
+.ticker { padding-block: clamp(2rem, 4vw, 3.5rem); }
