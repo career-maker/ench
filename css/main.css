@@ -1476,6 +1476,12 @@ a:hover .icon-btn--diag svg {
   opacity: 1;
   transform: none;
 }
+.tile--hover:hover .tile__panel {
+  pointer-events: auto;
+}
+.tile--hover .icon-btn--diag:hover svg {
+  transform: rotate(0deg) translateX(0.2rem);
+}
 .tile--hover:hover .tile__label, .tile--hover:focus-visible .tile__label {
   opacity: 0;
 }
