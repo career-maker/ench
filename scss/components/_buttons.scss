@@ -4,7 +4,7 @@
   transition: color 0.5s v.$ease, border-color 0.5s v.$ease, transform 0.5s v.$ease, box-shadow 0.5s v.$ease, background-color 0.5s v.$ease;
   &::before { content: ''; position: absolute; inset: -1px; z-index: -1; border-radius: inherit; background: var(--btn-fill); transform: translateY(102%); transition: transform 0.6s v.$ease; }
   &::after { content: ''; width: 0.625rem; height: 0.625rem; flex: none; background: currentColor; clip-path: polygon(0 0, 100% 0, 100% 100%, 82% 100%, 82% 26%, 6% 100%, 0 94%, 74% 18%, 0 18%); transition: transform 0.5s v.$ease, color 0.5s v.$ease; }
-  &:hover { transform: translateY(-3px); } &:hover::before { transform: none; } &:hover::after { transform: translate(3px, -3px) scale(1.15); }
+  &:hover { transform: translateY(-3px); } &:hover::before { transform: none; } &:hover::after, &:focus-visible::after { transform: translateX(3px) rotate(45deg) scale(1.15); } // diagonal arrow turns to point right
   &:active { transform: translateY(0) scale(0.97); transition-duration: 0.12s; }
   &--primary { background: v.$color-blue; color: v.$color-white; &:hover { box-shadow: 0 0.75rem 1.75rem rgba(6, 88, 167, 0.35); } }
   &--outline { --btn-fill: #{v.$color-blue}; border-color: v.$color-blue; color: v.$color-ink; &::after { color: v.$color-red; } &:hover { color: v.$color-white; box-shadow: 0 0.75rem 1.75rem rgba(6, 88, 167, 0.25); &::after { color: v.$color-white; } } }

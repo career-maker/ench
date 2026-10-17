@@ -1188,8 +1188,8 @@ body.is-menu-open .site-header {
 .btn:hover::before {
   transform: none;
 }
-.btn:hover::after {
-  transform: translate(3px, -3px) scale(1.15);
+.btn:hover::after, .btn:focus-visible::after {
+  transform: translateX(3px) rotate(45deg) scale(1.15);
 }
 .btn:active {
   transform: translateY(0) scale(0.97);
@@ -3389,7 +3389,7 @@ a:hover .icon-btn--diag svg {
   transform: scaleX(1);
 }
 .heritage__purpose:hover .heritage__go, .heritage__purpose:focus-visible .heritage__go {
-  transform: rotate(-45deg) translateX(0.3rem);
+  transform: rotate(0deg) translateX(0.3rem);
 }
 
 @media (hover: hover) and (min-width: 992px) {
