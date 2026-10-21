@@ -6,3 +6,4 @@ initForms();
 initAnimation();
 initGallery();
 initCarousels();
+initHeritageStyle();
