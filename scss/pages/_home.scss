@@ -355,6 +355,7 @@ $heritage-imgs: ('mice-intro-stage', 'intro-wedding', 'phi-phi-longtail-boats', 
 }
 @media (prefers-reduced-motion: reduce) {
   .heritage__panel img { animation: none; transform: none; }
+  .heritage__stage { flex: 1 0 auto; }
 }
 
 // Client preview switcher (remove the markup + script once a style is chosen)
@@ -370,44 +371,37 @@ $heritage-imgs: ('mice-intro-stage', 'intro-wedding', 'phi-phi-longtail-boats', 
 // ===== Style 1 · Mosaic – four full-height photo strips under a navy veil (default) =====
 // (nothing extra: the base rules above are this style)
 
-// ===== Style 2 · Postcards – light editorial layout: small copy top-left, big title top-right, full-bleed photo strip, 15-years stat bottom-right =====
+// ===== Style 2 · Postcards – heading + lead above a rounded horizontal photo card; 15-years stat + detail copy below. Fits one screen. =====
 .heritage__panel--extra { display: none; }
 .heritage[data-style='postcards'] { --gold: #9a7a3c; background: #f4f3f0; color: v.$color-ink; min-height: 100svh;
   &::before { display: none; }
-  .heritage__stage { max-width: none; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-rows: auto minmax(12rem, 1fr) auto; align-items: start; gap: 0 clamp(1.5rem, 4vw, 4rem);
-    padding-block: clamp(5.5rem, 8vw, 7rem) clamp(1.5rem, 3vw, 3rem); }
-  .heritage__intro { display: contents; }
+  .heritage__stage { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); align-content: center; align-items: start; gap: 0 clamp(2rem, 5vw, 6rem);
+    padding-block: clamp(5rem, 7vw, 6.5rem) clamp(2rem, 3vw, 3rem); }
+  .heritage__intro, .heritage__body { display: contents; }
   .heritage__eyebrow { display: none; }
-  .heritage__title { grid-column: 2; grid-row: 1; justify-self: end; text-align: right; font-size: clamp(1.75rem, 4.5vw, 3.4rem); line-height: 1.2; font-weight: 400; color: #071a2e; }
-  .heritage__body { grid-column: 1; grid-row: 1; max-width: 25rem; gap: 0.9rem;
-    p { color: v.$color-text; }
-    .btn { margin-top: 0.5rem; } }
-  .heritage__lead { color: #071a2e; }
-  .heritage__mosaic { position: relative; inset: auto; grid-column: 1 / -1; grid-row: 2; width: 100vw; margin: clamp(1.5rem, 3vw, 2.5rem) 0 clamp(1.5rem, 3vw, 2.5rem) calc(50% - 50vw); align-self: stretch; display: flex; gap: 0; background: none; }
-  .heritage__panel { flex: 1 1 0; background: none; padding: 0; box-shadow: none; transform: none;
-    img { height: 100%; filter: none; } }
+  .heritage__title { grid-column: 1; grid-row: 1; align-self: end; color: #071a2e; font-size: clamp(1.75rem, 4.5vw, 3.4rem); line-height: 1.2; }
+  .heritage__lead { grid-column: 2; grid-row: 1; align-self: end; color: #071a2e; }
+  .heritage__mosaic { position: relative; inset: auto; grid-column: 1 / -1; grid-row: 2; width: 100%; height: clamp(12rem, 34svh, 26rem); margin-block: clamp(1.25rem, 2.5vw, 2.25rem);
+    display: flex; gap: 0.5rem; background: none; border-radius: 1.25rem; overflow: hidden; }
+  .heritage__panel { flex: 1 1 0; background: none; border-radius: 0.75rem; img { height: 100%; filter: none; } }
   .heritage__panel--extra { display: block; }
-  .heritage__stat { grid-column: 2; grid-row: 3; justify-self: end; margin: 0; }
+  .heritage__stat { grid-column: 1; grid-row: 3 / span 2; margin: 0; }
   .heritage__num { -webkit-text-stroke: 1px #0658a7; }
   .heritage__label { color: v.$color-text; border-left-color: rgba(7, 26, 46, 0.25); }
+  .heritage__body p:not(.heritage__lead) { grid-column: 2; grid-row: 3; color: v.$color-text; }
+  .heritage__body .btn { grid-column: 2; grid-row: 4; justify-self: start; margin-top: 1.25rem; }
   .heritage__body .btn--glass { color: #fff; background: v.$color-blue; border-color: v.$color-blue; backdrop-filter: none; -webkit-backdrop-filter: none; box-shadow: none; --btn-fill: #{v.$color-blue-dark}; }
-  @media (max-width: 56rem) {
-    .heritage__stage { grid-template-columns: 1fr; }
-    .heritage__title, .heritage__body, .heritage__stat { grid-column: 1; justify-self: start; text-align: left; }
-    .heritage__title { grid-row: 1; } .heritage__body { grid-row: 2; margin-top: 1.5rem; } .heritage__mosaic { grid-row: 3; } .heritage__stat { grid-row: 4; }
-    .heritage__panel { flex: 0 0 42%; } .heritage__mosaic { overflow: hidden; min-height: 16rem; }
-  }
 }
 
-// ===== Style 3 · Orbit – navy, circular Phi Phi photo in gold rings with three service photos on the orbit (approved VectorCraft design B) =====
-.heritage[data-style='orbit'] { background: radial-gradient(70% 80% at 72% 50%, #0d3a66 0%, #071a2e 70%); min-height: 0;
+// ===== Style 3 · Orbit – all copy on the left, circular Phi Phi photo in gold rings with three service photos on the orbit on the right =====
+.heritage[data-style='orbit'] { background: radial-gradient(70% 80% at 72% 50%, #0d3a66 0%, #071a2e 70%); min-height: 100svh;
   &::before { background: url('../assets/images/misty-landscape.webp') center / cover no-repeat; opacity: 0.08; }
-  .heritage__stage { grid-template-columns: minmax(0, 0.5fr) minmax(0, 0.5fr); row-gap: 2.75rem; align-content: center; padding-block: clamp(5.5rem, 8vw, 8rem); }
+  .heritage__stage { grid-template-columns: minmax(0, 1fr) minmax(0, 0.85fr); align-content: center; align-items: start; row-gap: 2rem; padding-block: clamp(5rem, 7vw, 6.5rem) clamp(2.5rem, 4vw, 4rem); }
   .heritage__intro { grid-column: 1; grid-row: 1; }
   .heritage__body { grid-column: 1; grid-row: 2; }
   .heritage__body .btn--glass { color: #fff; background: v.$color-blue; border-color: v.$color-blue; backdrop-filter: none; -webkit-backdrop-filter: none; box-shadow: none; --btn-fill: #{v.$color-blue-dark}; }
-  // circle box leaves room for the rings (2.5rem) and the orbiting photos that overhang it (≈15% left, ≈5% right, ≈6% bottom)
-  .heritage__mosaic { position: relative; inset: auto; grid-column: 2; grid-row: 1 / span 2; align-self: center; justify-self: end; width: min(34rem, 76%); aspect-ratio: 1; margin: 3rem 3.5rem 5rem 0; z-index: 0; display: block; background: none;
+  // circle box leaves room for the rings (2.5rem) and the orbiting photos that overhang it
+  .heritage__mosaic { position: relative; inset: auto; grid-column: 2; grid-row: 1 / span 2; align-self: center; justify-self: center; height: min(54svh, 30rem); aspect-ratio: 1; margin: 3rem 3rem 4rem 5rem; display: block; background: none;
     &::before, &::after { content: ''; position: absolute; border-radius: 50%; pointer-events: none; }
     &::before { inset: -2.5rem; border: 1px dashed rgba(217, 185, 119, 0.5); }
     &::after { inset: -0.9rem; border: 1px solid var(--gold); } }
@@ -420,35 +414,26 @@ $heritage-imgs: ('mice-intro-stage', 'intro-wedding', 'phi-phi-longtail-boats', 
     &:nth-child(4) { width: 24.7%; left: 27.8%; top: 81%; } }
 }
 
+// Below desktop: both styles stack in one column, section grows with its content.
 @include m.down(lg) {
-  .heritage[data-style='postcards'], .heritage[data-style='orbit'] {
+  .heritage[data-style='postcards'], .heritage[data-style='orbit'] { min-height: 0;
     .heritage__stage { grid-template-columns: 1fr; padding-bottom: 3rem; }
-    .heritage__intro, .heritage__body, .heritage__mosaic { grid-column: 1; grid-row: auto; }
+    .heritage__intro, .heritage__body, .heritage__mosaic, .heritage__title, .heritage__lead, .heritage__stat,
+    .heritage__body p:not(.heritage__lead), .heritage__body .btn { grid-column: 1; grid-row: auto; }
+    .heritage__lead { margin-top: 1.25rem; }
+    .heritage__stat { margin-top: 1.5rem; }
+    .heritage__body p:not(.heritage__lead) { margin-top: 1.25rem; }
   }
-  .heritage[data-style='postcards'] .heritage__mosaic { margin: 1.5rem 0 2.5rem; }
-  .heritage[data-style='orbit'] .heritage__mosaic { justify-self: center; width: min(22rem, 66vw); margin: 3.5rem 0 4.5rem; }
-}
-@include m.down(lg) {
-  .heritage { min-height: 0;
-    &__stage { grid-template-columns: 1fr; gap: 2.5rem; padding-top: 6.5rem; }
-    &__mosaic { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    &::before { background: linear-gradient(180deg, rgba(7, 26, 46, 0.92) 0%, rgba(7, 26, 46, 0.82) 60%, rgba(7, 26, 46, 0.88) 100%); }
-  }
-}
-@include m.down(md) {
-  .heritage {
-    &__eyebrow { letter-spacing: 0.16em; &::before { width: 1.5rem; } }
-    &__stat { gap: 1rem; } &__label { padding-left: 1rem; }
-    &__switch { left: v.$gutter; right: v.$gutter; justify-content: space-between; }
-    &__switch-label { display: none; }
-    &__switch button { padding: 0 0.75rem; font-size: 0.875rem; }
-  }
+  .heritage[data-style='postcards'] .heritage__mosaic { height: 16rem; }
+  .heritage[data-style='postcards'] .heritage__panel { flex: 0 0 42%; }
+  .heritage[data-style='orbit'] .heritage__mosaic { height: min(20rem, 62vw); margin: 3.5rem auto 4.5rem; }
 }
 
 // Postcards / Orbit own the whole section: no service-label row, no backdrop drift, no body offset.
 .heritage[data-style='postcards'], .heritage[data-style='orbit'] {
   .heritage__purposes { display: none; }
   .heritage__panel img { animation: none; transform: none; }
+  .heritage__stage { flex: 1 0 auto; }
   .heritage__body { padding-top: 0; }
 }
 
