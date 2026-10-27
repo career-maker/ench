@@ -1812,33 +1812,33 @@ a:hover .icon-btn--diag svg {
   z-index: 60;
   display: flex;
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
-  transition: opacity 0.4s cubic-bezier(0.22, 0.61, 0.36, 1), transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
-  right: 1rem;
+  transition: opacity 0.4s cubic-bezier(0.22, 0.61, 0.36, 1), visibility 0.4s;
+  right: 0.5rem;
   top: 50%;
   flex-direction: column;
-  gap: 0.625rem;
-  transform: translate(1.5rem, -50%);
+  gap: 0.25rem;
+  transform: translateY(-50%);
 }
 .float-contact.is-on {
   opacity: 1;
+  visibility: visible;
   pointer-events: auto;
-  transform: translate(0, -50%);
 }
 .float-contact__btn {
   position: relative;
   display: grid;
   place-items: center;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
+  width: clamp(2.125rem, 2.1vw, 2.5rem);
+  aspect-ratio: 1;
+  border-radius: 0.25rem;
   color: #fff;
-  box-shadow: 0 0.5rem 1.25rem rgba(6, 40, 90, 0.28);
-  transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition: transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1), filter 0.3s;
 }
 .float-contact__btn svg {
-  width: 1.375rem;
-  height: 1.375rem;
+  width: 1.25rem;
+  height: 1.25rem;
   fill: currentColor;
 }
 .float-contact__btn span {
@@ -1856,8 +1856,8 @@ a:hover .icon-btn--diag svg {
   transition: opacity 0.3s, transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 .float-contact__btn:hover, .float-contact__btn:focus-visible {
-  transform: scale(1.12);
-  box-shadow: 0 0.75rem 1.75rem rgba(6, 40, 90, 0.38);
+  transform: translateX(-0.25rem);
+  filter: brightness(1.1);
 }
 .float-contact__btn:hover span, .float-contact__btn:focus-visible span {
   opacity: 1;
@@ -1870,7 +1870,7 @@ a:hover .icon-btn--diag svg {
   background: #0658a7;
 }
 .float-contact__btn--wa {
-  background: #1fae4b;
+  background: #1f9d55;
 }
 @media (max-width: 767.98px) {
   .float-contact {
@@ -1880,16 +1880,19 @@ a:hover .icon-btn--diag svg {
     bottom: 0;
     flex-direction: row;
     gap: 0;
-    transform: translateY(100%);
+    transform: none;
+    visibility: hidden;
     padding-bottom: env(safe-area-inset-bottom);
   }
   .float-contact.is-on {
-    transform: none;
+    visibility: visible;
   }
   .float-contact__btn {
     flex: 1;
     width: auto;
     height: 3.25rem;
+    width: auto;
+    aspect-ratio: auto;
     border-radius: 0;
     box-shadow: none;
     grid-auto-flow: column;

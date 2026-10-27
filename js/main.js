@@ -8,11 +8,11 @@ initGallery();
 initCarousels();
 initHeritageStyle();
 
-// Floating contact widgets: on the home page they appear once the hero has scrolled out of view.
+// Floating contact widgets: shown only once the hero has scrolled out of view.
 (() => {
   const box = document.querySelector('.float-contact');
   if (!box) return;
-  const hero = document.querySelector('[data-hero]');
+  const hero = document.querySelector('.hero');
   const update = () => box.classList.toggle('is-on', !hero || hero.getBoundingClientRect().bottom < 80);
   update();
   addEventListener('scroll', update, { passive: true });

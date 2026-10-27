@@ -1,18 +1,18 @@
 @use '../abstracts/variables' as v;
 @use '../abstracts/mixins' as m;
 // Sticky contact widgets: right-hand column on desktop, fixed bottom bar on mobile.
-.float-contact { position: fixed; z-index: 60; display: flex; opacity: 0; pointer-events: none; transition: opacity 0.4s v.$ease, transform 0.5s v.$ease;
-  right: 1rem; top: 50%; flex-direction: column; gap: 0.625rem; transform: translate(1.5rem, -50%);
-  &.is-on { opacity: 1; pointer-events: auto; transform: translate(0, -50%); }
-  &__btn { position: relative; display: grid; place-items: center; width: 3rem; height: 3rem; border-radius: 50%; color: v.$color-white; box-shadow: 0 0.5rem 1.25rem rgba(6, 40, 90, 0.28); transition: transform 0.4s v.$ease, box-shadow 0.4s v.$ease;
-    svg { width: 1.375rem; height: 1.375rem; fill: currentColor; }
+.float-contact { position: fixed; z-index: 60; display: flex; opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.4s v.$ease, visibility 0.4s;
+  right: 0.5rem; top: 50%; flex-direction: column; gap: 0.25rem; transform: translateY(-50%);
+  &.is-on { opacity: 1; visibility: visible; pointer-events: auto; }
+  &__btn { position: relative; display: grid; place-items: center; width: clamp(2.125rem, 2.1vw, 2.5rem); aspect-ratio: 1; border-radius: 0.25rem; color: v.$color-white; transition: transform 0.3s v.$ease, filter 0.3s;
+    svg { width: 1.25rem; height: 1.25rem; fill: currentColor; }
     span { position: absolute; right: calc(100% + 0.625rem); padding: 0.375rem 0.75rem; border-radius: v.$radius-pill; background: v.$color-ink; color: v.$color-white; font-size: 0.8125rem; white-space: nowrap; opacity: 0; transform: translateX(0.5rem); pointer-events: none; transition: opacity 0.3s, transform 0.4s v.$ease; }
-    &:hover, &:focus-visible { transform: scale(1.12); box-shadow: 0 0.75rem 1.75rem rgba(6, 40, 90, 0.38); }
+    &:hover, &:focus-visible { transform: translateX(-0.25rem); filter: brightness(1.1); }
     &:hover span, &:focus-visible span { opacity: 1; transform: none; }
-    &--call { background: #e8372a; } &--mail { background: #0658a7; } &--wa { background: #1fae4b; } }
-  @include m.down(md) { left: 0; right: 0; top: auto; bottom: 0; flex-direction: row; gap: 0; transform: translateY(100%); padding-bottom: env(safe-area-inset-bottom);
-    &.is-on { transform: none; }
-    &__btn { flex: 1; width: auto; height: 3.25rem; border-radius: 0; box-shadow: none; grid-auto-flow: column; gap: 0.5rem; justify-content: center;
+    &--call { background: #e8372a; } &--mail { background: #0658a7; } &--wa { background: #1f9d55; } }
+  @include m.down(md) { left: 0; right: 0; top: auto; bottom: 0; flex-direction: row; gap: 0; transform: none; visibility: hidden; padding-bottom: env(safe-area-inset-bottom);
+    &.is-on { visibility: visible; }
+    &__btn { flex: 1; width: auto; height: 3.25rem; width: auto; aspect-ratio: auto; border-radius: 0; box-shadow: none; grid-auto-flow: column; gap: 0.5rem; justify-content: center;
       span { position: static; opacity: 1; transform: none; padding: 0; background: none; font-size: 0.9375rem; pointer-events: auto; }
       &:hover, &:focus-visible { transform: none; box-shadow: none; filter: brightness(1.08); } } } }
 @include m.down(md) { body:has(.float-contact.is-on) { padding-bottom: 3.5rem; } }
