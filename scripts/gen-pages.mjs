@@ -236,9 +236,9 @@ write('mice.html', { title: 'MICE: Meetings, Incentives, Conferences & Exhibitio
     <ol class="steps">${pairs(66, 75).map(([t, p]) => `<li><h3 class="h-3">${esc(t)}</h3><p>${esc(p)}</p></li>`).join('')}</ol>
   </div>
 </section>
-<section class="section" aria-labelledby="mice-scale-title">
+<section class="section mice-scale" aria-labelledby="mice-scale-title">
   <div class="container split split--top">
-    <div class="stack reveal"><p class="eyebrow">${esc(M[75])}</p><h2 class="h-1" id="mice-scale-title">${esc(M[76])}</h2></div>
+    <div class="mice-scale__left reveal"><p class="eyebrow">${esc(M[75])}</p><h2 class="h-1" id="mice-scale-title">${esc(M[76])}</h2><div class="mice-scale__photo"><img src="assets/images/mice-delegate-logistics.webp" alt="Large crowd of delegates in a conference hall" width="900" height="1200" loading="lazy"></div></div>
     <div class="stack reveal">${ps(mice(78, 81))}</div>
   </div>
 </section>
