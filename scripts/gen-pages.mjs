@@ -283,13 +283,13 @@ write('leisure.html', { title: 'Leisure | Enchantive Asia', desc: Z[1], nav: 'le
     <ul class="lz-marquee" aria-label="Leisure">${Z.slice(8, 11).map((t) => `<li>${esc(t)}</li>`).join('')}</ul>
   </div>
 </section>
-${LEIS.map((s, i) => `<section class="lz-item${i % 2 ? ' lz-item--flip' : ''}" id="${s.id}" aria-labelledby="${s.id}-title">
-  <div class="container lz-item__grid">
-    <figure class="lz-item__photo reveal"><img src="${T('' + s.img)}" alt="${attr(s.h.replace(/^\d+\. /, ''))}" width="1400" height="933" loading="lazy"></figure>
-    <div class="lz-item__text reveal">
-      <span class="lz-item__num" aria-hidden="true">0${i + 1}</span>
+${LEIS.map((s, i) => `<section class="lz-pane${i % 2 ? ' lz-pane--right' : ''}" id="${s.id}" aria-labelledby="${s.id}-title">
+  <img class="lz-pane__img" src="${T('' + s.img)}" alt="" width="1400" height="933" loading="lazy">
+  <div class="container lz-pane__inner">
+    <div class="lz-pane__text reveal">
+      <span class="lz-pane__num" aria-hidden="true">0${i + 1}</span>
       <h2 class="h-1" id="${s.id}-title">${esc(s.h)}</h2>
-      ${s.sub ? `<p class="h-3">${esc(s.sub)}</p>` : ''}${s.tag ? `<p class="lz-item__tag">${esc(s.tag)}</p>` : ''}${ps(s.body)}${s.pf ? perfect(s.pf) : ''}
+      ${s.sub ? `<p class="lz-pane__tag">${esc(s.sub)}</p>` : ''}${s.tag ? `<p class="lz-pane__tag">${esc(s.tag)}</p>` : ''}${ps(s.body)}${s.pf ? `<p class="lz-pane__pf"><strong>Perfect for:</strong> ${esc(s.pf.replace(/^Perfect for: /, ''))}</p>` : ''}
     </div>
   </div>
 </section>`).join('')}
