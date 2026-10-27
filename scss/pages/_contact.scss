@@ -55,3 +55,10 @@
 .enquiry .form { gap: 0.875rem; }
 .choice__body { padding: 0.75rem 1rem; }
 .enquiry [hidden] { display: none !important; }
+.enquiry-wrap { align-items: stretch !important; }
+.enquiry-photo { position: relative !important; aspect-ratio: auto !important; max-height: none !important; img { position: absolute; inset: 0; } }
+.quick-links { display: grid; gap: 0.75rem; list-style: none; padding: 0; margin: clamp(1.25rem, 2.5vw, 2rem) 0 0; @include m.up(md) { grid-template-columns: repeat(3, 1fr); } }
+.quick-link { display: flex; align-items: center; gap: 1rem; padding: 0.875rem 1.25rem; border: 1px solid v.$color-line; border-radius: v.$radius-md; background: v.$color-white; transition: border-color v.$t-fast, background v.$t-fast;
+  svg { flex: none; width: 1.75rem; height: 1.75rem; color: v.$color-blue; fill: currentColor; }
+  &__text { display: grid; strong { font-family: v.$font-serif; font-weight: 400; font-size: 1.25rem; } span { font-size: 0.875rem; color: v.$color-muted; } }
+  &:hover { border-color: v.$color-blue; background: v.$color-tint; } }
