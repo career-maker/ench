@@ -26,3 +26,23 @@
 .logo-marquee .logo--slot { width: 8.4rem; height: auto; }
 .tile-aside { display: grid; gap: 1rem; grid-template-columns: 1fr; @include m.up(sm) { grid-template-columns: 1fr 1fr; } @include m.up(lg) { align-self: stretch; grid-auto-rows: 1fr; } .tile { min-height: 15rem; } .tile__title { font-size: clamp(1.25rem, 1.6vw, 1.5rem); } }
 .photo-mosaic { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; align-self: stretch; img { width: 100%; height: 100%; min-height: 12rem; object-fit: cover; border-radius: v.$radius-md; } grid-auto-rows: 1fr; }
+// MICE: collage, "bring" cards and purpose tiles
+.photo-trio { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 0.75rem; min-height: 28rem; img { width: 100%; height: 100%; object-fit: cover; border-radius: v.$radius-md; box-shadow: v.$shadow-card; transition: transform 0.6s v.$ease; }
+  img:first-child { grid-row: span 2; } img:hover { transform: scale(1.02) rotate(-0.4deg); } }
+.mice-way__grid { display: grid; gap: clamp(2rem, 5vw, 5rem); align-items: center; @include m.up(lg) { grid-template-columns: 1fr 1fr; } }
+.bring-grid { display: grid; gap: clamp(1rem, 1.8vw, 1.75rem); @include m.up(sm) { grid-template-columns: repeat(2, 1fr); } @include m.up(lg) { grid-template-columns: repeat(3, 1fr); } }
+.bring-card { display: flex; flex-direction: column; background: v.$color-white; border-radius: v.$radius-md; overflow: hidden; box-shadow: 0 0.5rem 1.5rem rgba(6, 40, 90, 0.08); transition: transform v.$t-med, box-shadow v.$t-med;
+  &__img { position: relative; aspect-ratio: 16 / 10; overflow: hidden; img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s v.$ease; } span { position: absolute; left: 1rem; top: 1rem; display: grid; place-items: center; min-width: 2.5rem; height: 2.5rem; padding-inline: 0.5rem; border-radius: v.$radius-pill; background: v.$color-blue; color: v.$color-white; font-family: v.$font-serif; } }
+  &__body { display: grid; gap: 0.625rem; padding: 1.5rem 1.5rem 1.75rem; h3 { font-family: v.$font-serif; font-weight: 400; font-size: 1.5rem; line-height: 1.2; transition: color v.$t-fast; } }
+  &:hover { transform: translateY(-0.5rem); box-shadow: 0 1.5rem 3rem rgba(6, 40, 90, 0.18); }
+  &:hover &__img img { transform: scale(1.08); } &:hover h3 { color: v.$color-blue; }
+  @include m.up(lg) { &:last-child { grid-column: 1 / -1; flex-direction: row; .bring-card__img { flex: 0 0 40%; aspect-ratio: auto; } .bring-card__body { align-content: center; padding: 2rem 3rem; } } } }
+.purpose-grid { display: grid; gap: 1rem; @include m.up(md) { grid-template-columns: repeat(6, 1fr); .purpose-tile { grid-column: span 3; } .purpose-tile:nth-child(3n + 3), .purpose-tile:nth-child(3n + 4), .purpose-tile:nth-child(3n + 5) { grid-column: span 2; } .purpose-tile:nth-child(n + 6) { grid-column: span 3; } } }
+.purpose-tile { position: relative; min-height: 22rem; border-radius: v.$radius-md; overflow: hidden; color: v.$color-white; isolation: isolate; cursor: default;
+  img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transition: transform 0.9s v.$ease; }
+  &::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to top, rgba(4, 24, 52, 0.9), rgba(4, 24, 52, 0.15) 70%); transition: background v.$t-med; }
+  &__body { position: absolute; inset: auto 0 0 0; padding: 1.5rem; h3 { font-family: v.$font-serif; font-weight: 400; font-size: clamp(1.375rem, 1.8vw, 1.75rem); line-height: 1.2; color: v.$color-white; }
+    p { max-height: 0; opacity: 0; overflow: hidden; margin-top: 0; font-size: 0.9375rem; transition: max-height 0.6s v.$ease, opacity v.$t-med, margin v.$t-med; } }
+  &:hover img, &:focus-visible img { transform: scale(1.07); } &:hover::before, &:focus-visible::before { background: rgba(4, 24, 52, 0.82); }
+  &:hover p, &:focus-visible p { max-height: 22rem; opacity: 1; margin-top: 0.75rem; }
+  @media (hover: none) { p { max-height: none; opacity: 1; margin-top: 0.75rem; } } }

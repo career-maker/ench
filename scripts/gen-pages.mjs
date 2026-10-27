@@ -1,6 +1,6 @@
 // Generates src/pages for Destinations, Celebrations and Luxe from the client Word-doc text in scripts/content/*.txt
 // (one line per paragraph, "[Style] " prefix). Copy lives only in those files; re-run `npm run gen` then `npm run html`.
-import { readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -80,7 +80,7 @@ for (const [i, d] of dests.entries()) {
 <section class="section" aria-labelledby="d-title">
   <div class="container split">
     <div class="stack reveal"><p class="eyebrow">0${i + 1} / 05</p><h2 class="h-1" id="d-title">${esc(d.tag)}</h2>${ps(d.intro)}</div>
-    <div class="media media--wide reveal"><img src="${T(IMG[d.slug])}" alt="${attr(d.name)}, Thailand" width="1600" height="1067" loading="lazy"></div>
+    <div class="photo-mosaic reveal">${[T(IMG[d.slug]), ...[2, 3, 4].map((n) => `assets/images/temp/${IMG[d.slug]}-${n}-temp.webp`).filter((f) => existsSync(join(root, f)))].map((f) => `<img src="${f}" alt="${attr(d.name)}, Thailand" width="1200" height="800" loading="lazy">`).join('')}</div>
   </div>
 </section>
 <section class="section section--tint" aria-labelledby="d-adv">
@@ -190,6 +190,8 @@ const pairs = (a, b) => { const o = []; for (let k = a; k < b; k += 2) o.push([M
 const MSERV = ['luxury-hotel-lounge.webp', 'mice-accommodation-transport.webp', 'mice-corporate-events.webp', 'mice-event-day-coordination.webp', 'temp/leisure-concierge-temp.webp', 'heritage-dining-room.webp', 'temp/luxe-07-siam-temp.webp'];
 const MPURP = ['temp/mice-team-temp.webp', 'temp/mice-conference-temp.webp', 'mice-incentive-travel.webp', 'temp/mice-launch-temp.webp', 'temp/mice-gala-temp.webp', 'temp/mice-retreat-temp.webp', 'temp/mice-themed-temp.webp'];
 const mcard = (img, [t, p]) => `<article class="topic-card topic-card--static"><span class="topic-card__img"><img src="assets/images/${img}" alt="" width="1400" height="933" loading="lazy"></span><h3 class="topic-card__title">${esc(t)}</h3><p class="topic-card__text">${esc(p)}</p></article>`;
+const bcard = (img, [t, p]) => { const m = t.match(/^(\d+)\. (.*)$/); return `<article class="bring-card"><div class="bring-card__img"><img src="assets/images/${img}" alt="" width="1400" height="933" loading="lazy"><span>${m ? m[1] : ''}</span></div><div class="bring-card__body"><h3>${esc(m ? m[2] : t)}</h3><p>${esc(p)}</p></div></article>`; };
+const pcard = (img, [t, p]) => `<article class="purpose-tile" tabindex="0"><img src="assets/images/${img}" alt="" width="1400" height="933" loading="lazy"><div class="purpose-tile__body"><h3>${esc(t)}</h3><p>${esc(p)}</p></div></article>`;
 write('mice.html', { title: 'MICE: Meetings, Incentives, Conferences & Exhibitions | Enchantive Asia', desc: M[2], nav: 'mice', og: 'assets/images/luxury-hotel-lounge.webp' },
 `${hero('assets/images/mice-hero-conference.webp', [['index.html', 'Home'], [null, 'MICE']], tc(M[0]))}
 <section class="section mice-intro" aria-labelledby="mice-intro-title">
@@ -204,22 +206,22 @@ write('mice.html', { title: 'MICE: Meetings, Incentives, Conferences & Exhibitio
     <div class="photo-mosaic reveal">${[['mice-intro-stage.webp', 'Speaker presenting to a seated audience at a conference'], ['temp/mice-gala-temp.webp', 'Guests at a formal gala dinner'], ['temp/mice-team-temp.webp', 'Team meeting around a table'], ['temp/mice-launch-temp.webp', 'Product launch on stage']].map(([f, a]) => `<img src="assets/images/${f}" alt="${a}" width="1400" height="933" loading="lazy">`).join('')}</div>
   </div>
 </section>
-<section class="section section--tint" aria-labelledby="mice-way-title">
-  <div class="container split split--top">
-    <div class="stack reveal"><p class="eyebrow">${esc(M[8])}</p><h2 class="h-1" id="mice-way-title">${esc(M[9])}</h2></div>
-    <div class="stack reveal">${ps(mice(11, 15))}</div>
+<section class="section section--tint mice-way" aria-labelledby="mice-way-title">
+  <div class="container mice-way__grid">
+    <div class="photo-trio reveal"><img src="assets/images/mice-meetings.webp" alt="Boardroom with a long table" width="900" height="1200" loading="lazy"><img src="assets/images/luxury-hotel-lounge.webp" alt="Ornate hotel lounge" width="1000" height="666" loading="lazy"><img src="assets/images/mice-event-day-coordination.webp" alt="Ballroom set for a banquet" width="900" height="1200" loading="lazy"></div>
+    <div class="stack reveal"><p class="eyebrow">${esc(M[8])}</p><h2 class="h-1" id="mice-way-title">${esc(M[9])}</h2><p class="lead">${esc(M[10])}</p>${ps(mice(12, 15))}</div>
   </div>
 </section>
 <section class="section" aria-labelledby="mice-bring-title">
   <div class="container">
     <div class="section-heading section-heading--center"><p class="eyebrow">${esc(M[15])}</p><h2 class="h-1" id="mice-bring-title">${esc(M[16])}</h2><p>${esc(M[17])}</p></div>
-    <div class="topic-grid topic-grid--3">${pairs(19, 32).map((pr, i) => mcard(MSERV[i], pr)).join('')}</div>
+    <div class="bring-grid">${pairs(19, 32).map((pr, i) => bcard(MSERV[i], pr)).join('')}</div>
   </div>
 </section>
 <section class="section section--tint" aria-labelledby="mice-purpose-title">
   <div class="container">
     <div class="section-heading section-heading--center"><p class="eyebrow">${esc(M[32])}</p><h2 class="h-1" id="mice-purpose-title">${esc(M[33])}</h2><p>${esc(M[34])}</p></div>
-    <div class="topic-grid topic-grid--3">${pairs(36, 49).map((pr, i) => mcard(MPURP[i], pr)).join('')}</div>
+    <div class="purpose-grid">${pairs(36, 49).map((pr, i) => pcard(MPURP[i], pr)).join('')}</div>
   </div>
 </section>
 <section class="section" aria-labelledby="mice-why-title">

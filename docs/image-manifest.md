@@ -11,6 +11,21 @@ Unsplash stock photos (free licence). Replace by overwriting the file in `assets
 | `dest-pattaya-temp.webp` | `1625793061481-8c36fdc131a4` | destination-pattaya.html hero+card; home tab |
 | `dest-ayutthaya-temp.webp` | `1768745267604-d34ec845ffed` | destination-ayutthaya.html hero+card; home tab |
 | `dest-hua-hin-temp.webp` | `1589447415265-a842e421daf6` | destination-hua-hin.html hero+card; home tab |
+| `dest-bangkok-2-temp.webp` | `1568508432206-7541b535f84c` | Bangkok mosaic |
+| `dest-bangkok-3-temp.webp` | `1563492065599-3520f775eeed` | Bangkok mosaic |
+| `dest-chiang-mai-2-temp.webp` | `1778394860324-b77f2ccd0870` | Chiang Mai mosaic |
+| `dest-chiang-mai-3-temp.webp` | `1599576838688-8a6c11263108` | Chiang Mai mosaic |
+| `dest-chiang-mai-4-temp.webp` | `1714240230125-531572031bbf` | Chiang Mai mosaic |
+| `dest-pattaya-2-temp.webp` | `1599851245208-c1e43c053710` | Pattaya mosaic |
+| `dest-pattaya-3-temp.webp` | `1625492206717-61c584a8b11e` | Pattaya mosaic |
+| `dest-pattaya-4-temp.webp` | `1758213452181-0d969c8baa74` | Pattaya mosaic |
+| `dest-ayutthaya-2-temp.webp` | `1768745266918-ce4f0f79e643` | Ayutthaya mosaic |
+| `dest-ayutthaya-3-temp.webp` | `1576311510484-ab9fbdb2a47e` | Ayutthaya mosaic |
+| `dest-ayutthaya-4-temp.webp` | `1768147096031-8b94de2aa194` | Ayutthaya mosaic |
+| `dest-hua-hin-2-temp.webp` | `1704392300340-88ac6bc60b5b` | Hua Hin mosaic |
+| `dest-hua-hin-3-temp.webp` | `1599499451328-d76b14ba653c` | Hua Hin mosaic |
+| `dest-hua-hin-4-temp.webp` | `1580041065738-e72023775cdc` | Hua Hin mosaic |
+| `dest-bangkok-4-temp.webp` | `1523731407965-2430cd12f5e4` | Bangkok mosaic |
 | `cel-hub-hero-temp.webp` | `1724142773252-67d11f690bb4` | celebrations-events.html hero |
 | `cel-01-weddings-temp.webp` | `1724142589737-ff96776e60c6` | Destination Weddings |
 | `cel-02-leadership-temp.webp` | `1582417746450-046ddc1f2163` | Leadership Retreats |
