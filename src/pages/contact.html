@@ -22,9 +22,10 @@
     <div class="enquiry-wrap">
     <figure class="enquiry-photo"><img src="assets/images/temp/luxe-01-andaman-temp.webp" alt="Sailboat at sunset on the Andaman Sea" width="1400" height="933" loading="lazy"></figure>
     <form class="enquiry" id="enquiry" data-validate novalidate aria-label="Enquiry form">
+      <ol class="stepper" aria-label="Progress"><li data-step-dot><span>1</span>Who</li><li data-step-dot><span>2</span>Contact</li><li data-step-dot><span>3</span>Journey</li></ol>
       <!-- Set data-endpoint="https://..." on this form once a backend/email service exists. See README. -->
-      <fieldset class="enquiry__group field">
-        <legend class="h-2">Who are we planning for?</legend>
+      <fieldset class="enquiry__group field" data-step>
+        <legend class="h-2">Who are we planning for? <span class="optional">Optional</span></legend>
         <div class="choices">
           <label class="choice"><input type="radio" name="traveller_type" value="Travel agent"><span class="choice__body"><span class="choice__title">Travel agent</span><span class="choice__sub">Booking for clients</span></span></label>
           <label class="choice"><input type="radio" name="traveller_type" value="Tour operator"><span class="choice__body"><span class="choice__title">Tour operator</span><span class="choice__sub">Building a programme for your brand</span></span></label>
@@ -33,7 +34,7 @@
         </div>
         <span class="field__error" aria-live="polite"></span>
       </fieldset>
-      <fieldset class="enquiry__group">
+      <fieldset class="enquiry__group" data-step>
         <legend class="h-2">Your contact details</legend>
         <div class="form">
           <div class="field"><label for="f-name">Full name <span class="req" aria-hidden="true">*</span></label><input id="f-name" name="name" type="text" autocomplete="name" required aria-describedby="e-name"><span class="field__error" id="e-name" aria-live="polite"></span></div>
@@ -44,7 +45,7 @@
           <div class="field"><label for="f-method">Best way to reach you</label><select id="f-method" name="contact_method" aria-describedby="e-method"><option>Email</option><option>Phone</option><option>WhatsApp</option></select><span class="field__error" id="e-method" aria-live="polite"></span></div>
         </div>
       </fieldset>
-      <fieldset class="enquiry__group">
+      <fieldset class="enquiry__group" data-step>
         <legend class="h-2">About your journey</legend>
         <div class="form">
           <div class="field form__full"><label for="f-service">Service of interest <span class="req" aria-hidden="true">*</span></label>
@@ -56,7 +57,7 @@
           <div class="field"><label for="f-source">How did you find us?</label><select id="f-source" name="source" aria-describedby="e-source"><option value="">Select</option><option>Search engine</option><option>Social media</option><option>Referral</option><option>Event or trade show</option><option>Other</option></select><span class="field__error" id="e-source" aria-live="polite"></span></div>
         </div>
       </fieldset>
-      <div><button class="btn btn--primary" type="submit">Send Enquiry</button></div>
+      <div class="enquiry__actions"><button class="btn btn--outline" type="button" data-prev hidden>Back</button><button class="btn btn--primary" type="button" data-next>Next</button><button class="btn btn--primary" type="submit" hidden>Send Enquiry</button></div>
       <div class="form-status" role="status" aria-live="polite"></div>
     </form>
     </div>

@@ -48,7 +48,7 @@ function initGallery() {
     img.onload = () => img.classList.remove('is-loading');
     img.src = btn.dataset.full;
     img.alt = btn.querySelector('img').alt;
-    text.textContent = btn.dataset.caption;
+    text.textContent = '';
     count.textContent = `${index + 1} / ${visible.length}`;
   };
   const open = (btn) => {

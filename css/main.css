@@ -4308,6 +4308,147 @@ input:focus-visible + .choice__body {
   background: rgba(6, 88, 167, 0.2);
 }
 
+.contact {
+  padding-block: clamp(2rem, 4vw, 3.5rem);
+}
+
+.contact__intro {
+  margin-bottom: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+.contact-banner {
+  aspect-ratio: 16/9;
+}
+@media (min-width: 768px) {
+  .contact-banner {
+    aspect-ratio: 21/4;
+  }
+}
+
+.contact-cards {
+  margin-top: clamp(-3rem, -3.5vw, -1.75rem);
+}
+
+.contact-card {
+  padding: 1rem 1.25rem;
+  gap: 0.25rem;
+}
+.contact-card__title {
+  font-size: 1.25rem;
+}
+.contact-card svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.divider {
+  margin: clamp(1.75rem, 3.5vw, 2.5rem) 0 1.25rem;
+}
+
+@media (min-width: 992px) {
+  .enquiry-wrap {
+    grid-template-columns: 3fr 7fr;
+  }
+}
+
+@media (min-width: 992px) {
+  .enquiry-photo {
+    aspect-ratio: 3/4;
+  }
+}
+
+.enquiry {
+  gap: 1.5rem;
+  padding: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+.enquiry legend {
+  margin-bottom: 1rem;
+  font-size: clamp(1.25rem, 1.8vw, 1.5rem);
+}
+
+.optional {
+  margin-left: 0.5rem;
+  font-family: "Figtree", "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #6b6b6b;
+}
+
+.stepper {
+  display: flex;
+  gap: 0.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.875rem;
+  color: #6b6b6b;
+}
+.stepper li {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-bottom: 0.625rem;
+  border-bottom: 2px solid #dfe6ef;
+  transition: border-color 0.2s cubic-bezier(0.22, 0.61, 0.36, 1), color 0.2s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.stepper span {
+  display: grid;
+  place-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 62.4375rem;
+  background: #fff;
+  border: 1px solid #dfe6ef;
+  font-size: 0.75rem;
+}
+.stepper .is-active {
+  color: #111111;
+  border-color: #0658a7;
+}
+.stepper .is-active span {
+  background: #0658a7;
+  border-color: #0658a7;
+  color: #fff;
+}
+.stepper .is-done {
+  border-color: #0658a7;
+}
+
+.enquiry__actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: space-between;
+}
+.enquiry__actions [hidden] {
+  display: none;
+}
+.enquiry__actions [data-next], .enquiry__actions [type=submit] {
+  margin-left: auto;
+}
+
+.enquiry .field input:not([type=radio]), .enquiry .field select {
+  min-height: 2.875rem;
+}
+
+.enquiry .field textarea {
+  min-height: 6.5rem;
+}
+
+.enquiry .form {
+  gap: 0.875rem;
+}
+
+.choice__body {
+  padding: 0.75rem 1rem;
+}
+
+.enquiry [hidden] {
+  display: none !important;
+}
+
 .topic-grid {
   display: grid;
   gap: clamp(1.25rem, 2.2vw, 2.25rem) clamp(1rem, 1.6vw, 1.75rem);
@@ -4672,6 +4813,86 @@ input:focus-visible + .choice__body {
     max-height: none;
     opacity: 1;
     margin-top: 0.75rem;
+  }
+}
+
+.strip-grid {
+  display: grid;
+  gap: 0.75rem;
+}
+@media (min-width: 992px) {
+  .strip-grid {
+    display: flex;
+    height: 32rem;
+    gap: 0.625rem;
+  }
+}
+
+.strip {
+  position: relative;
+  min-height: 15rem;
+  border-radius: 0.875rem;
+  overflow: hidden;
+  color: #fff;
+  isolation: isolate;
+}
+.strip img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+.strip::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(to top, rgba(4, 24, 52, 0.88), rgba(4, 24, 52, 0.1) 65%);
+}
+.strip__body {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 1.25rem;
+}
+.strip__body h3 {
+  font-family: "Libre Caslon Display", "Times New Roman", serif;
+  font-weight: 400;
+  font-size: 1.375rem;
+  line-height: 1.2;
+  color: #fff;
+}
+.strip__body p {
+  margin-top: 0.5rem;
+  font-size: 0.9375rem;
+}
+@media (min-width: 992px) {
+  .strip {
+    flex: 1 1 0;
+    min-width: 0;
+    transition: flex 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+  .strip__body h3 {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    white-space: nowrap;
+    max-height: 28rem;
+    font-size: 1.125rem;
+  }
+  .strip__body p {
+    display: none;
+  }
+  .strip-grid:not(:hover):not(:focus-within) .strip:first-child, .strip:hover, .strip:focus-within {
+    flex: 5;
+  }
+  .strip-grid:not(:hover):not(:focus-within) .strip:first-child .strip__body h3, .strip:hover .strip__body h3, .strip:focus-within .strip__body h3 {
+    writing-mode: horizontal-tb;
+    transform: none;
+    white-space: normal;
+  }
+  .strip-grid:not(:hover):not(:focus-within) .strip:first-child .strip__body p, .strip:hover .strip__body p, .strip:focus-within .strip__body p {
+    display: block;
   }
 }
 

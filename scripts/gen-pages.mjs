@@ -191,7 +191,7 @@ const MSERV = ['luxury-hotel-lounge.webp', 'mice-accommodation-transport.webp', 
 const MPURP = ['temp/mice-team-temp.webp', 'temp/mice-conference-temp.webp', 'mice-incentive-travel.webp', 'temp/mice-launch-temp.webp', 'temp/mice-gala-temp.webp', 'temp/mice-retreat-temp.webp', 'temp/mice-themed-temp.webp'];
 const mcard = (img, [t, p]) => `<article class="topic-card topic-card--static"><span class="topic-card__img"><img src="assets/images/${img}" alt="" width="1400" height="933" loading="lazy"></span><h3 class="topic-card__title">${esc(t)}</h3><p class="topic-card__text">${esc(p)}</p></article>`;
 const bcard = (img, [t, p]) => { const m = t.match(/^(\d+)\. (.*)$/); return `<article class="purpose-tile bring-tile" tabindex="0"><img src="assets/images/${img}" alt="" width="1400" height="933" loading="lazy"><span class="bring-tile__num">${m ? m[1] : ''}</span><div class="purpose-tile__body"><h3>${esc(m ? m[2] : t)}</h3><p>${esc(p)}</p></div></article>`; };
-const pcard = (img, [t, p]) => `<article class="purpose-tile" tabindex="0"><img src="assets/images/${img}" alt="" width="1400" height="933" loading="lazy"><div class="purpose-tile__body"><h3>${esc(t)}</h3><p>${esc(p)}</p></div></article>`;
+const pcard = (img, [t, p]) => `<article class="strip" tabindex="0"><img src="assets/images/${img}" alt="" width="1400" height="933" loading="lazy"><div class="strip__body"><h3>${esc(t)}</h3><p>${esc(p)}</p></div></article>`;
 write('mice.html', { title: 'MICE: Meetings, Incentives, Conferences & Exhibitions | Enchantive Asia', desc: M[2], nav: 'mice', og: 'assets/images/luxury-hotel-lounge.webp' },
 `${hero('assets/images/mice-hero-conference.webp', [['index.html', 'Home'], [null, 'MICE']], tc(M[0]))}
 <section class="section mice-intro" aria-labelledby="mice-intro-title">
@@ -221,7 +221,7 @@ write('mice.html', { title: 'MICE: Meetings, Incentives, Conferences & Exhibitio
 <section class="section section--tint" aria-labelledby="mice-purpose-title">
   <div class="container">
     <div class="section-heading section-heading--center"><p class="eyebrow">${esc(M[32])}</p><h2 class="h-1" id="mice-purpose-title">${esc(M[33])}</h2><p>${esc(M[34])}</p></div>
-    <div class="purpose-grid">${pairs(36, 49).map((pr, i) => pcard(MPURP[i], pr)).join('')}</div>
+    <div class="strip-grid">${pairs(36, 49).map((pr, i) => pcard(MPURP[i], pr)).join('')}</div>
   </div>
 </section>
 <section class="section" aria-labelledby="mice-why-title">

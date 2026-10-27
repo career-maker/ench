@@ -23,6 +23,27 @@ function initForms() {
     if (q && form.elements.service) form.elements.service.value = q;
     form.querySelectorAll('input, select, textarea').forEach((el) => el.addEventListener('blur', () => check(el)));
 
+    // Step-by-step mode: only the current [data-step] fieldset is shown; Next validates it first.
+    const steps = [...form.querySelectorAll('[data-step]')];
+    const dots = [...form.querySelectorAll('[data-step-dot]')];
+    let cur = 0;
+    const show = (i) => {
+      cur = i;
+      steps.forEach((s, k) => { s.hidden = k !== i; });
+      dots.forEach((d, k) => { d.classList.toggle('is-active', k === i); d.classList.toggle('is-done', k < i); });
+      form.querySelector('[data-prev]').hidden = i === 0;
+      form.querySelector('[data-next]').hidden = i === steps.length - 1;
+      submit.hidden = i !== steps.length - 1;
+    };
+    if (steps.length) {
+      form.querySelector('[data-next]').addEventListener('click', () => {
+        const bad = [...steps[cur].querySelectorAll('input, select, textarea')].filter((el) => !check(el));
+        if (bad.length) bad[0].focus(); else show(cur + 1);
+      });
+      form.querySelector('[data-prev]').addEventListener('click', () => show(cur - 1));
+      show(0);
+    }
+
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       if (submit.disabled) return;
@@ -30,6 +51,8 @@ function initForms() {
       const invalid = fields.filter((el) => !check(el));
       if (invalid.length) {
         say('error', `Please correct ${invalid.length} field${invalid.length > 1 ? 's' : ''} and try again.`);
+        const k = steps.findIndex((st) => st.contains(invalid[0]));
+        if (k >= 0) show(k);
         invalid[0].focus();
         return;
       }
