@@ -89,3 +89,25 @@
   &:hover { transform: translateY(-0.25rem) scale(1.06); }
   &:focus-visible { outline: 3px solid v.$color-white; outline-offset: 3px; } }
 .say-hello .quick-link:hover svg { background: none; color: v.$color-white; }
+// Say-hello: open, light layout (overrides the earlier gradient tile)
+.say-hello { background: none; color: v.$color-ink; padding: clamp(0.5rem, 1.5vw, 1rem) 0 0; margin-top: clamp(2rem, 4vw, 3rem); border-radius: 0; overflow: visible; gap: 0.5rem;
+  &::after { display: none; }
+  &__eyebrow { display: flex; align-items: center; gap: 1rem; font-size: 0.8125rem; letter-spacing: 0.2em; text-transform: uppercase; color: #a8793a; &::before, &::after { content: ''; width: 2.5rem; height: 1px; background: #a8793a; } }
+  &__title { color: v.$color-ink; em { color: #a8793a; } }
+  &__sub { color: v.$color-muted; }
+  .quick-links { gap: clamp(1rem, 3vw, 2.5rem); margin-top: 1.25rem; flex-wrap: wrap; align-items: center; li + li { padding-left: clamp(1rem, 3vw, 2.5rem); border-left: 1px solid v.$color-line; } } }
+.say-hello .quick-link { width: auto; height: auto; padding: 0; gap: 0.875rem; border-radius: 0; background: none; color: v.$color-ink; justify-content: flex-start; box-shadow: none;
+  &:hover { transform: none; background: none; }
+  &__icon { display: grid; place-items: center; flex: none; width: 3.5rem; height: 3.5rem; border-radius: 50%; color: v.$color-white; box-shadow: 0 0.5rem 1rem rgba(6, 40, 90, 0.18); transition: transform v.$t-med;
+    svg { width: 1.5rem; height: 1.5rem; fill: currentColor; }
+    &--wa { background: #1fae4b; } &--call { background: #0b5fe0; } &--mail { background: #f04a45; } }
+  &:hover &__icon { transform: translateY(-0.2rem) scale(1.06); }
+  &__text { text-align: left; } }
+.say-hello .quick-link:hover svg { background: none; }
+// Choice tiles with icon + chevron
+.choice__body { position: relative; grid-template-columns: auto 1fr; column-gap: 0.875rem; align-items: center; padding-right: 2.5rem; &::after { content: ''; position: absolute; right: 1rem; top: 50%; width: 0.5rem; height: 0.5rem; border-top: 1.5px solid v.$color-muted; border-right: 1.5px solid v.$color-muted; transform: translateY(-50%) rotate(45deg); } }
+.choice__icon { grid-row: span 2; display: grid; place-items: center; width: 2.75rem; height: 2.75rem; border-radius: 50%; background: #f4ebdd; color: #a8793a; svg { width: 1.375rem; height: 1.375rem; } }
+.choice__title { align-self: end; } .choice__sub { align-self: start; }
+.choice input:checked + .choice__body .choice__icon { background: v.$color-blue; color: v.$color-white; }
+@media (max-width: 40rem) { .say-hello .quick-links li + li { border-left: 0; padding-left: 0; } }
+.say-hello { padding-bottom: clamp(0.75rem, 2vw, 1.5rem); }
