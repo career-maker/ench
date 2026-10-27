@@ -4312,9 +4312,22 @@ input:focus-visible + .choice__body {
   color: #0658a7;
 }
 
+@media (min-width: 992px) {
+  .side-nav {
+    align-self: stretch;
+  }
+}
 .side-nav ol {
   display: grid;
   gap: 0.125rem;
+}
+@media (min-width: 992px) {
+  .side-nav ol {
+    height: 100%;
+    align-content: space-between;
+  }
+}
+.side-nav ol {
   list-style: none;
   padding: 0;
   margin: 0;
