@@ -4829,6 +4829,87 @@ input:focus-visible + .choice__body {
   padding-bottom: clamp(0.75rem, 2vw, 1.5rem);
 }
 
+.say-hello .quick-link__icon {
+  position: relative;
+  color: #fff;
+}
+.say-hello .quick-link__icon svg {
+  color: #fff;
+  fill: #fff;
+  transition: transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.say-hello .quick-link__icon::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  opacity: 0;
+  transform: scale(1);
+  pointer-events: none;
+}
+.say-hello .quick-link__icon--wa {
+  --glow: rgba(31, 174, 75, 0.5);
+}
+.say-hello .quick-link__icon--call {
+  --glow: rgba(11, 95, 224, 0.5);
+}
+.say-hello .quick-link__icon--mail {
+  --glow: rgba(240, 74, 69, 0.5);
+}
+.say-hello .quick-link__icon--wa::after {
+  border-color: #1fae4b;
+}
+.say-hello .quick-link__icon--call::after {
+  border-color: #0b5fe0;
+}
+.say-hello .quick-link__icon--mail::after {
+  border-color: #f04a45;
+}
+
+.say-hello .quick-link {
+  transition: color 0.2s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.say-hello .quick-link__icon {
+  transition: transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.say-hello .quick-link__text strong {
+  font-size: 1.0625rem;
+  background: linear-gradient(currentColor, currentColor) 0 100%/0 1px no-repeat;
+  transition: background-size 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.say-hello .quick-link:hover .say-hello .quick-link__icon, .say-hello .quick-link:focus-visible .say-hello .quick-link__icon {
+  transform: translateY(-0.3rem) scale(1.08);
+  box-shadow: 0 0.9rem 1.75rem var(--glow);
+}
+.say-hello .quick-link:hover .say-hello .quick-link__icon svg, .say-hello .quick-link:focus-visible .say-hello .quick-link__icon svg {
+  transform: rotate(-8deg) scale(1.12);
+}
+.say-hello .quick-link:hover .say-hello .quick-link__icon::after, .say-hello .quick-link:focus-visible .say-hello .quick-link__icon::after {
+  animation: qlRing 0.9s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.say-hello .quick-link:hover .say-hello .quick-link__text strong, .say-hello .quick-link:focus-visible .say-hello .quick-link__text strong {
+  background-size: 100% 1px;
+}
+
+@keyframes qlRing {
+  from {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(1.7);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .say-hello .quick-link__icon, .say-hello .quick-link__icon svg {
+    transition: none;
+  }
+  .say-hello .quick-link:hover .quick-link__icon::after {
+    animation: none;
+  }
+}
 .topic-grid {
   display: grid;
   gap: clamp(1.25rem, 2.2vw, 2.25rem) clamp(1rem, 1.6vw, 1.75rem);

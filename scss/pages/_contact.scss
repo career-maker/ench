@@ -111,3 +111,17 @@
 .choice input:checked + .choice__body .choice__icon { background: v.$color-blue; color: v.$color-white; }
 @media (max-width: 40rem) { .say-hello .quick-links li + li { border-left: 0; padding-left: 0; } }
 .say-hello { padding-bottom: clamp(0.75rem, 2vw, 1.5rem); }
+// Premium hover: lift, soft coloured glow, expanding ring, icon tilt
+.say-hello .quick-link__icon { position: relative; color: v.$color-white;
+  svg { color: v.$color-white; fill: #fff; transition: transform 0.5s v.$ease; }
+  &::after { content: ''; position: absolute; inset: 0; border-radius: 50%; border: 2px solid currentColor; opacity: 0; transform: scale(1); pointer-events: none; }
+  &--wa { --glow: rgba(31, 174, 75, 0.5); } &--call { --glow: rgba(11, 95, 224, 0.5); } &--mail { --glow: rgba(240, 74, 69, 0.5); }
+  &--wa::after { border-color: #1fae4b; } &--call::after { border-color: #0b5fe0; } &--mail::after { border-color: #f04a45; } }
+.say-hello .quick-link { transition: color v.$t-fast; &__icon { transition: transform 0.5s v.$ease, box-shadow 0.5s v.$ease; }
+  &__text strong { font-size: 1.0625rem; background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat; transition: background-size 0.5s v.$ease; }
+  &:hover &__icon, &:focus-visible &__icon { transform: translateY(-0.3rem) scale(1.08); box-shadow: 0 0.9rem 1.75rem var(--glow); }
+  &:hover &__icon svg, &:focus-visible &__icon svg { transform: rotate(-8deg) scale(1.12); }
+  &:hover &__icon::after, &:focus-visible &__icon::after { animation: qlRing 0.9s v.$ease; }
+  &:hover &__text strong, &:focus-visible &__text strong { background-size: 100% 1px; } }
+@keyframes qlRing { from { opacity: 0.7; transform: scale(1); } to { opacity: 0; transform: scale(1.7); } }
+@media (prefers-reduced-motion: reduce) { .say-hello .quick-link__icon, .say-hello .quick-link__icon svg { transition: none; } .say-hello .quick-link:hover .quick-link__icon::after { animation: none; } }
