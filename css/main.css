@@ -4155,7 +4155,7 @@ a:hover .icon-btn--diag svg {
   align-items: center;
   gap: 1.25rem;
   margin: clamp(2.5rem, 5vw, 4rem) auto;
-  max-width: 48rem;
+  max-width: none;
   font-size: 0.8125rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -4171,8 +4171,15 @@ a:hover .icon-btn--diag svg {
 .enquiry {
   display: grid;
   gap: clamp(2rem, 4vw, 3rem);
-  max-width: 56rem;
-  margin-inline: auto;
+}
+@media (min-width: 992px) {
+  .enquiry {
+    grid-template-columns: 1fr 1fr;
+    column-gap: clamp(3rem, 5vw, 5rem);
+  }
+  .enquiry > :first-child, .enquiry > :nth-last-child(-n+2) {
+    grid-column: 1/-1;
+  }
 }
 .enquiry__group {
   border: 0;
@@ -4197,7 +4204,7 @@ a:hover .icon-btn--diag svg {
 }
 @media (min-width: 992px) {
   .choices {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(5, 1fr);
   }
 }
 
