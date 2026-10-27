@@ -83,7 +83,7 @@ for (const [i, d] of dests.entries()) {
 <section class="section" aria-labelledby="d-title">
   <div class="container split">
     <div class="stack reveal"><p class="eyebrow">0${i + 1} / 05</p><h2 class="h-1" id="d-title">${esc(d.tag)}</h2>${ps(d.intro)}</div>
-    <div class="photo-mosaic reveal">${[T(IMG[d.slug]), ...[2, 3, 4].map((n) => `assets/images/temp/${IMG[d.slug]}-${n}-temp.webp`).filter((f) => existsSync(join(root, f)))].map((f) => `<img src="${f}" alt="${attr(d.name)}, Thailand" width="1200" height="800" loading="lazy">`).join('')}</div>
+    <div class="photo-mosaic reveal">${[T(IMG[d.slug]), ...[2, 3, 4].map((n) => `assets/images/temp/${IMG[d.slug]}-${n}-temp.webp`).filter((f) => existsSync(join(root, f)))].map((f) => `<figure class="pm-tile"><img src="${f}" alt="${attr(d.name)}, Thailand" width="1200" height="800" loading="lazy"></figure>`).join('')}</div>
   </div>
 </section>
 <section class="section section--tint" aria-labelledby="d-adv">

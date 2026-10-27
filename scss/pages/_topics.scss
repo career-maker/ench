@@ -106,3 +106,10 @@
 .dh-plan { position: relative; isolation: isolate; color: v.$color-white; text-align: center; padding-block: clamp(4rem, 9vw, 8rem);
   img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; } &::before { content: ''; position: absolute; inset: 0; z-index: -1; background: rgba(4, 24, 52, 0.62); }
   .container { display: grid; justify-items: center; gap: 1rem; max-width: 52rem; } .h-1 { color: v.$color-white; } }
+// Destination detail mosaic tiles: zoom inside frame, lift, dim siblings
+.pm-tile { position: relative; margin: 0; border-radius: v.$radius-md; overflow: hidden; min-height: 12rem; cursor: zoom-in; transition: transform 0.6s v.$ease, filter 0.5s;
+  img { width: 100%; height: 100%; min-height: inherit; object-fit: cover; border-radius: 0; transition: transform 1.1s v.$ease; }
+  &::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(4, 24, 52, 0.35), transparent 55%); opacity: 0; transition: opacity 0.5s; }
+  &:hover { transform: translateY(-0.35rem); } &:hover img { transform: scale(1.12) rotate(0.6deg); } &:hover::after { opacity: 1; } }
+.photo-mosaic:hover .pm-tile:not(:hover) { filter: brightness(0.82) saturate(0.85); }
+@media (prefers-reduced-motion: reduce) { .pm-tile, .pm-tile img { transition: none; } }
