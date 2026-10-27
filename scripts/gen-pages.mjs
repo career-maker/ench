@@ -43,26 +43,29 @@ const IMG = { bangkok: 'dest-bangkok', 'chiang-mai': 'dest-chiang-mai', pattaya:
 const hubH2 = hubLines.filter((x) => x.s === 'Heading2'), hubP = hubLines.filter((x) => x.s === 'NormalWeb');
 write('destinations.html', { title: 'Destinations | Enchantive Asia', desc: hubP[0].t, nav: 'destinations', og: T('destinations-hero') },
 `${hero(T('destinations-hero'), [['index.html', 'Home'], [null, 'Destinations']], tc(hubLines[0].t))}
-<section class="section" aria-labelledby="dest-hub-title">
-  <div class="container split split--top">
+<section class="section dh-intro" aria-labelledby="dest-hub-title">
+  <div class="container dh-intro__grid">
     <h2 class="h-1 reveal" id="dest-hub-title">${esc(hubH2[0].t)}</h2>
     <div class="stack reveal">${ps(hubP.slice(0, 2).map((x) => x.t))}</div>
   </div>
 </section>
-<section class="section section--flush-top" aria-label="Destinations">
-  <div class="container"><div class="topic-grid topic-grid--3 topic-grid--tail2">
-    ${dests.map((d, i) => card(`destination-${d.slug}.html`, T(IMG[d.slug]), `0${i + 1}`, d.name, d.tag)).join('\n    ')}
-  </div></div>
-</section>
-<section class="section section--tint" aria-labelledby="dest-journey-title">
-  <div class="container split split--top">
-    <h2 class="h-1 reveal" id="dest-journey-title">${esc(hubH2[1].t)}</h2>
-    <div class="stack reveal">${ps(hubP.slice(2).map((x) => x.t))}</div>
+<section class="dh-panels" aria-label="Destinations">
+  <div class="container">
+    <div class="strip-grid dh-grid">
+      ${dests.map((d, i) => `<a class="strip dh-panel" href="destination-${d.slug}.html"><img src="${T(IMG[d.slug])}" alt="" width="1600" height="1067" loading="lazy"><div class="strip__body"><span class="dh-panel__num">0${i + 1}</span><h3>${esc(d.name)}</h3><p>${esc(d.tag)}</p><span class="dh-panel__go">Explore ${esc(d.name)} <i aria-hidden="true">&rarr;</i></span></div></a>`).join('')}
+    </div>
   </div>
 </section>
-<section class="section" aria-labelledby="dest-plan-title">
-  <div class="container heading-center stack reveal">
-    <p class="eyebrow">${esc(tail[0].t)}</p>
+<section class="section dh-journey" aria-labelledby="dest-journey-title">
+  <div class="container">
+    <div class="dh-journey__head reveal"><h2 class="h-1" id="dest-journey-title">${esc(hubH2[1].t)}</h2><div class="stack">${ps(hubP.slice(2).map((x) => x.t))}</div></div>
+    <ol class="route" aria-label="Destinations">${dests.map((d) => `<li><a href="destination-${d.slug}.html"><span class="route__dot" aria-hidden="true"></span>${esc(d.name)}</a></li>`).join('')}</ol>
+  </div>
+</section>
+<section class="dh-plan" aria-labelledby="dest-plan-title">
+  <img src="assets/images/temp/dest-hua-hin-temp.webp" alt="" width="1600" height="1067" loading="lazy">
+  <div class="container reveal">
+    <p class="eyebrow eyebrow--light">${esc(tail[0].t)}</p>
     <h2 class="h-1" id="dest-plan-title">${esc(tail[1].t)}</h2>
     ${ps(tail.slice(2).map((x) => x.t))}
   </div>

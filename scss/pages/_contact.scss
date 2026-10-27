@@ -125,3 +125,7 @@
   &:hover &__text strong, &:focus-visible &__text strong { background-size: 100% 1px; } }
 @keyframes qlRing { from { opacity: 0.7; transform: scale(1); } to { opacity: 0; transform: scale(1.7); } }
 @media (prefers-reduced-motion: reduce) { .say-hello .quick-link__icon, .say-hello .quick-link__icon svg { transition: none; } .say-hello .quick-link:hover .quick-link__icon::after { animation: none; } }
+// Label hover: slide, take the icon's colour, arrow reveal
+.say-hello .quick-link { li:nth-child(1) > & { --c: #1fae4b; } li:nth-child(2) > & { --c: #0b5fe0; } li:nth-child(3) > & { --c: #f04a45; }
+  &__text strong { display: inline-flex; align-items: center; gap: 0.375rem; transition: transform 0.45s v.$ease, color 0.3s, background-size 0.5s v.$ease; background-image: linear-gradient(var(--c), var(--c)); &::after { content: '→'; opacity: 0; transform: translateX(-0.5rem); transition: opacity 0.35s, transform 0.45s v.$ease; } }
+  &:hover &__text strong, &:focus-visible &__text strong { color: var(--c); transform: translateX(0.25rem); &::after { opacity: 1; transform: none; } } }
