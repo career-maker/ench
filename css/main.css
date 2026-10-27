@@ -4539,7 +4539,8 @@ input:focus-visible + .choice__body {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   gap: 0.75rem;
-  min-height: 28rem;
+  aspect-ratio: 5/4;
+  align-self: center;
 }
 .photo-trio img {
   width: 100%;
@@ -4555,6 +4556,10 @@ input:focus-visible + .choice__body {
   transform: scale(1.02) rotate(-0.4deg);
 }
 
+.mice-way.section {
+  padding-block: clamp(2.5rem, 5vw, 4.5rem);
+}
+
 .mice-way__grid {
   display: grid;
   gap: clamp(2rem, 5vw, 5rem);
@@ -4566,29 +4571,29 @@ input:focus-visible + .choice__body {
   }
 }
 
-.bring-grid {
+.bring-grid, .purpose-grid {
   display: grid;
-  gap: clamp(1rem, 1.8vw, 1.75rem);
+  gap: 1rem;
 }
 @media (min-width: 576px) {
-  .bring-grid {
+  .bring-grid, .purpose-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 @media (min-width: 992px) {
-  .bring-grid {
-    grid-template-columns: repeat(3, 1fr);
+  .bring-grid, .purpose-grid {
+    grid-template-columns: repeat(12, 1fr);
+  }
+  .bring-grid > *, .purpose-grid > * {
+    grid-column: span 3;
+  }
+  .bring-grid > :nth-child(n+5), .purpose-grid > :nth-child(n+5) {
+    grid-column: span 4;
   }
 }
 
 .bring-tile {
   min-height: 20rem;
-}
-@media (min-width: 992px) {
-  .bring-tile:last-child {
-    grid-column: 1/-1;
-    min-height: 16rem;
-  }
 }
 .bring-tile__num {
   position: absolute;
@@ -4603,25 +4608,6 @@ input:focus-visible + .choice__body {
   background: #0658a7;
   color: #fff;
   font-family: "Libre Caslon Display", "Times New Roman", serif;
-}
-
-.purpose-grid {
-  display: grid;
-  gap: 1rem;
-}
-@media (min-width: 768px) {
-  .purpose-grid {
-    grid-template-columns: repeat(6, 1fr);
-  }
-  .purpose-grid .purpose-tile {
-    grid-column: span 3;
-  }
-  .purpose-grid .purpose-tile:nth-child(3n+3), .purpose-grid .purpose-tile:nth-child(3n+4), .purpose-grid .purpose-tile:nth-child(3n+5) {
-    grid-column: span 2;
-  }
-  .purpose-grid .purpose-tile:nth-child(n+6) {
-    grid-column: span 3;
-  }
 }
 
 .purpose-tile {
