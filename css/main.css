@@ -217,6 +217,30 @@ html, body {
   contain: layout;
 }
 
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #0658a7 #f4f8fe;
+}
+
+::-webkit-scrollbar {
+  width: 0.625rem;
+  height: 0.625rem;
+}
+
+::-webkit-scrollbar-track {
+  background: #f4f8fe;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0658a7;
+  border-radius: 0.625rem;
+  border: 2px solid #f4f8fe;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #04447f;
+}
+
 .word {
   display: inline-block;
   overflow: hidden;

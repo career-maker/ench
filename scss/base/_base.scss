@@ -9,3 +9,9 @@ body.is-menu-open { overflow: hidden; }
 html, body { overflow-x: clip; max-width: 100%; }
 .hero { overflow: clip; }
 .float-contact { contain: layout; }
+// Brand-blue page scrollbar
+html { scrollbar-width: thin; scrollbar-color: v.$color-blue v.$color-tint; }
+::-webkit-scrollbar { width: 0.625rem; height: 0.625rem; }
+::-webkit-scrollbar-track { background: v.$color-tint; }
+::-webkit-scrollbar-thumb { background: v.$color-blue; border-radius: 0.625rem; border: 2px solid v.$color-tint; }
+::-webkit-scrollbar-thumb:hover { background: v.$color-blue-dark; }
