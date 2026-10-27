@@ -45,9 +45,10 @@ ${STAGING ? '<meta name="robots" content="noindex, nofollow">\n' : ''}<link rel=
 <link rel="preload" href="assets/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/figtree-latin-300-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="css/main.min.css?v=${BUILD}">
-<script>document.documentElement.classList.remove('no-js')</script>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('is-loading')</script>
 </head>
 <body>
+<div class="preloader" aria-hidden="true"><span class="preloader__dot"><img src="assets/logos/enchantive-asia-logo-white.svg" alt="" width="300" height="100"></span></div>
 <a class="skip-link" href="#main">Skip to content</a>
 ${sprite}
 ${header}

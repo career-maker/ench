@@ -1820,6 +1820,65 @@ a:hover .icon-btn--diag svg {
   color: #fff;
 }
 
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: #87ceeb;
+  transition: opacity 0.5s ease;
+}
+.preloader__dot {
+  display: grid;
+  place-items: center;
+  width: clamp(7.5rem, 18vmin, 11rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #1f9d55;
+  transition: transform 1s cubic-bezier(0.7, 0, 0.2, 1);
+}
+.preloader__dot img {
+  width: 62%;
+  height: auto;
+  transition: opacity 0.25s ease;
+}
+.preloader.is-expanding .preloader__dot {
+  transform: scale(60);
+}
+.preloader.is-expanding .preloader__dot img {
+  opacity: 0;
+}
+.preloader.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.preloader.is-expanding {
+  animation: preFade 0.5s ease 0.85s forwards;
+}
+
+@keyframes preFade {
+  to {
+    opacity: 0;
+  }
+}
+html.is-loading, html.is-loading body {
+  overflow: hidden;
+}
+
+.no-js .preloader {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .preloader__dot, .preloader.is-expanding {
+    transition: none;
+    animation-duration: 0.01s;
+  }
+}
 .float-contact {
   position: fixed;
   z-index: 60;
