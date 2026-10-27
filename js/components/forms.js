@@ -19,6 +19,8 @@ function initForms() {
       err.textContent = msg;
       return !msg;
     };
+    const q = new URLSearchParams(location.search).get('service'); // ?service=MICE preselects Service of interest
+    if (q && form.elements.service) form.elements.service.value = q;
     form.querySelectorAll('input, select, textarea').forEach((el) => el.addEventListener('blur', () => check(el)));
 
     form.addEventListener('submit', async (e) => {

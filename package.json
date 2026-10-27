@@ -8,6 +8,7 @@
     "sass": "sass --no-source-map scss/main.scss css/main.css",
     "sass:min": "sass --no-source-map --style=compressed scss/main.scss css/main.min.css",
     "sass:watch": "sass --watch scss/main.scss css/main.css",
+    "gen": "node scripts/gen-pages.mjs",
     "build": "npm run sass && npm run sass:min && npm run html",
     "check": "node scripts/check-links.mjs",
     "serve": "npx --yes http-server . -p 8080 -c-1"

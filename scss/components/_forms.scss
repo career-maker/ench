@@ -2,9 +2,11 @@
 @use '../abstracts/mixins' as m;
 .form { display: grid; gap: 1.25rem; @include m.up(md) { grid-template-columns: 1fr 1fr; } &__full { grid-column: 1 / -1; } }
 .field { display: grid; gap: 0.375rem; align-content: start; label { font-weight: 400; color: v.$color-ink; } .req { color: v.$color-red; }
-  input, select, textarea { width: 100%; padding: 0.8125rem 1rem; border: 1px solid #b9c4d3; border-radius: v.$radius-sm; background: v.$color-white; font-weight: 300; transition: border-color v.$t-fast, box-shadow v.$t-fast;
+  input:not([type='radio']), select, textarea { width: 100%; min-height: 3.25rem; padding: 0.8125rem 1rem; border: 1px solid #b9c4d3; border-radius: v.$radius-sm; background: v.$color-white; font-weight: 300; transition: border-color v.$t-fast, box-shadow v.$t-fast;
     &:focus { outline: none; border-color: v.$color-blue; box-shadow: 0 0 0 3px rgba(6, 88, 167, 0.2); } }
+  select { appearance: none; padding-right: 2.75rem; background: v.$color-white url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='%230658a7'%3E%3Cpath d='M0 0h12L6 8z'/%3E%3C/svg%3E") no-repeat right 1rem center; }
   textarea { min-height: 9.375rem; resize: vertical; }
+  input:disabled, select:disabled, textarea:disabled { opacity: 0.55; cursor: not-allowed; }
   &__error { min-height: 1.2em; font-size: 0.9375rem; color: #b3261e; }
   &.has-error input, &.has-error select, &.has-error textarea { border-color: #b3261e; } }
 .form-status { grid-column: 1 / -1; padding: 0.875rem 1.125rem; border-radius: v.$radius-sm; &:empty { display: none; }
