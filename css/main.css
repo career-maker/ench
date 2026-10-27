@@ -4553,6 +4553,66 @@ input:focus-visible + .choice__body {
   margin-top: 1.25rem;
 }
 
+.contact-cards {
+  margin-top: 0;
+  padding-inline: 0;
+}
+
+.say-hello {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  justify-items: center;
+  gap: 0.75rem;
+  margin-top: clamp(1.25rem, 2.5vw, 2rem);
+  padding: clamp(2rem, 4vw, 3.25rem) clamp(1rem, 3vw, 2rem);
+  border-radius: 0.875rem;
+  overflow: hidden;
+  text-align: center;
+  color: #fff;
+}
+.say-hello img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+.say-hello::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: rgba(4, 30, 62, 0.58);
+}
+.say-hello__title {
+  font-family: "Libre Caslon Display", "Times New Roman", serif;
+  font-weight: 400;
+  font-size: clamp(1.75rem, 3.4vw, 3rem);
+  line-height: 1.15;
+  color: #fff;
+}
+.say-hello__title em {
+  font-style: italic;
+}
+.say-hello__sub {
+  color: rgba(255, 255, 255, 0.9);
+}
+.say-hello .quick-links {
+  margin-top: 0.75rem;
+}
+
+.say-hello .quick-link {
+  color: #111111;
+}
+.say-hello .quick-link__text strong {
+  color: #111111;
+}
+.say-hello .quick-link__text span {
+  color: #6b6b6b;
+}
+
 .topic-grid {
   display: grid;
   gap: clamp(1.25rem, 2.2vw, 2.25rem) clamp(1rem, 1.6vw, 1.75rem);
