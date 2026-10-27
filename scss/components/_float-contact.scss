@@ -17,3 +17,8 @@
       &:hover, &:focus-visible { transform: none; box-shadow: none; filter: brightness(1.08); } } } }
 @include m.down(md) { body:has(.float-contact.is-on) { padding-bottom: 3.5rem; } }
 @media (prefers-reduced-motion: reduce) { .float-contact, .float-contact__btn, .float-contact__btn span { transition: none; } }
+// Entrance: buttons pop in one after another each time the widgets appear
+.float-contact.is-on .float-contact__btn { animation: fcIn 0.7s v.$ease both; &:nth-child(2) { animation-delay: 0.1s; } &:nth-child(3) { animation-delay: 0.2s; } }
+@keyframes fcIn { from { opacity: 0; transform: translateX(1.5rem) scale(0.6); } 60% { opacity: 1; transform: translateX(-0.2rem) scale(1.08); } to { opacity: 1; transform: none; } }
+@include m.down(md) { @keyframes fcIn { from { opacity: 0; transform: translateY(100%); } to { opacity: 1; transform: none; } } }
+@media (prefers-reduced-motion: reduce) { .float-contact.is-on .float-contact__btn { animation: none; } }
