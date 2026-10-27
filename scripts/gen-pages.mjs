@@ -272,23 +272,26 @@ const LEIS = [
 LEIS[5].h = '6. Private Travel & Personal Concierge';
 write('leisure.html', { title: 'Leisure | Enchantive Asia', desc: Z[1], nav: 'leisure', og: T('leisure-hero') },
 `${hero(T('leisure-hero'), [['index.html', 'Home'], ['services.html', 'Services'], [null, 'Leisure']], zhead)}
-<section class="section" aria-labelledby="l-intro">
-  <div class="container split split--top">
-    <div class="stack reveal"><h2 class="h-1" id="l-intro">${esc(Z[3])}</h2>${ps([Z[4]])}${btn(Z[5].replace('CTA: ', ''), 'contact.html?service=Leisure#enquiry')}</div>
-    <div class="stack reveal"><p class="lead">${esc(Z[1])}</p>${btn(Z[2].replace('CTA: ', ''), '#fit', 'btn--outline')}</div>
+<section class="section lz-intro" aria-labelledby="l-intro">
+  <div class="container">
+    <p class="lz-intro__lead reveal">${esc(Z[1])}</p>
+    <div class="lz-intro__cta reveal">${btn(Z[2].replace('CTA: ', ''), '#fit', 'btn--outline')}</div>
+    <div class="lz-intro__row">
+      <div class="stack reveal"><h2 class="h-1" id="l-intro">${esc(Z[3])}</h2><p>${esc(Z[4])}</p>${btn(Z[5].replace('CTA: ', ''), 'contact.html?service=Leisure#enquiry')}</div>
+      <div class="stack reveal"><h2 class="h-2" id="l-story">${esc(Z[6])}</h2><p>${esc(Z[7])}</p></div>
+    </div>
+    <ul class="lz-marquee" aria-label="Leisure">${Z.slice(8, 11).map((t) => `<li>${esc(t)}</li>`).join('')}</ul>
   </div>
 </section>
-<section class="section section--tint" aria-labelledby="l-story">
-  <div class="container split split--top">
-    <div class="stack reveal"><h2 class="h-1" id="l-story">${esc(Z[6])}</h2><p>${esc(Z[7])}</p></div>
-    <ul class="ticks reveal" aria-label="Leisure">${Z.slice(8, 11).map((t) => `<li>${esc(t)}</li>`).join('')}</ul>
+${LEIS.map((s, i) => `<section class="lz-item${i % 2 ? ' lz-item--flip' : ''}" id="${s.id}" aria-labelledby="${s.id}-title">
+  <div class="container lz-item__grid">
+    <figure class="lz-item__photo reveal"><img src="${T('' + s.img)}" alt="${attr(s.h.replace(/^\d+\. /, ''))}" width="1400" height="933" loading="lazy"></figure>
+    <div class="lz-item__text reveal">
+      <span class="lz-item__num" aria-hidden="true">0${i + 1}</span>
+      <h2 class="h-1" id="${s.id}-title">${esc(s.h)}</h2>
+      ${s.sub ? `<p class="h-3">${esc(s.sub)}</p>` : ''}${s.tag ? `<p class="lz-item__tag">${esc(s.tag)}</p>` : ''}${ps(s.body)}${s.pf ? perfect(s.pf) : ''}
+    </div>
   </div>
-</section>
-${LEIS.map((s, i) => `<section class="section subservice${i % 2 ? ' section--tint' : ''}" id="${s.id}" aria-labelledby="${s.id}-title">
-  <div class="container split${i % 2 ? '' : ' split--reverse'}">
-    <div class="media media--wide reveal"><img src="${T('' + s.img)}" alt="${attr(s.h.replace(/^\d+\. /, ''))}" width="1400" height="933" loading="lazy"></div>
-    <div class="stack reveal"><h2 class="h-1" id="${s.id}-title">${esc(s.h)}</h2>${s.sub ? `<p class="h-3">${esc(s.sub)}</p>` : ''}${s.tag ? `<p class="h-3">${esc(s.tag)}</p>` : ''}${ps(s.body)}${s.pf ? perfect(s.pf) : ''}</div>
-  </div>
-</section>`).join('\n')}
+</section>`).join('')}
 {{CTA}}`);
 console.log('generated', dests.length, 'destinations,', cItems.length, 'celebrations,', xs.length, 'luxe, mice, leisure');
