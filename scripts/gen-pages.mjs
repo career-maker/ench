@@ -50,7 +50,7 @@ write('destinations.html', { title: 'Destinations | Enchantive Asia', desc: hubP
   </div>
 </section>
 <section class="section section--flush-top" aria-label="Destinations">
-  <div class="container"><div class="topic-grid topic-grid--3">
+  <div class="container"><div class="topic-grid topic-grid--3 topic-grid--tail2">
     ${dests.map((d, i) => card(`destination-${d.slug}.html`, T(IMG[d.slug]), `0${i + 1}`, d.name, d.tag)).join('\n    ')}
   </div></div>
 </section>
@@ -134,7 +134,7 @@ write('celebrations-events.html', { title: `${CEL} | Enchantive Asia`, desc: C[1
   </div>
 </section>
 <section class="section section--flush-top" aria-label="Celebrations and experiences">
-  <div class="container"><div class="topic-grid topic-grid--3">
+  <div class="container"><div class="topic-grid topic-grid--3 topic-grid--tail2">
     ${cItems.map((c, i) => card(cFile(i), T(CIMG[i]), c.n, c.title, c.tag)).join('\n    ')}
   </div></div>
 </section>

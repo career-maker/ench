@@ -5480,6 +5480,18 @@ input:focus-visible + .choice__body {
   font-weight: 500;
 }
 
+@media (min-width: 992px) {
+  .topic-grid--tail2 {
+    grid-template-columns: repeat(6, 1fr);
+  }
+  .topic-grid--tail2 > * {
+    grid-column: span 2;
+  }
+  .topic-grid--tail2 > :nth-last-child(-n+2) {
+    grid-column: span 3;
+  }
+}
+
 .gallery {
   background: linear-gradient(180deg, #fff, #f4f8fe 140%);
 }
