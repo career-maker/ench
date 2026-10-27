@@ -12,12 +12,15 @@
       <h2 class="h-1" id="contact-title">Tell Us Where You Want to Go</h2>
       <p>Have a route in mind, a milestone to mark, or just an idea you want to bounce off someone who actually knows Thailand inside out? Don’t waste hours guessing logistics. Tell us where you want to go, who you’re bringing along, and how you want it to feel—our team will handle the properties, the connections, and every single moving part behind the scenes.</p>
     </div>
-    <ul class="contact-cards reveal" aria-label="Contact details">
-      <li class="contact-card"><svg aria-hidden="true"><use href="#i-phone"/></svg><h3 class="contact-card__title">Phone</h3><p><a href="tel:+66985922848">+66 985922848</a><br><a href="tel:+6620282867">+66 2028 2867</a></p><a class="contact-card__link" href="https://wa.me/66985922848" rel="noopener">WhatsApp us</a></li>
-      <li class="contact-card"><svg aria-hidden="true"><use href="#i-mail"/></svg><h3 class="contact-card__title">Email</h3><p><a href="mailto:info@enchantiveasia.com">info@enchantiveasia.com</a></p></li>
-      <li class="contact-card"><h3 class="contact-card__title">Address</h3><address>RASA TWO, Level 18, 1818, Petchaburi Road, Makkasan, Ratchathewi<br>Bangkok 10400, Thailand</address></li>
+    <div class="contact-banner reveal"><img src="assets/images/temp/leisure-hero-temp.webp" alt="Aerial view of a Thai beach and turquoise sea" width="1920" height="1080" loading="lazy"></div>
+    <ul class="contact-cards" aria-label="Contact details">
+      <li class="contact-card"><svg aria-hidden="true"><use href="#i-phone"/></svg><p class="contact-card__title">Phone</p><p><a href="tel:+66985922848">+66 985922848</a><br><a href="tel:+6620282867">+66 2028 2867</a></p><a class="contact-card__link" href="https://wa.me/66985922848" rel="noopener">WhatsApp us</a></li>
+      <li class="contact-card"><svg aria-hidden="true"><use href="#i-mail"/></svg><p class="contact-card__title">Email</p><p><a href="mailto:info@enchantiveasia.com">info@enchantiveasia.com</a></p></li>
+      <li class="contact-card"><p class="contact-card__title">Address</p><address>RASA TWO, Level 18, 1818, Petchaburi Road, Makkasan, Ratchathewi<br>Bangkok 10400, Thailand</address></li>
     </ul>
     <p class="divider" aria-hidden="true"><span>Send us an enquiry</span></p>
+    <div class="enquiry-wrap">
+    <figure class="enquiry-photo"><img src="assets/images/temp/luxe-01-andaman-temp.webp" alt="Sailboat at sunset on the Andaman Sea" width="1400" height="933" loading="lazy"></figure>
     <form class="enquiry" id="enquiry" data-validate novalidate aria-label="Enquiry form">
       <!-- Set data-endpoint="https://..." on this form once a backend/email service exists. See README. -->
       <fieldset class="enquiry__group field">
@@ -26,7 +29,6 @@
           <label class="choice"><input type="radio" name="traveller_type" value="Travel agent"><span class="choice__body"><span class="choice__title">Travel agent</span><span class="choice__sub">Booking for clients</span></span></label>
           <label class="choice"><input type="radio" name="traveller_type" value="Tour operator"><span class="choice__body"><span class="choice__title">Tour operator</span><span class="choice__sub">Building a programme for your brand</span></span></label>
           <label class="choice"><input type="radio" name="traveller_type" value="Group or corporate"><span class="choice__body"><span class="choice__title">Group or corporate</span><span class="choice__sub">Incentives, meetings, events</span></span></label>
-          <label class="choice"><input type="radio" name="traveller_type" value="VIP or private"><span class="choice__body"><span class="choice__title">VIP or private</span><span class="choice__sub">Families, couples, individuals</span></span></label>
           <label class="choice"><input type="radio" name="traveller_type" value="Wedding or celebration"><span class="choice__body"><span class="choice__title">Wedding or celebration</span><span class="choice__sub">Weddings, anniversaries, milestones</span></span></label>
         </div>
         <span class="field__error" aria-live="polite"></span>
@@ -57,5 +59,6 @@
       <div><button class="btn btn--primary" type="submit">Send Enquiry</button></div>
       <div class="form-status" role="status" aria-live="polite"></div>
     </form>
+    </div>
   </div>
 </section>
