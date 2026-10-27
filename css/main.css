@@ -4135,6 +4135,10 @@ html.is-loading, html.is-loading body {
   color: #fff !important;
 }
 
+.about-band__body .btn {
+  justify-self: end;
+}
+
 .about-vision {
   background: #f4f8fe;
 }
