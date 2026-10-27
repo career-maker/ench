@@ -204,6 +204,19 @@ body.is-menu-open {
   transform: translateY(1.5rem);
 }
 
+html, body {
+  overflow-x: clip;
+  max-width: 100%;
+}
+
+.hero {
+  overflow: clip;
+}
+
+.float-contact {
+  contain: layout;
+}
+
 .word {
   display: inline-block;
   overflow: hidden;

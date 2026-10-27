@@ -5,3 +5,7 @@ body.is-menu-open { overflow: hidden; }
 .skip-link { position: absolute; left: 0.75rem; top: -60px; z-index: 200; background: v.$color-white; color: v.$color-ink; padding: 0.625rem 1rem; border-radius: v.$radius-sm; transition: top 0.2s; &:focus { top: 0.75rem; } }
 .reveal { transition: opacity 0.7s v.$ease, transform 0.7s v.$ease; }
 .reveal-ready .reveal:not(.is-visible) { opacity: 0; transform: translateY(1.5rem); }
+// Never allow sideways scrolling: clip anything wider than the viewport (sliders, marquees, scaled hero slides, fixed widgets).
+html, body { overflow-x: clip; max-width: 100%; }
+.hero { overflow: clip; }
+.float-contact { contain: layout; }
