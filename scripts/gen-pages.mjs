@@ -145,7 +145,7 @@ for (const [i, c] of cItems.entries()) {
 `${hero(T(CIMG[i]), [['index.html', 'Home'], ['celebrations-events.html', CEL], [null, c.title]], c.title)}
 <section class="section" aria-labelledby="c-title">
   <div class="container split split--top">
-    <div class="stack reveal"><p class="eyebrow">${c.n} / 11</p><h2 class="h-1" id="c-title">${esc(c.tag)}</h2><p class="lead">${esc(c.body)}</p></div>
+    <div class="stack reveal"><p class="eyebrow">${c.n} / 11</p><h2 class="h-1" id="c-title">${esc(c.tag)}</h2><p class="lead">${esc(c.body)}</p><div class="media media--wide"><img src="${T(CIMG[i])}" alt="${attr(c.title)}" width="1400" height="933" loading="lazy"></div></div>
     <nav class="side-nav reveal" aria-label="${CEL}">
       <ol>${cItems.map((o, k) => `<li><a href="${cFile(k)}"${k === i ? ' aria-current="page"' : ''}><span>${o.n}</span>${esc(o.title)}</a></li>`).join('')}</ol>
     </nav>
