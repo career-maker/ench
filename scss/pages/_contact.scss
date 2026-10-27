@@ -129,3 +129,13 @@
 .say-hello .quick-link { li:nth-child(1) > & { --c: #1fae4b; } li:nth-child(2) > & { --c: #0b5fe0; } li:nth-child(3) > & { --c: #f04a45; }
   &__text strong { display: inline-flex; align-items: center; gap: 0.375rem; transition: transform 0.45s v.$ease, color 0.3s, background-size 0.5s v.$ease; background-image: linear-gradient(var(--c), var(--c)); &::after { content: '→'; opacity: 0; transform: translateX(-0.5rem); transition: opacity 0.35s, transform 0.45s v.$ease; } }
   &:hover &__text strong, &:focus-visible &__text strong { color: var(--c); transform: translateX(0.25rem); &::after { opacity: 1; transform: none; } } }
+// Header hover animations
+.say-hello__eyebrow { cursor: default; &::before, &::after { transition: width 0.7s v.$ease; } span { transition: letter-spacing 0.7s v.$ease; }
+  &:hover::before, &:hover::after { width: 4.5rem; } &:hover span { letter-spacing: 0.32em; } }
+.say-hello__title { cursor: default; transition: color 0.4s;
+  .say-hello__lead { display: inline-block; transition: transform 0.6s v.$ease, color 0.4s; }
+  em { position: relative; display: inline-block; transition: transform 0.6s v.$ease; &::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0.05em; height: 2px; background: #a8793a; transform: scaleX(0); transform-origin: left; transition: transform 0.7s v.$ease; } }
+  &:hover .say-hello__lead { transform: translateX(-0.3rem); color: v.$color-blue; }
+  &:hover em { transform: translateX(0.3rem); } &:hover em::after { transform: scaleX(1); } }
+.say-hello__sub { transition: color 0.4s, transform 0.6s v.$ease; .say-hello:hover & { color: v.$color-ink; } }
+@media (prefers-reduced-motion: reduce) { .say-hello__eyebrow *, .say-hello__title *, .say-hello__title { transition: none !important; } }

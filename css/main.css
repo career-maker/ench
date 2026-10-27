@@ -4942,6 +4942,70 @@ li:nth-child(3) > .say-hello .quick-link {
   transform: none;
 }
 
+.say-hello__eyebrow {
+  cursor: default;
+}
+.say-hello__eyebrow::before, .say-hello__eyebrow::after {
+  transition: width 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.say-hello__eyebrow span {
+  transition: letter-spacing 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.say-hello__eyebrow:hover::before, .say-hello__eyebrow:hover::after {
+  width: 4.5rem;
+}
+.say-hello__eyebrow:hover span {
+  letter-spacing: 0.32em;
+}
+
+.say-hello__title {
+  cursor: default;
+  transition: color 0.4s;
+}
+.say-hello__title .say-hello__lead {
+  display: inline-block;
+  transition: transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1), color 0.4s;
+}
+.say-hello__title em {
+  position: relative;
+  display: inline-block;
+  transition: transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.say-hello__title em::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.05em;
+  height: 2px;
+  background: #a8793a;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.say-hello__title:hover .say-hello__lead {
+  transform: translateX(-0.3rem);
+  color: #0658a7;
+}
+.say-hello__title:hover em {
+  transform: translateX(0.3rem);
+}
+.say-hello__title:hover em::after {
+  transform: scaleX(1);
+}
+
+.say-hello__sub {
+  transition: color 0.4s, transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.say-hello:hover .say-hello__sub {
+  color: #111111;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .say-hello__eyebrow *, .say-hello__title *, .say-hello__title {
+    transition: none !important;
+  }
+}
 .topic-grid {
   display: grid;
   gap: clamp(1.25rem, 2.2vw, 2.25rem) clamp(1rem, 1.6vw, 1.75rem);
