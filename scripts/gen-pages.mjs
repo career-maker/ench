@@ -116,7 +116,7 @@ for (const [i, d] of dests.entries()) {
 
 // ---------- Celebrations & Experiences ----------
 const C = lines('celebrations.txt');
-const cIntro = C[0].t.replace(/^Celebrations and experience’s /, ''); // source heading has a stray prefix; page H1 carries the name
+const cIntro = C[0].t; // exact heading from the doc
 const cItems = [];
 for (let k = 2; k < C.length; k += 3) {
   const m = C[k].t.match(/^(\d+)\. (.*)$/);
@@ -146,9 +146,7 @@ for (const [i, c] of cItems.entries()) {
 <section class="section" aria-labelledby="c-title">
   <div class="container split split--top">
     <div class="stack reveal"><p class="eyebrow">${c.n} / 11</p><h2 class="h-1" id="c-title">${esc(c.tag)}</h2><p class="lead">${esc(c.body)}</p><div class="media media--wide"><img src="${T(CIMG[i])}" alt="${attr(c.title)}" width="1400" height="933" loading="lazy"></div></div>
-    <nav class="side-nav reveal" aria-label="${CEL}">
-      <ol>${cItems.map((o, k) => `<li><a href="${cFile(k)}"${k === i ? ' aria-current="page"' : ''}><span>${o.n}</span>${esc(o.title)}</a></li>`).join('')}</ol>
-    </nav>
+    <div class="tile-aside reveal">${[1, 2, 3, 4].map((d) => (i + d) % cItems.length).map((k) => `<a class="tile" href="${cFile(k)}"><img src="${T(CIMG[k])}" alt="" width="1400" height="933" loading="lazy"><span class="tile__body"><span class="tile__title">${esc(cItems[k].title)}</span></span></a>`).join('')}</div>
   </div>
 </section>
 <section class="section section--flush-top" aria-label="Previous and next">

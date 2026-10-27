@@ -4436,6 +4436,29 @@ input:focus-visible + .choice__body {
   height: auto;
 }
 
+.tile-aside {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 576px) {
+  .tile-aside {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (min-width: 992px) {
+  .tile-aside {
+    align-self: stretch;
+    grid-auto-rows: 1fr;
+  }
+}
+.tile-aside .tile {
+  min-height: 15rem;
+}
+.tile-aside .tile__title {
+  font-size: clamp(1.25rem, 1.6vw, 1.5rem);
+}
+
 .gallery {
   background: linear-gradient(180deg, #fff, #f4f8fe 140%);
 }

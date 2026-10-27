@@ -24,3 +24,4 @@
 .heading-center .eyebrow { margin-bottom: 0.5rem; }
 .heading-center.stack > p { max-width: 60ch; margin-inline: auto; }
 .logo-marquee .logo--slot { width: 8.4rem; height: auto; }
+.tile-aside { display: grid; gap: 1rem; grid-template-columns: 1fr; @include m.up(sm) { grid-template-columns: 1fr 1fr; } @include m.up(lg) { align-self: stretch; grid-auto-rows: 1fr; } .tile { min-height: 15rem; } .tile__title { font-size: clamp(1.25rem, 1.6vw, 1.5rem); } }
