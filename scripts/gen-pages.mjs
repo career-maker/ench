@@ -201,7 +201,7 @@ write('mice.html', { title: 'MICE: Meetings, Incentives, Conferences & Exhibitio
       <p class="h-3">${esc(M[6])}</p>
       ${btn(M[7].slice(1, -1), MICE_Q)}
     </div>
-    <figure class="mice-intro__photo reveal"><img src="assets/images/mice-intro-stage.webp" alt="Speaker presenting to a seated audience at a conference" width="1200" height="1400" loading="lazy"></figure>
+    <div class="photo-mosaic reveal">${[['mice-intro-stage.webp', 'Speaker presenting to a seated audience at a conference'], ['temp/mice-gala-temp.webp', 'Guests at a formal gala dinner'], ['temp/mice-team-temp.webp', 'Team meeting around a table'], ['temp/mice-launch-temp.webp', 'Product launch on stage']].map(([f, a]) => `<img src="assets/images/${f}" alt="${a}" width="1400" height="933" loading="lazy">`).join('')}</div>
   </div>
 </section>
 <section class="section section--tint" aria-labelledby="mice-way-title">
