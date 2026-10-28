@@ -44,3 +44,17 @@ body.is-lightbox { overflow: hidden; }
   &__nav--prev span { transform: rotate(-135deg); margin-left: 0.2rem; } }
 @keyframes lb-in { from { opacity: 0; } to { opacity: 1; } }
 @include m.down(md) { .lightbox[open] { grid-template-columns: 1fr; } .lightbox__nav { display: none; } }
+
+// Pager
+.gallery__pager { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; margin-top: clamp(1.5rem, 3vw, 2.5rem);
+  button { min-width: 2.75rem; height: 2.75rem; padding: 0 0.75rem; border: 1px solid v.$color-line; border-radius: v.$radius-pill; background: v.$color-white; color: v.$color-ink; font: inherit; font-size: 1rem; cursor: pointer; transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.4s v.$ease;
+    &:hover:not(:disabled) { border-color: v.$color-blue; color: v.$color-blue; transform: translateY(-2px); }
+    &[aria-current='page'] { background: v.$color-blue; border-color: v.$color-blue; color: v.$color-white; }
+    &:disabled { opacity: 0.4; cursor: not-allowed; } } }
+
+// Phones: swipeable two-row carousel instead of one long column
+@include m.down(sm) {
+  .gallery__grid { grid-template-columns: none; grid-template-rows: repeat(2, 13rem); grid-auto-rows: auto; grid-auto-flow: column; grid-auto-columns: 68%; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin-inline: calc(-1 * v.$gutter); padding-inline: v.$gutter; scroll-padding-inline: v.$gutter; overscroll-behavior-x: contain;
+    &::-webkit-scrollbar { display: none; } }
+  .gallery__item { scroll-snap-align: start; &.g-big, &.g-wide, &.g-tall { grid-column: auto; grid-row: auto; } }
+}

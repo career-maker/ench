@@ -14,20 +14,60 @@ function initGallery() {
   let index = 0;
   let opener = null;
 
+  // Pagination: pages of 14 on desktop (two full bento blocks), 8 below desktop. The pager only appears when there is more than one page.
+  const mq = window.matchMedia('(min-width: 992px)');
+  const pageSize = () => (mq.matches ? 14 : 8);
+  let filtered = items;
+  let page = 1;
+  const pager = document.createElement('nav');
+  pager.className = 'gallery__pager';
+  pager.setAttribute('aria-label', 'Gallery pages');
+  pager.hidden = true;
+  grid.after(pager);
+
+  const render = (scroll) => {
+    const size = pageSize();
+    const pages = Math.max(1, Math.ceil(filtered.length / size));
+    page = Math.min(Math.max(page, 1), pages);
+    const start = (page - 1) * size;
+    items.forEach((it) => {
+      const k = filtered.indexOf(it);
+      const show = k >= start && k < start + size;
+      const was = !it.hidden;
+      it.hidden = !show;
+      if (show && !was) { it.classList.remove('is-in'); requestAnimationFrame(() => requestAnimationFrame(() => it.classList.add('is-in'))); }
+    });
+    visible = filtered; // lightbox steps through every photo, across pages
+    if (empty) empty.hidden = filtered.length > 0;
+    pager.hidden = pages < 2;
+    pager.innerHTML = '';
+    if (pages > 1) {
+      const btn = (label, p, cls, aria, disabled) => {
+        const b = document.createElement('button');
+        b.type = 'button'; b.className = cls; b.innerHTML = label;
+        if (aria) b.setAttribute('aria-label', aria);
+        if (disabled) b.disabled = true;
+        if (p === page && cls === 'gallery__page') b.setAttribute('aria-current', 'page');
+        b.addEventListener('click', () => { page = p; render(true); });
+        return b;
+      };
+      pager.append(btn('<span aria-hidden="true">&larr;</span>', page - 1, 'gallery__pgnav', 'Previous page', page === 1));
+      for (let n = 1; n <= pages; n++) pager.append(btn(String(n), n, 'gallery__page', `Page ${n}`));
+      pager.append(btn('<span aria-hidden="true">&rarr;</span>', page + 1, 'gallery__pgnav', 'Next page', page === pages));
+    }
+    if (scroll) grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+  mq.addEventListener('change', () => render());
+
   const applyFilter = (key) => {
     chips.forEach((c) => {
       const on = c.dataset.filter === key;
       c.classList.toggle('is-active', on);
       c.setAttribute('aria-pressed', String(on));
     });
-    items.forEach((it) => {
-      const show = key === 'all' || it.dataset.cat === key;
-      it.hidden = !show;
-      it.classList.remove('is-in');
-      if (show) requestAnimationFrame(() => requestAnimationFrame(() => it.classList.add('is-in')));
-    });
-    visible = items.filter((it) => !it.hidden);
-    if (empty) empty.hidden = visible.length > 0;
+    filtered = items.filter((it) => key === 'all' || it.dataset.cat === key);
+    page = 1;
+    render();
   };
   chips.forEach((c) => c.addEventListener('click', () => applyFilter(c.dataset.filter)));
 
@@ -40,6 +80,8 @@ function initGallery() {
   } else {
     items.forEach((it) => it.classList.add('is-in'));
   }
+
+  render();
 
   const show = (i) => {
     index = (i + visible.length) % visible.length;
