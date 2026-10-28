@@ -3,20 +3,20 @@
 .hashtags { display: flex; flex-wrap: wrap; gap: 0.5rem 0.875rem; li { font-size: 0.875rem; color: v.$color-blue; } }
 .luxe-item .hashtags li { color: #f1d9a0; font-size: 0.9375rem; }
 
-// Luxe collection: one continuous deep-navy stage, photo and copy in alternating rows, oversized gold numerals
-$luxe-ink: #08192b;
-$luxe-gold: #e2c27d;
-.luxe-collection { background: radial-gradient(80% 40% at 15% 0%, rgba(6, 88, 167, 0.22), transparent 70%), $luxe-ink; color: #d9e6f5; padding-block: clamp(2.5rem, 5vw, 5rem); }
-.luxe-item { display: grid; align-items: center; gap: clamp(1.25rem, 3vw, 3rem); padding-block: clamp(1.75rem, 3.5vw, 3.5rem);
-  & + & { border-top: 1px solid rgba(226, 194, 125, 0.22); }
-  @include m.up(lg) { grid-template-columns: 7fr 5fr; gap: clamp(2.5rem, 5vw, 6rem);
-    &--flip { grid-template-columns: 5fr 7fr; .luxe-item__media { order: 2; } } }
-  &__media { margin: 0; overflow: hidden; aspect-ratio: 4 / 3; border-radius: 0 3.5rem 0 0.875rem; box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.35);
+// Luxe collection: warm cream stage, rounded photos in alternating rows, tan serif numerals
+$luxe-cream: #fbf8f2;
+$luxe-tan: #c8a27a;
+$luxe-text: #5a554e;
+.luxe-intro { background: $luxe-cream; padding-bottom: clamp(1rem, 2vw, 2rem); }
+.luxe-collection { background: $luxe-cream; padding-block: 0 clamp(2rem, 4vw, 4rem); }
+.luxe-item { display: grid; align-items: center; gap: clamp(1.25rem, 3vw, 2.5rem); padding-block: clamp(0.75rem, 1.4vw, 1.25rem);
+  @include m.up(lg) { grid-template-columns: 6fr 4fr; gap: clamp(2rem, 4vw, 4.5rem);
+    &--flip { grid-template-columns: 4fr 6fr; .luxe-item__media { order: 2; } } }
+  &__media { margin: 0; overflow: hidden; aspect-ratio: 16 / 10; border-radius: 1rem; @include m.up(lg) { aspect-ratio: 2.3 / 1; } box-shadow: 0 1rem 2rem rgba(60, 40, 20, 0.16);
     img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s v.$ease; } &:hover img { transform: scale(1.05); } }
-  &--flip &__media { border-radius: 3.5rem 0 0.875rem 0; }
-  &__text { display: grid; gap: 0.875rem; align-content: center; max-width: 36rem; p { color: #d9e6f5; font-size: clamp(1rem, 1.15vw, 1.125rem); line-height: 1.7; } }
-  &__num { font-family: v.$font-serif; font-size: clamp(4.5rem, 9vw, 8.5rem); line-height: 0.85; color: $luxe-gold; letter-spacing: -0.02em; font-variant-numeric: lining-nums;
-    &::after { content: ''; display: block; width: 3.5rem; height: 2px; margin-top: 1rem; background: v.$color-red; } }
-  &__title { font-family: v.$font-serif; font-weight: 400; font-size: clamp(1.75rem, 2.8vw, 2.75rem); line-height: 1.12; color: v.$color-white; text-wrap: balance; }
-  &__tag { font-family: v.$font-serif; font-size: clamp(1.25rem, 1.8vw, 1.625rem); line-height: 1.35; color: $luxe-gold; } }
+  &__text { display: grid; gap: 0.5rem; align-content: center; max-width: 34rem; p { color: $luxe-text; font-size: clamp(1rem, 1.05vw, 1.0625rem); line-height: 1.65; } }
+  &__num { font-family: v.$font-serif; font-size: clamp(3.5rem, 6vw, 5.5rem); line-height: 0.95; color: $luxe-tan; font-variant-numeric: lining-nums; }
+  &__title { font-family: v.$font-serif; font-weight: 400; font-size: clamp(1.625rem, 2.2vw, 2.25rem); line-height: 1.15; color: v.$color-ink; text-wrap: balance; }
+  &__tag { font-family: v.$font-serif; font-size: clamp(1.0625rem, 1.3vw, 1.25rem); line-height: 1.35; color: #8a6a44; } }
+.luxe-item .hashtags li { color: #8a6a44; font-size: 0.9375rem; }
 @media (prefers-reduced-motion: reduce) { .luxe-item__media img { transition: none; } }
