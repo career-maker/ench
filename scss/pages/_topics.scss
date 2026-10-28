@@ -129,7 +129,9 @@
 
 // Celebration details: pager sits between the copy and the tile images (phones); full-width row under both on desktop
 .split > .pager--inline { @include m.up(lg) { grid-column: 1 / -1; grid-row: 2; margin-top: clamp(1rem, 3vw, 2rem); } }
-.split > .pager--inline ~ .tile-aside { @include m.up(lg) { grid-column: 2; grid-row: 1; } }
+.split > .pager--inline ~ .related { @include m.up(lg) { grid-column: 2; grid-row: 1; } }
 
 // Buttons never carry the photo-legibility text shadow
 .btn, .dh-panel__go, .purpose-tile__body .btn, .strip__body .btn, .strip__body a, .lz-pane .btn { text-shadow: none; }
+
+.related { display: flex; flex-direction: column; gap: 1rem; .tile-aside { flex: 1; } &__title { font-size: clamp(1.375rem, 2vw, 1.75rem); } }
