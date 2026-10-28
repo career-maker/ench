@@ -126,3 +126,7 @@
     &::before, &--right::before { background: linear-gradient(180deg, rgba(4, 24, 52, 0.82) 0%, rgba(4, 24, 52, 0.78) 100%); }
   }
 }
+
+// Celebration details: pager sits between the copy and the tile images (phones); full-width row under both on desktop
+.split > .pager--inline { @include m.up(lg) { grid-column: 1 / -1; grid-row: 2; margin-top: clamp(1rem, 3vw, 2rem); } }
+.split > .pager--inline ~ .tile-aside { @include m.up(lg) { grid-column: 2; grid-row: 1; } }
