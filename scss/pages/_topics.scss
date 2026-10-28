@@ -135,3 +135,18 @@
 .btn, .dh-panel__go, .purpose-tile__body .btn, .strip__body .btn, .strip__body a, .lz-pane .btn { text-shadow: none; }
 
 .related { align-self: stretch; display: flex; flex-direction: column; gap: 1rem; .tile-aside { flex: 1; } &__title { font-size: clamp(1.375rem, 2vw, 1.75rem); } }
+
+// Related tiles (celebration details): lift, zoom, light sweep, title arrow
+.tile-aside .tile { box-shadow: 0 0.6rem 1.4rem rgba(6, 40, 90, 0.14); transition: transform 0.6s v.$ease, box-shadow 0.6s v.$ease;
+  img { transition: transform 1.1s v.$ease, filter 0.6s ease; }
+  &::before { transition: opacity 0.5s ease; background: linear-gradient(to top, rgba(4, 18, 40, 0.8), rgba(4, 18, 40, 0.05) 60%); }
+  &::after { content: ''; position: absolute; inset: -20% auto -20% 0; width: 45%; z-index: 0; pointer-events: none; transform: translateX(-140%) skewX(-18deg); background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.3), transparent); transition: transform 1s v.$ease; }
+  .tile__title { position: relative; padding-bottom: 0.35rem; transition: transform 0.5s v.$ease;
+    &::after { content: ''; position: absolute; left: 0; bottom: 0; width: 2.5rem; height: 2px; background: v.$color-red; transition: width 0.5s v.$ease; } }
+  .tile__body { transition: transform 0.5s v.$ease; }
+  &:hover, &:focus-visible { transform: translateY(-0.4rem); box-shadow: 0 1.4rem 2.4rem rgba(6, 40, 90, 0.3);
+    img { transform: scale(1.1); filter: saturate(1.1); }
+    &::after { transform: translateX(340%) skewX(-18deg); }
+    .tile__body { transform: translateY(-0.25rem); }
+    .tile__title::after { width: 100%; } } }
+@media (prefers-reduced-motion: reduce) { .tile-aside .tile, .tile-aside .tile img, .tile-aside .tile::after, .tile-aside .tile__body, .tile-aside .tile__title::after { transition: none; } .tile-aside .tile:hover::after { transform: translateX(-140%) skewX(-18deg); } }
