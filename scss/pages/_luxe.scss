@@ -6,7 +6,7 @@
 // Luxe collection: warm cream stage, rounded photos in alternating rows, tan serif numerals
 $luxe-cream: #fbf8f2;
 $luxe-tan: #c8a27a;
-$luxe-text: #5a554e;
+$luxe-text: #111;
 
 .luxe-collection { background: $luxe-cream; padding-block: 0 clamp(2rem, 4vw, 4rem); }
 .luxe-item { display: grid; align-items: center; gap: clamp(1.25rem, 3vw, 2.5rem); padding-block: clamp(1.25rem, 2.6vw, 2.5rem);

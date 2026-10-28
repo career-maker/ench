@@ -4400,7 +4400,7 @@ html.is-loading, html.is-loading body {
   max-width: 34rem;
 }
 .luxe-item__text p {
-  color: #5a554e;
+  color: #111;
   font-size: clamp(1rem, 1.05vw, 1.0625rem);
   line-height: 1.65;
 }
@@ -4485,7 +4485,7 @@ html.is-loading, html.is-loading body {
   margin: 0;
 }
 .luxe-intro .stack:last-child p {
-  color: #5a554e;
+  color: #111;
   font-size: clamp(1rem, 1.1vw, 1.125rem);
   line-height: 1.75;
 }
