@@ -5487,6 +5487,33 @@ li:nth-child(3) > .say-hello .quick-link {
     transition: none !important;
   }
 }
+@media (max-width: 767.98px) {
+  .contact-cards {
+    gap: 0.625rem;
+  }
+  .contact-card {
+    grid-template-columns: 1.25rem 1fr;
+    column-gap: 0.6rem;
+    row-gap: 0.1rem;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    font-size: 0.9375rem;
+    line-height: 1.4;
+  }
+  .contact-card p, .contact-card address {
+    margin: 0;
+  }
+  .contact-card > :not(svg):not(.contact-card__title) {
+    grid-column: 1/-1;
+  }
+  .contact-card__title {
+    font-size: 1.125rem;
+    line-height: 1.2;
+  }
+  .contact-card__title:first-child {
+    grid-column: 1/-1;
+  }
+}
 .topic-grid {
   display: grid;
   gap: clamp(1.25rem, 2.2vw, 2.25rem) clamp(1rem, 1.6vw, 1.75rem);
