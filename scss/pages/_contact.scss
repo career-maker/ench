@@ -152,7 +152,7 @@
 
 // Phones: the three quick links stay on one row (icon above label)
 @include m.down(md) {
-  .say-hello .quick-links { flex-wrap: nowrap; justify-content: center; gap: 0.5rem; li { flex: 1 1 0; min-width: 0; } }
-  .say-hello .quick-link { flex-direction: column; gap: 0.5rem; justify-content: center; &__text { text-align: center; } &__text strong { font-size: 0.9375rem; } &__text strong::after { display: none; } }
+  .say-hello .quick-links { flex-wrap: nowrap; justify-content: center; gap: 1.5rem; }
+  .say-hello .quick-link { flex-direction: column; gap: 0.5rem; justify-content: center; &__text { @include m.visually-hidden; } }
   .say-hello .quick-link__icon { width: 3rem; height: 3rem; }
 }

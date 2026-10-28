@@ -5518,11 +5518,7 @@ li:nth-child(3) > .say-hello .quick-link {
   .say-hello .quick-links {
     flex-wrap: nowrap;
     justify-content: center;
-    gap: 0.5rem;
-  }
-  .say-hello .quick-links li {
-    flex: 1 1 0;
-    min-width: 0;
+    gap: 1.5rem;
   }
   .say-hello .quick-link {
     flex-direction: column;
@@ -5530,13 +5526,15 @@ li:nth-child(3) > .say-hello .quick-link {
     justify-content: center;
   }
   .say-hello .quick-link__text {
-    text-align: center;
-  }
-  .say-hello .quick-link__text strong {
-    font-size: 0.9375rem;
-  }
-  .say-hello .quick-link__text strong::after {
-    display: none;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
   }
   .say-hello .quick-link__icon {
     width: 3rem;
