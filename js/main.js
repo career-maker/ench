@@ -6,7 +6,6 @@ initForms();
 initAnimation();
 initGallery();
 initCarousels();
-initHeritageStyle();
 
 // Floating contact widgets: shown only once the hero has scrolled out of view.
 (() => {

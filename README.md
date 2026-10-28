@@ -18,7 +18,6 @@ npm run check          # verifies local links, anchors and duplicate ids
 - `scss/` – abstracts, base, layout, components, pages; `main.scss` is the entry point. HTML loads `css/main.min.css`.
 - `js/` – Classic scripts (load order matters): `navigation.js`, `forms.js`, `animation.js` (no third-party libraries).
 - `assets/` – optimised WebP images, logos, self-hosted fonts.
-- `scripts/overflow-test.html`, `scripts/func-test.html` – browser test harnesses (serve and open them).
 
 ## Before production
 1. **Indexing**: pages ship with `<meta name="robots" content="noindex, nofollow">` (staging). Set `STAGING = false` in `scripts/build-pages.mjs`, rebuild, and confirm the canonical base `SITE` is correct.
