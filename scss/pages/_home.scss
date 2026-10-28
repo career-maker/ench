@@ -459,3 +459,6 @@
 
 .locations__more { display: none; }
 @include m.down(md) { .locations__more { display: inline-flex; } }
+
+// Plain CTA: white background, no photo
+.cta.cta--plain { background: v.$color-white; color: v.$color-text; text-shadow: none; &::after { content: none; } .cta__title { color: v.$color-ink; } }

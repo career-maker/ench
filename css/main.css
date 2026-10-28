@@ -4286,6 +4286,18 @@ html.is-loading, html.is-loading body {
     display: inline-flex;
   }
 }
+.cta.cta--plain {
+  background: #fff;
+  color: #2b2b2b;
+  text-shadow: none;
+}
+.cta.cta--plain::after {
+  content: none;
+}
+.cta.cta--plain .cta__title {
+  color: #111111;
+}
+
 .about-vision {
   background: #f4f8fe;
 }
