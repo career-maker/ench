@@ -7013,6 +7013,14 @@ li:nth-child(3) > .say-hello .quick-link {
     min-height: clamp(22rem, 27vw, 26rem);
   }
 }
+@media (min-width: 992px) {
+  .strip__body h3 {
+    filter: none;
+    will-change: auto;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: geometricPrecision;
+  }
+}
 .gallery {
   background: linear-gradient(180deg, #fff, #f4f8fe 140%);
 }

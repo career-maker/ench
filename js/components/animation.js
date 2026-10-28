@@ -75,7 +75,7 @@ function initAnimation() {
 function initTitles(reduce) {
   const root = document.documentElement;
   if (reduce || !('IntersectionObserver' in window)) return;
-  const targets = document.querySelectorAll('main h1, main h2, main h3:not(.photo-card__title), .site-footer__title:not(.site-footer__group .site-footer__title)');
+  const targets = [...document.querySelectorAll('main h1, main h2, main h3:not(.photo-card__title), .site-footer__title:not(.site-footer__group .site-footer__title)')].filter((el) => !el.closest('.strip__body')); // strip titles are vertical text: keep them crisp, unsplit
   const split = (node, counter) => {
     [...node.childNodes].forEach((child) => {
       if (child.nodeType === 3) {
