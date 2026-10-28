@@ -4555,6 +4555,33 @@ html.is-loading, html.is-loading body {
     border: 0;
   }
 }
+@media (max-width: 991.98px) {
+  .luxe-item {
+    gap: 0.75rem;
+    justify-items: start;
+  }
+  .luxe-item__text {
+    display: contents;
+  }
+  .luxe-item__text > * {
+    order: 2;
+    margin: 0;
+  }
+  .luxe-item__text > .luxe-item__num, .luxe-item__text > .luxe-item__title {
+    order: 0;
+  }
+  .luxe-item__media {
+    order: 1;
+    width: 100%;
+    margin-block: 0.5rem 0.75rem;
+  }
+  .luxe-item__num {
+    font-size: clamp(3rem, 12vw, 4.5rem);
+  }
+  .luxe-item__text .hashtags {
+    margin-top: 0.25rem;
+  }
+}
 .mice-intro {
   background: linear-gradient(180deg, #fff, #f4f8fe 120%);
 }

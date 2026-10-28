@@ -52,3 +52,12 @@ $luxe-text: #5a554e;
   .luxe-intro .btn { justify-self: center; width: auto; min-width: 10rem; }
   .btn__more { @include m.visually-hidden; }
 }
+
+// Below desktop: number + title, then photo, then the copy
+@include m.down(lg) {
+  .luxe-item { gap: 0.75rem; justify-items: start;
+    &__text { display: contents; > * { order: 2; margin: 0; } > .luxe-item__num, > .luxe-item__title { order: 0; } }
+    &__media { order: 1; width: 100%; margin-block: 0.5rem 0.75rem; }
+    &__num { font-size: clamp(3rem, 12vw, 4.5rem); }
+    &__text .hashtags { margin-top: 0.25rem; } }
+}
