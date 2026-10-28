@@ -43,6 +43,11 @@ function initFooterAccordion() {
     title.addEventListener('click', (e) => {
       if (!mq.matches) return;
       const open = !group.classList.contains('is-open');
+      // one at a time: opening a group closes the others
+      if (open) document.querySelectorAll('.site-footer__group.is-open').forEach((g) => {
+        g.classList.remove('is-open');
+        g.querySelector('.site-footer__toggle')?.setAttribute('aria-expanded', 'false');
+      });
       group.classList.toggle('is-open', open);
       btn.setAttribute('aria-expanded', String(open));
     });
