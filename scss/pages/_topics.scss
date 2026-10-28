@@ -150,3 +150,13 @@
     .tile__body { transform: translateY(-0.25rem); }
     .tile__title::after { width: 100%; } } }
 @media (prefers-reduced-motion: reduce) { .tile-aside .tile, .tile-aside .tile img, .tile-aside .tile::after, .tile-aside .tile__body, .tile-aside .tile__title::after { transition: none; } .tile-aside .tile:hover::after { transform: translateX(-140%) skewX(-18deg); } }
+
+// Pager: arrows, per-direction hover colour, always one row
+.pager { grid-template-columns: 1fr 1fr; gap: clamp(0.5rem, 2vw, 1rem);
+  a { --c: #{v.$color-blue}; padding: clamp(0.75rem, 2vw, 1.25rem) clamp(0.75rem, 2vw, 1.5rem); font-size: clamp(0.9375rem, 3.6vw, 1.375rem); line-height: 1.25; overflow-wrap: anywhere; transition: background 0.35s ease, border-color 0.35s ease, color 0.35s ease, box-shadow v.$t-med, transform 0.45s v.$ease;
+    span { display: inline-flex; align-items: center; gap: 0.5rem; font-size: clamp(0.6875rem, 2.8vw, 0.8125rem); letter-spacing: 0.14em; transition: color 0.35s ease; }
+    span::before, span::after { display: inline-block; font-size: 1.25em; line-height: 1; letter-spacing: 0; transition: transform 0.45s v.$ease; }
+    &:hover, &:focus-visible { background: var(--c); border-color: var(--c); color: v.$color-white; box-shadow: 0 0.6rem 1.4rem rgba(6, 40, 90, 0.22); span { color: v.$color-white; } } }
+  a:first-child { span::before { content: '\2190'; } &:hover span::before, &:focus-visible span::before { transform: translateX(-0.35rem); } }
+  a:last-child { --c: #{v.$color-red}; text-align: right; span { justify-content: flex-end; } span::after { content: '\2192'; } &:hover span::after, &:focus-visible span::after { transform: translateX(0.35rem); } } }
+@media (prefers-reduced-motion: reduce) { .pager a, .pager a span::before, .pager a span::after { transition: none; } }
