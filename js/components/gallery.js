@@ -14,9 +14,10 @@ function initGallery() {
   let index = 0;
   let opener = null;
 
-  // Pagination: pages of 14 on desktop (two full bento blocks), 8 below desktop. The pager only appears when there is more than one page.
+  // Pagination: pages of 14 on desktop (two full bento blocks), 8 on tablets, 9 (3 x 3) on phones. The pager only appears when there is more than one page.
   const mq = window.matchMedia('(min-width: 992px)');
-  const pageSize = () => (mq.matches ? 14 : 8);
+  const mqSmall = window.matchMedia('(max-width: 575.98px)');
+  const pageSize = () => (mq.matches ? 14 : mqSmall.matches ? 9 : 8);
   let filtered = items;
   let page = 1;
   const pager = document.createElement('nav');
@@ -58,6 +59,7 @@ function initGallery() {
     if (scroll) grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
   mq.addEventListener('change', () => render());
+  mqSmall.addEventListener('change', () => render());
 
   const applyFilter = (key) => {
     chips.forEach((c) => {
