@@ -4287,7 +4287,7 @@ html.is-loading, html.is-loading body {
   }
 }
 .cta.cta--plain {
-  background: #fff;
+  background: #f4f8fe;
   color: #2b2b2b;
   text-shadow: none;
 }
