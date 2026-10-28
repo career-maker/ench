@@ -6433,6 +6433,37 @@ li:nth-child(3) > .say-hello .quick-link {
   text-shadow: 0 1px 3px rgba(2, 16, 40, 0.65);
 }
 
+.lz-pane__text {
+  text-shadow: 0 1px 3px rgba(2, 16, 40, 0.7);
+}
+.lz-pane__text p {
+  font-size: clamp(1.0625rem, 1.25vw, 1.1875rem);
+  line-height: 1.65;
+  color: #fff;
+}
+.lz-pane__tag {
+  color: #e3f0ff;
+  font-size: clamp(1.25rem, 1.8vw, 1.625rem);
+}
+.lz-pane__pf {
+  padding: 0.75rem 1.125rem;
+  border-radius: 0.75rem;
+  background: rgba(4, 24, 52, 0.55);
+  border-color: rgba(255, 255, 255, 0.55);
+  font-size: clamp(1.0625rem, 1.25vw, 1.1875rem) !important;
+  line-height: 1.5;
+  text-shadow: none;
+}
+.lz-pane__pf strong {
+  font-weight: 600;
+  color: #f1d9a0;
+}
+@media (max-width: 767.98px) {
+  .lz-pane::before, .lz-pane--right::before {
+    background: linear-gradient(180deg, rgba(4, 24, 52, 0.82) 0%, rgba(4, 24, 52, 0.78) 100%);
+  }
+}
+
 .gallery {
   background: linear-gradient(180deg, #fff, #f4f8fe 140%);
 }
