@@ -6486,6 +6486,10 @@ li:nth-child(3) > .say-hello .quick-link {
   }
 }
 
+.btn, .dh-panel__go, .purpose-tile__body .btn, .strip__body .btn, .strip__body a, .lz-pane .btn {
+  text-shadow: none;
+}
+
 .gallery {
   background: linear-gradient(180deg, #fff, #f4f8fe 140%);
 }
