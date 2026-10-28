@@ -4537,6 +4537,66 @@ html.is-loading, html.is-loading body {
   overflow: hidden;
 }
 
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .hero:has(+ .luxe-intro) .hero__slide {
+      transform: scale(1.18);
+      transform-origin: 50% 0;
+      animation: luxe-hero-par linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0 70vh;
+    }
+    .luxe-item__media img {
+      animation: luxe-pan linear both;
+      animation-timeline: view();
+      animation-range: cover 0% cover 100%;
+    }
+    .luxe-item__num {
+      animation: luxe-drift-a linear both;
+      animation-timeline: view();
+      animation-range: cover 0% cover 100%;
+    }
+    .luxe-item__text > :not(.luxe-item__num) {
+      animation: luxe-drift-b linear both;
+      animation-timeline: view();
+      animation-range: cover 0% cover 100%;
+    }
+    .luxe-intro .stack:first-child {
+      animation: luxe-drift-b linear both;
+      animation-timeline: view();
+      animation-range: cover 0% cover 60%;
+    }
+  }
+}
+@keyframes luxe-hero-par {
+  to {
+    translate: 0 18%;
+  }
+}
+@keyframes luxe-pan {
+  from {
+    object-position: 50% 10%;
+  }
+  to {
+    object-position: 50% 90%;
+  }
+}
+@keyframes luxe-drift-a {
+  from {
+    translate: 0 2.5rem;
+  }
+  to {
+    translate: 0 -2.5rem;
+  }
+}
+@keyframes luxe-drift-b {
+  from {
+    translate: 0 1rem;
+  }
+  to {
+    translate: 0 -1rem;
+  }
+}
 .mice-intro {
   background: linear-gradient(180deg, #fff, #f4f8fe 120%);
 }
