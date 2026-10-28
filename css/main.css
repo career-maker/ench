@@ -4145,6 +4145,51 @@ html.is-loading, html.is-loading body {
   justify-self: end;
 }
 
+@media (max-width: 767.98px) {
+  .mice-split .mice-gallery {
+    order: -1;
+  }
+  .mice-section.section {
+    padding-block: 3rem;
+  }
+  .why.section {
+    padding-block: 3rem;
+  }
+  .section--blue.section {
+    padding-block: 3rem;
+  }
+  .section--blue.section .section-heading {
+    margin-bottom: 1.75rem;
+  }
+  .hear.section {
+    padding-block: 2.5rem 3rem;
+  }
+  .partners.section {
+    padding-block: 3rem 2.5rem;
+  }
+  .accreditations.section {
+    padding-block: 2rem 0;
+  }
+  .ticker {
+    padding-block: 2rem 1rem;
+  }
+  .intro__left {
+    padding-block: 2.5rem 1rem;
+  }
+  .intro__right {
+    padding-block: 0 2rem;
+  }
+  .about-band {
+    min-height: 0;
+    padding-block: 3rem;
+  }
+  .cta {
+    padding-block: 4rem;
+  }
+  .cta--home {
+    padding-block: 6rem 3.5rem;
+  }
+}
 .about-vision {
   background: #f4f8fe;
 }

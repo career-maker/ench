@@ -429,3 +429,20 @@
   &__body { display: grid; gap: 1.25rem; justify-items: start; p { color: #fff; } }
   &__lead { font-family: v.$font-serif; font-size: clamp(1.25rem, 1.9vw, 1.75rem); line-height: 1.35; color: v.$color-white !important; } }
 .about-band__body .btn { justify-self: end; }
+
+// ---- Mobile: tighter vertical rhythm, MICE photos before copy ----
+@include m.down(md) {
+  .mice-split .mice-gallery { order: -1; }
+  .mice-section.section { padding-block: 3rem; }
+  .why.section { padding-block: 3rem; }
+  .section--blue.section { padding-block: 3rem; .section-heading { margin-bottom: 1.75rem; } }
+  .hear.section { padding-block: 2.5rem 3rem; }
+  .partners.section { padding-block: 3rem 2.5rem; }
+  .accreditations.section { padding-block: 2rem 0; }
+  .ticker { padding-block: 2rem 1rem; }
+  .intro__left { padding-block: 2.5rem 1rem; }
+  .intro__right { padding-block: 0 2rem; }
+  .about-band { min-height: 0; padding-block: 3rem; }
+  .cta { padding-block: 4rem; }
+  .cta--home { padding-block: 6rem 3.5rem; }
+}
