@@ -7067,6 +7067,14 @@ li:nth-child(3) > .say-hello .quick-link {
   gap: 0.75rem;
 }
 
+@media (max-width: 991.98px) {
+  .bring-tile .purpose-tile__body {
+    padding-top: 5.5rem;
+  }
+  .purpose-tile:not(.bring-tile) .purpose-tile__body, .strip .strip__body {
+    padding-top: 6rem;
+  }
+}
 .gallery {
   background: linear-gradient(180deg, #fff, #f4f8fe 140%);
 }

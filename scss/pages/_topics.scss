@@ -212,3 +212,6 @@
 
 // Destination panel buttons match the standard .btn size
 .dh-panel__go { padding: 0.875rem 1.875rem; font-size: 1.25rem; letter-spacing: 0.04em; line-height: 1.2; gap: 0.75rem; }
+
+// Below desktop: the copy always starts below the number badge (and a strip of photo remains visible)
+@include m.down(lg) { .bring-tile .purpose-tile__body { padding-top: 5.5rem; } .purpose-tile:not(.bring-tile) .purpose-tile__body, .strip .strip__body { padding-top: 6rem; } }
