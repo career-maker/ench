@@ -4246,17 +4246,32 @@ html.is-loading, html.is-loading body {
     margin-top: 1.25rem;
   }
   .locations__photo {
-    order: -1;
-    position: sticky;
-    top: 4.5rem;
-    z-index: 2;
-    aspect-ratio: 16/9;
+    aspect-ratio: 16/10;
+    margin-block: 0.75rem 0.5rem;
+  }
+  .locations__more {
+    justify-self: start;
+  }
+  .locations__btn {
+    padding-block: 1rem;
+  }
+  #destinations .section-heading__aside .btn {
+    display: none;
   }
   .section-heading {
     margin-bottom: 1.25rem;
   }
   .why.section .section-heading, .hear.section .section-heading {
     margin-bottom: 1.25rem;
+  }
+}
+.locations__more {
+  display: none;
+}
+
+@media (max-width: 767.98px) {
+  .locations__more {
+    display: inline-flex;
   }
 }
 .about-vision {

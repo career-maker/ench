@@ -448,7 +448,14 @@
   #destinations .section-heading { margin-bottom: 1.25rem; }
   .more .carousel__nav { margin-top: 1.25rem; }
   // keep the location photo in view while picking a destination
-  .locations__photo { order: -1; position: sticky; top: 4.5rem; z-index: 2; aspect-ratio: 16 / 9; }
+  // JS moves the photo to sit right under the tapped destination
+  .locations__photo { aspect-ratio: 16 / 10; margin-block: 0.75rem 0.5rem; }
+  .locations__more { justify-self: start; }
+  .locations__btn { padding-block: 1rem; }
+  #destinations .section-heading__aside .btn { display: none; }
   .section-heading { margin-bottom: 1.25rem; }
   .why.section .section-heading, .hear.section .section-heading { margin-bottom: 1.25rem; }
 }
+
+.locations__more { display: none; }
+@include m.down(md) { .locations__more { display: inline-flex; } }

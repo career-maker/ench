@@ -61,6 +61,13 @@ function initAnimation() {
     if (busy) { queued = t; return; }
     swap(t);
   };
+  // Phones: the photo opens directly under the tapped destination name.
+  const photo = document.querySelector('.locations__photo');
+  const wrap = photo && photo.parentElement;
+  const mq = window.matchMedia('(max-width: 767.98px)');
+  const place = (t) => { if (!photo) return; if (mq.matches) t.after(photo); else wrap.insertBefore(photo, wrap.querySelector('.locations__more')); };
+  const sel = () => tabs.find((x) => x.getAttribute('aria-selected') === 'true') || tabs[0];
+  if (photo && tabs.length) { place(sel()); mq.addEventListener('change', () => place(sel())); tabs.forEach((t) => t.addEventListener('click', () => place(t))); }
   tabs.forEach((t) => ['mouseenter', 'focus', 'click'].forEach((ev) => t.addEventListener(ev, () => select(t))));
 }
 
