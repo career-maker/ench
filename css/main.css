@@ -4772,7 +4772,7 @@ html.is-loading, html.is-loading body {
   font-size: 0.875rem;
   color: #6b6b6b;
 }
-.choice:hover .choice__body {
+.choice:hover .quick-link__body {
   border-color: #0658a7;
 }
 input:checked + .choice__body {
@@ -5243,7 +5243,7 @@ input:focus-visible + .choice__body {
 .say-hello .quick-link__icon--mail {
   background: #f04a45;
 }
-.say-hello .quick-link:hover .say-hello .quick-link__icon {
+.say-hello .quick-link:hover .quick-link__icon {
   transform: translateY(-0.2rem) scale(1.06);
 }
 .say-hello .quick-link__text {
@@ -5360,17 +5360,17 @@ input:focus-visible + .choice__body {
   background: linear-gradient(currentColor, currentColor) 0 100%/0 1px no-repeat;
   transition: background-size 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
-.say-hello .quick-link:hover .say-hello .quick-link__icon, .say-hello .quick-link:focus-visible .say-hello .quick-link__icon {
+.say-hello .quick-link:hover .quick-link__icon, .say-hello .quick-link:focus-visible .quick-link__icon {
   transform: translateY(-0.3rem) scale(1.08);
   box-shadow: 0 0.9rem 1.75rem var(--glow);
 }
-.say-hello .quick-link:hover .say-hello .quick-link__icon svg, .say-hello .quick-link:focus-visible .say-hello .quick-link__icon svg {
+.say-hello .quick-link:hover .quick-link__icon svg, .say-hello .quick-link:focus-visible .quick-link__icon svg {
   transform: rotate(-8deg) scale(1.12);
 }
-.say-hello .quick-link:hover .say-hello .quick-link__icon::after, .say-hello .quick-link:focus-visible .say-hello .quick-link__icon::after {
+.say-hello .quick-link:hover .quick-link__icon::after, .say-hello .quick-link:focus-visible .quick-link__icon::after {
   animation: qlRing 0.9s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
-.say-hello .quick-link:hover .say-hello .quick-link__text strong, .say-hello .quick-link:focus-visible .say-hello .quick-link__text strong {
+.say-hello .quick-link:hover .quick-link__text strong, .say-hello .quick-link:focus-visible .quick-link__text strong {
   background-size: 100% 1px;
 }
 
@@ -5414,11 +5414,11 @@ li:nth-child(3) > .say-hello .quick-link {
   transform: translateX(-0.5rem);
   transition: opacity 0.35s, transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
-.say-hello .quick-link:hover .say-hello .quick-link__text strong, .say-hello .quick-link:focus-visible .say-hello .quick-link__text strong {
+.say-hello .quick-link:hover .quick-link__text strong, .say-hello .quick-link:focus-visible .quick-link__text strong {
   color: var(--c);
   transform: translateX(0.25rem);
 }
-.say-hello .quick-link:hover .say-hello .quick-link__text strong::after, .say-hello .quick-link:focus-visible .say-hello .quick-link__text strong::after {
+.say-hello .quick-link:hover .quick-link__text strong::after, .say-hello .quick-link:focus-visible .quick-link__text strong::after {
   opacity: 1;
   transform: none;
 }
@@ -5512,6 +5512,35 @@ li:nth-child(3) > .say-hello .quick-link {
   }
   .contact-card__title:first-child {
     grid-column: 1/-1;
+  }
+}
+@media (max-width: 767.98px) {
+  .say-hello .quick-links {
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  .say-hello .quick-links li {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+  .say-hello .quick-link {
+    flex-direction: column;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+  .say-hello .quick-link__text {
+    text-align: center;
+  }
+  .say-hello .quick-link__text strong {
+    font-size: 0.9375rem;
+  }
+  .say-hello .quick-link__text strong::after {
+    display: none;
+  }
+  .say-hello .quick-link__icon {
+    width: 3rem;
+    height: 3rem;
   }
 }
 .topic-grid {
