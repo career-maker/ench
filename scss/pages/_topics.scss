@@ -160,3 +160,24 @@
   a:first-child { span::before { content: '\2190'; } &:hover span::before, &:focus-visible span::before { transform: translateX(-0.35rem); } }
   a:last-child { --c: #{v.$color-red}; text-align: right; span { justify-content: flex-end; } span::after { content: '\2192'; } &:hover span::after, &:focus-visible span::after { transform: translateX(0.35rem); } } }
 @media (prefers-reduced-motion: reduce) { .pager a, .pager a span::before, .pager a span::after { transition: none; } }
+
+// ---- MICE: readable overlay copy on smaller screens ----
+// Copy that outgrows a tile scrolls inside it, with the scrollbar hidden
+.purpose-tile__body, .strip__body { max-height: 100%; overflow-y: auto; scrollbar-width: none; overscroll-behavior: contain; &::-webkit-scrollbar { display: none; } }
+.purpose-tile__body p, .strip__body p { line-height: 1.6; }
+.purpose-tile:hover::before, .purpose-tile:focus-visible::before { background: rgba(4, 24, 52, 0.9); }
+@include m.up(lg) { .purpose-tile:hover p, .purpose-tile:focus-visible p { max-height: none; } .purpose-tile { min-height: clamp(20rem, 24vw, 24rem); } }
+.strip:hover::before, .strip:focus-within::before { background: linear-gradient(to top, rgba(4, 24, 52, 0.95), rgba(4, 24, 52, 0.75)); }
+
+// Below desktop: copy always visible, tiles grow to fit it, overlay darkened for legibility
+@include m.down(lg) {
+  .purpose-tile, .strip { display: flex; flex-direction: column; justify-content: flex-end; min-height: 17rem;
+    &::before { background: linear-gradient(to top, rgba(4, 24, 52, 0.96) 0%, rgba(4, 24, 52, 0.86) 55%, rgba(4, 24, 52, 0.55) 100%); }
+    &__body { position: relative; inset: auto; max-height: none; overflow: visible; padding: 7rem 1.25rem 1.25rem; }
+    &__body p { max-height: none; opacity: 1; margin-top: 0.625rem; font-size: 1rem; color: #fff; } }
+}
+
+// Phones: MICE "The Enchantive Way" reads eyebrow, title, photos, then copy
+@include m.down(md) {
+  .mice-way__grid { gap: 1rem; > .stack { display: contents; > * { margin-top: 0; } > :not(.eyebrow):not(h2) { order: 2; } } > .photo-trio { order: 1; margin-block: 0.5rem; } }
+}
