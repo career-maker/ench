@@ -382,7 +382,7 @@ html {
 }
 
 .section {
-  padding-block: clamp(3.5rem, 7vw, 7.5rem);
+  padding-block: clamp(2.25rem, 4.5vw, 4.5rem);
 }
 
 .section--tint {
@@ -1829,6 +1829,41 @@ a:hover .icon-btn--diag svg {
   transform: rotate(-45deg);
 }
 
+.logo-row--marquee li[aria-hidden] {
+  display: none;
+}
+
+@media (max-width: 767.98px) {
+  .logo-marquee-wrap {
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+  }
+  .logo-row--marquee {
+    width: max-content;
+    overflow: visible;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 2rem;
+    padding: 0 2rem 0 0;
+    animation: logo-row-scroll 18s linear infinite;
+  }
+  .logo-row--marquee li, .logo-row--marquee li[aria-hidden] {
+    display: grid;
+    flex: none;
+    width: 7.5rem;
+  }
+}
+@keyframes logo-row-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .logo-row--marquee {
+    animation: none;
+  }
+}
 .breadcrumbs {
   font-size: 0.9375rem;
   color: rgba(255, 255, 255, 0.85);
@@ -2382,7 +2417,7 @@ html.is-loading, html.is-loading body {
   isolation: isolate;
   text-align: center;
   color: #fff;
-  padding-block: clamp(5rem, 11vw, 11.875rem);
+  padding-block: clamp(3.5rem, 7vw, 6.5rem);
   overflow: hidden;
 }
 .cta__bg {
@@ -4168,41 +4203,41 @@ html.is-loading, html.is-loading body {
     justify-self: start;
   }
   .mice-section.section {
-    padding-block: 2.5rem;
+    padding-block: 1.75rem;
   }
   .why.section {
-    padding-block: 2.5rem;
+    padding-block: 1.75rem;
   }
   .section--blue.section {
-    padding-block: 2.5rem;
+    padding-block: 1.75rem;
   }
   .section--blue.section .section-heading {
-    margin-bottom: 1.75rem;
+    margin-bottom: 1.25rem;
   }
   .hear.section {
-    padding-block: 2.5rem 3rem;
+    padding-block: 1.75rem;
   }
   .partners.section {
-    padding-block: 3rem 2.5rem;
+    padding-block: 2rem 1.5rem;
   }
   .accreditations.section {
-    padding-block: 2rem 0;
+    padding-block: 1.5rem 0;
   }
   .ticker {
-    padding-block: 2rem 1rem;
+    padding-block: 1.25rem 0.5rem;
   }
   .intro__left {
-    padding-block: 2.5rem 1rem;
+    padding-block: 1.75rem 1rem;
   }
   .intro__right {
     padding-block: 0 2rem;
   }
   .about-band {
     min-height: 0;
-    padding-block: 3rem;
+    padding-block: 2rem;
   }
   .more.section, #destinations.section {
-    padding-block: 2.5rem;
+    padding-block: 1.75rem;
   }
   #destinations .section-heading {
     margin-bottom: 1.25rem;
@@ -4216,6 +4251,12 @@ html.is-loading, html.is-loading body {
     top: 4.5rem;
     z-index: 2;
     aspect-ratio: 16/9;
+  }
+  .section-heading {
+    margin-bottom: 1.25rem;
+  }
+  .why.section .section-heading, .hear.section .section-heading {
+    margin-bottom: 1.25rem;
   }
 }
 .about-vision {
@@ -6248,7 +6289,7 @@ li:nth-child(3) > .say-hello .quick-link {
   isolation: isolate;
   color: #fff;
   text-align: center;
-  padding-block: clamp(4rem, 9vw, 8rem);
+  padding-block: clamp(3rem, 6vw, 5.5rem);
 }
 .dh-plan img {
   position: absolute;

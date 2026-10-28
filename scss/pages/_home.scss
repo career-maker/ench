@@ -28,7 +28,7 @@
     &[aria-selected='true'] { color: v.$color-blue; font-weight: 400; border-bottom-color: v.$color-blue; } &:hover { color: v.$color-blue; }
     .icon-btn { opacity: 0; transition: opacity v.$t-fast; } &[aria-selected='true'] .icon-btn { opacity: 1; } }
   &__photo { border-radius: v.$radius-md; overflow: hidden; aspect-ratio: 4 / 3.1; img { width: 100%; height: 100%; object-fit: cover; } } }
-.cta { position: relative; isolation: isolate; text-align: center; color: v.$color-white; padding-block: clamp(5rem, 11vw, 11.875rem); overflow: hidden;
+.cta { position: relative; isolation: isolate; text-align: center; color: v.$color-white; padding-block: clamp(3.5rem, 7vw, 6.5rem); overflow: hidden;
   &__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
   &::after { content: ''; position: absolute; inset: 0; z-index: -1; background: rgba(0, 18, 36, 0.5); }
   &__title { color: v.$color-white; max-width: 22ch; margin-inline: auto; }
@@ -434,19 +434,21 @@
 @include m.down(md) {
   // heading, then photos, then copy
   .mice-split { gap: 1.25rem; > .stack { display: contents; > * { margin-top: 0; } > :not(h2) { order: 2; } } .mice-gallery { order: 1; } .btn { justify-self: start; } }
-  .mice-section.section { padding-block: 2.5rem; }
-  .why.section { padding-block: 2.5rem; }
-  .section--blue.section { padding-block: 2.5rem; .section-heading { margin-bottom: 1.75rem; } }
-  .hear.section { padding-block: 2.5rem 3rem; }
-  .partners.section { padding-block: 3rem 2.5rem; }
-  .accreditations.section { padding-block: 2rem 0; }
-  .ticker { padding-block: 2rem 1rem; }
-  .intro__left { padding-block: 2.5rem 1rem; }
+  .mice-section.section { padding-block: 1.75rem; }
+  .why.section { padding-block: 1.75rem; }
+  .section--blue.section { padding-block: 1.75rem; .section-heading { margin-bottom: 1.25rem; } }
+  .hear.section { padding-block: 1.75rem; }
+  .partners.section { padding-block: 2rem 1.5rem; }
+  .accreditations.section { padding-block: 1.5rem 0; }
+  .ticker { padding-block: 1.25rem 0.5rem; }
+  .intro__left { padding-block: 1.75rem 1rem; }
   .intro__right { padding-block: 0 2rem; }
-  .about-band { min-height: 0; padding-block: 3rem; }
-  .more.section, #destinations.section { padding-block: 2.5rem; }
+  .about-band { min-height: 0; padding-block: 2rem; }
+  .more.section, #destinations.section { padding-block: 1.75rem; }
   #destinations .section-heading { margin-bottom: 1.25rem; }
   .more .carousel__nav { margin-top: 1.25rem; }
   // keep the location photo in view while picking a destination
   .locations__photo { order: -1; position: sticky; top: 4.5rem; z-index: 2; aspect-ratio: 16 / 9; }
+  .section-heading { margin-bottom: 1.25rem; }
+  .why.section .section-heading, .hear.section .section-heading { margin-bottom: 1.25rem; }
 }

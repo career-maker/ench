@@ -103,7 +103,7 @@
 .route { position: relative; display: grid; gap: 1rem; list-style: none; padding: 0; margin: clamp(2.5rem, 5vw, 4rem) 0 0; @include m.up(md) { grid-template-columns: repeat(5, 1fr); gap: 0; &::before { content: ''; position: absolute; left: 10%; right: 10%; top: 0.5625rem; border-top: 2px dashed rgba(6, 88, 167, 0.35); } }
   li { text-align: center; } a { display: grid; justify-items: center; gap: 0.75rem; font-family: v.$font-serif; font-size: clamp(1.125rem, 1.6vw, 1.5rem); transition: color v.$t-fast; &:hover { color: v.$color-blue; } &:hover .route__dot { transform: scale(1.35); background: v.$color-red; } }
   &__dot { position: relative; width: 1.25rem; height: 1.25rem; border-radius: 50%; background: v.$color-blue; border: 4px solid v.$color-tint; box-shadow: 0 0 0 1px v.$color-blue; transition: transform v.$t-med, background v.$t-med; } }
-.dh-plan { position: relative; isolation: isolate; color: v.$color-white; text-align: center; padding-block: clamp(4rem, 9vw, 8rem);
+.dh-plan { position: relative; isolation: isolate; color: v.$color-white; text-align: center; padding-block: clamp(3rem, 6vw, 5.5rem);
   img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; } &::before { content: ''; position: absolute; inset: 0; z-index: -1; background: rgba(4, 24, 52, 0.62); }
   .container { display: grid; justify-items: center; gap: 1rem; max-width: 52rem; } .h-1 { color: v.$color-white; } }
 // Destination detail mosaic tiles: zoom inside frame, lift, dim siblings
