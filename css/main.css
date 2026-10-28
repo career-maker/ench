@@ -6491,6 +6491,7 @@ li:nth-child(3) > .say-hello .quick-link {
 }
 
 .related {
+  align-self: stretch;
   display: flex;
   flex-direction: column;
   gap: 1rem;
