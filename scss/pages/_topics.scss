@@ -200,3 +200,12 @@
 
 // Vertical strip titles: crisp text (no word-reveal blur, no layer promotion)
 @include m.up(lg) { .strip__body h3 { filter: none; will-change: auto; -webkit-font-smoothing: antialiased; text-rendering: geometricPrecision; } }
+
+// Strips (desktop): copy has a fixed width so it never re-wraps while the strip widens; it fades in once opening
+@include m.up(lg) {
+  .strip__body { right: auto; width: 36rem; max-width: none; }
+  .strip:hover .strip__body > :not(.dh-panel__num), .strip:focus-within .strip__body > :not(.dh-panel__num),
+  .strip-grid:not(:hover):not(:focus-within) .strip:first-child .strip__body > :not(.dh-panel__num) { animation: strip-copy-in 0.55s 0.25s v.$ease both; }
+}
+@keyframes strip-copy-in { from { opacity: 0; transform: translateY(0.75rem); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .strip__body > * { animation: none !important; } }

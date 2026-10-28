@@ -7021,6 +7021,32 @@ li:nth-child(3) > .say-hello .quick-link {
     text-rendering: geometricPrecision;
   }
 }
+@media (min-width: 992px) {
+  .strip__body {
+    right: auto;
+    width: 36rem;
+    max-width: none;
+  }
+  .strip:hover .strip__body > :not(.dh-panel__num), .strip:focus-within .strip__body > :not(.dh-panel__num),
+  .strip-grid:not(:hover):not(:focus-within) .strip:first-child .strip__body > :not(.dh-panel__num) {
+    animation: strip-copy-in 0.55s 0.25s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  }
+}
+@keyframes strip-copy-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .strip__body > * {
+    animation: none !important;
+  }
+}
 .gallery {
   background: linear-gradient(180deg, #fff, #f4f8fe 140%);
 }
