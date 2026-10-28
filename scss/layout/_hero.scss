@@ -6,6 +6,7 @@
   &::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to bottom, rgba(0, 20, 40, 0.55), rgba(0, 20, 40, 0.38) 45%, rgba(0, 20, 40, 0.68)); }
   &__inner { width: 100%; padding-block: clamp(7.5rem, 12vw, 12.5rem) clamp(3rem, 7vw, 8.125rem); }
   &__inner, &__crumbs, &__vertical { text-shadow: 0 1px 3px rgba(2, 16, 40, 0.6), 0 0 1.5rem rgba(2, 16, 40, 0.45); }
+  .btn { text-shadow: none; }
   &__title { max-width: 12em; color: v.$color-white; }
   &__sub { margin-top: 2.3rem; font-size: 1.2rem; max-width: 56ch; }
   &__actions { margin-top: 3.1rem; display: flex; flex-wrap: wrap; gap: 1rem; }

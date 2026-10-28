@@ -30,8 +30,7 @@
   &__photo { border-radius: v.$radius-md; overflow: hidden; aspect-ratio: 4 / 3.1; img { width: 100%; height: 100%; object-fit: cover; } } }
 .cta { position: relative; isolation: isolate; text-align: center; color: v.$color-white; padding-block: clamp(5rem, 11vw, 11.875rem); overflow: hidden;
   &__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
-  &::after { content: ''; position: absolute; inset: 0; z-index: -1; background: rgba(0, 18, 36, 0.62); }
-  text-shadow: 0 1px 3px rgba(2, 16, 40, 0.6), 0 0 1.5rem rgba(2, 16, 40, 0.45);
+  &::after { content: ''; position: absolute; inset: 0; z-index: -1; background: rgba(0, 18, 36, 0.5); }
   &__title { color: v.$color-white; max-width: 22ch; margin-inline: auto; }
   &__text { max-width: 70ch; margin: 1.375rem auto 0; font-weight: 300; }
   &__ghost { position: absolute; inset: clamp(0.5rem, 2vw, 2.5rem) 0 auto; font-size: clamp(2.5rem, 7.5vw, 9rem); line-height: 1; color: rgba(255, 255, 255, 0.1); white-space: nowrap; z-index: -1; text-align: center; user-select: none; }
@@ -420,6 +419,7 @@
   &__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 62%; z-index: -2; }
   &::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(4, 36, 82, 0.75) 0%, rgba(6, 70, 140, 0.5) 50%, rgba(4, 36, 82, 0.6) 100%), linear-gradient(0deg, rgba(4, 24, 52, 0.3), rgba(4, 24, 52, 0) 40%); }
   &__head, &__body { text-shadow: 0 1px 2px rgba(2, 16, 40, 0.75), 0 0 1.25rem rgba(2, 16, 40, 0.5); }
+  .btn { text-shadow: none; }
   &__grid { display: grid; gap: clamp(2rem, 5vw, 5rem); align-items: center; @include m.up(lg) { grid-template-columns: 1fr 1fr; } }
   &__head { display: grid; gap: 1.5rem; .h-1 { color: v.$color-white; } }
   &__eyebrow { font-size: 0.8125rem; letter-spacing: 0.2em; text-transform: uppercase; color: #cfe3f8; }
@@ -434,9 +434,9 @@
 @include m.down(md) {
   // heading, then photos, then copy
   .mice-split { gap: 1.25rem; > .stack { display: contents; > * { margin-top: 0; } > :not(h2) { order: 2; } } .mice-gallery { order: 1; } .btn { justify-self: start; } }
-  .mice-section.section { padding-block: 3rem; }
-  .why.section { padding-block: 3rem; }
-  .section--blue.section { padding-block: 3rem; .section-heading { margin-bottom: 1.75rem; } }
+  .mice-section.section { padding-block: 2.5rem; }
+  .why.section { padding-block: 2.5rem; }
+  .section--blue.section { padding-block: 2.5rem; .section-heading { margin-bottom: 1.75rem; } }
   .hear.section { padding-block: 2.5rem 3rem; }
   .partners.section { padding-block: 3rem 2.5rem; }
   .accreditations.section { padding-block: 2rem 0; }
@@ -444,6 +444,9 @@
   .intro__left { padding-block: 2.5rem 1rem; }
   .intro__right { padding-block: 0 2rem; }
   .about-band { min-height: 0; padding-block: 3rem; }
-  .cta { padding-block: 4rem; }
-  .cta--home { padding-block: 6rem 3.5rem; }
+  .more.section, #destinations.section { padding-block: 2.5rem; }
+  #destinations .section-heading { margin-bottom: 1.25rem; }
+  .more .carousel__nav { margin-top: 1.25rem; }
+  // keep the location photo in view while picking a destination
+  .locations__photo { order: -1; position: sticky; top: 4.5rem; z-index: 2; aspect-ratio: 16 / 9; }
 }
