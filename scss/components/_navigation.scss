@@ -15,3 +15,6 @@
   }
 }
 @include m.up(lg) { .nav__list { width: 57.5rem; justify-content: space-between; } }
+
+// Hero rail links (Celebrations / Leisure / Lux) join the menu below the large breakpoint, where the rail is hidden
+@include m.up(lg) { .nav__item--rail { display: none; } }

@@ -1523,6 +1523,11 @@ a:hover .icon-btn--diag svg {
     justify-content: space-between;
   }
 }
+@media (min-width: 992px) {
+  .nav__item--rail {
+    display: none;
+  }
+}
 .section-heading {
   display: grid;
   gap: 1.125rem 3rem;
