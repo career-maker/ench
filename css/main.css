@@ -4325,6 +4325,104 @@ html.is-loading, html.is-loading body {
   color: #0658a7;
 }
 
+.luxe-item .hashtags li {
+  color: #f1d9a0;
+  font-size: 0.9375rem;
+}
+
+.luxe-collection {
+  background: radial-gradient(80% 40% at 15% 0%, rgba(6, 88, 167, 0.22), transparent 70%), #08192b;
+  color: #d9e6f5;
+  padding-block: clamp(2.5rem, 5vw, 5rem);
+}
+
+.luxe-item {
+  display: grid;
+  align-items: center;
+  gap: clamp(1.25rem, 3vw, 3rem);
+  padding-block: clamp(1.75rem, 3.5vw, 3.5rem);
+}
+.luxe-item + .luxe-item {
+  border-top: 1px solid rgba(226, 194, 125, 0.22);
+}
+@media (min-width: 992px) {
+  .luxe-item {
+    grid-template-columns: 7fr 5fr;
+    gap: clamp(2.5rem, 5vw, 6rem);
+  }
+  .luxe-item--flip {
+    grid-template-columns: 5fr 7fr;
+  }
+  .luxe-item--flip .luxe-item__media {
+    order: 2;
+  }
+}
+.luxe-item__media {
+  margin: 0;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  border-radius: 0 3.5rem 0 0.875rem;
+  box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.35);
+}
+.luxe-item__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.luxe-item__media:hover img {
+  transform: scale(1.05);
+}
+.luxe-item--flip .luxe-item__media {
+  border-radius: 3.5rem 0 0.875rem 0;
+}
+.luxe-item__text {
+  display: grid;
+  gap: 0.875rem;
+  align-content: center;
+  max-width: 36rem;
+}
+.luxe-item__text p {
+  color: #d9e6f5;
+  font-size: clamp(1rem, 1.15vw, 1.125rem);
+  line-height: 1.7;
+}
+.luxe-item__num {
+  font-family: "Libre Caslon Display", "Times New Roman", serif;
+  font-size: clamp(4.5rem, 9vw, 8.5rem);
+  line-height: 0.85;
+  color: #e2c27d;
+  letter-spacing: -0.02em;
+  font-variant-numeric: lining-nums;
+}
+.luxe-item__num::after {
+  content: "";
+  display: block;
+  width: 3.5rem;
+  height: 2px;
+  margin-top: 1rem;
+  background: #e8372a;
+}
+.luxe-item__title {
+  font-family: "Libre Caslon Display", "Times New Roman", serif;
+  font-weight: 400;
+  font-size: clamp(1.75rem, 2.8vw, 2.75rem);
+  line-height: 1.12;
+  color: #fff;
+  text-wrap: balance;
+}
+.luxe-item__tag {
+  font-family: "Libre Caslon Display", "Times New Roman", serif;
+  font-size: clamp(1.25rem, 1.8vw, 1.625rem);
+  line-height: 1.35;
+  color: #e2c27d;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .luxe-item__media img {
+    transition: none;
+  }
+}
 .mice-intro {
   background: linear-gradient(180deg, #fff, #f4f8fe 120%);
 }
