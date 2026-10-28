@@ -163,7 +163,7 @@
 
 // ---- MICE: readable overlay copy on smaller screens ----
 // Copy that outgrows a tile scrolls inside it, with the scrollbar hidden
-.purpose-tile__body, .strip__body { max-height: 100%; overflow-y: auto; scrollbar-width: none; overscroll-behavior: contain; &::-webkit-scrollbar { display: none; } }
+.purpose-tile__body, .strip__body { max-height: 100%; overflow-y: auto; scrollbar-width: none; &::-webkit-scrollbar { display: none; } }
 .purpose-tile__body p, .strip__body p { line-height: 1.6; }
 .purpose-tile:hover::before, .purpose-tile:focus-visible::before { background: rgba(4, 24, 52, 0.9); }
 @include m.up(lg) { .purpose-tile:hover p, .purpose-tile:focus-visible p { max-height: none; } .purpose-tile { min-height: clamp(20rem, 24vw, 24rem); } }
@@ -191,3 +191,9 @@
   p { font-size: clamp(1.0625rem, 1.15vw, 1.1875rem); color: #fff; } }
 @include m.up(lg) { .strip__body h3 { font-size: clamp(1.25rem, 1.4vw, 1.5rem); } .strip:hover .strip__body h3, .strip:focus-within .strip__body h3, .strip-grid:not(:hover):not(:focus-within) .strip:first-child .strip__body h3 { font-size: clamp(1.625rem, 2vw, 2rem); } }
 @include m.down(lg) { .purpose-tile__body p, .strip__body p { font-size: 1.0625rem; } }
+
+// Keep copy clear of the number badge; inner scroll only appears when the copy truly outgrows the card (and never traps page scroll)
+@include m.up(lg) {
+  .bring-tile .purpose-tile__body { max-height: calc(100% - 3.75rem); }
+  .purpose-tile { min-height: clamp(22rem, 27vw, 26rem); }
+}

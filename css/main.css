@@ -6891,7 +6891,6 @@ li:nth-child(3) > .say-hello .quick-link {
   max-height: 100%;
   overflow-y: auto;
   scrollbar-width: none;
-  overscroll-behavior: contain;
 }
 .purpose-tile__body::-webkit-scrollbar, .strip__body::-webkit-scrollbar {
   display: none;
@@ -6994,6 +6993,14 @@ li:nth-child(3) > .say-hello .quick-link {
 @media (max-width: 991.98px) {
   .purpose-tile__body p, .strip__body p {
     font-size: 1.0625rem;
+  }
+}
+@media (min-width: 992px) {
+  .bring-tile .purpose-tile__body {
+    max-height: calc(100% - 3.75rem);
+  }
+  .purpose-tile {
+    min-height: clamp(22rem, 27vw, 26rem);
   }
 }
 .gallery {
