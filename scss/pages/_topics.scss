@@ -95,8 +95,7 @@
 .dh-panel { display: block; min-height: 22rem;
   .strip__body { display: grid; gap: 0.5rem; }
   &__num { font-size: 0.8125rem; letter-spacing: 0.2em; color: rgba(255, 255, 255, 0.8); }
-  &__go { display: inline-flex; gap: 0.5rem; align-items: center; justify-self: start; margin-top: 0.5rem; padding: 0.5rem 1.125rem; border-radius: v.$radius-pill; background: rgba(255, 255, 255, 0.16); backdrop-filter: blur(0.5rem); border: 1px solid rgba(255, 255, 255, 0.4); font-size: 0.9375rem; transition: background v.$t-fast, color v.$t-fast; i { font-style: normal; transition: transform v.$t-med; } }
-  &:hover &__go { background: v.$color-white; color: v.$color-ink; } &:hover &__go i { transform: translateX(0.25rem); }
+  &__go { justify-self: start; margin-top: 0.5rem; }
   @include m.up(lg) { &__num, &__go { display: none; } &:hover, &:focus-visible, .dh-grid:not(:hover):not(:focus-within) &:first-child { .dh-panel__num { display: block; } .dh-panel__go { display: inline-flex; } } } }
 .dh-journey { background: v.$color-tint;
   &__head { display: grid; gap: clamp(1.5rem, 4vw, 4rem); @include m.up(lg) { grid-template-columns: 5fr 6fr; } } }
@@ -209,9 +208,6 @@
 }
 @keyframes strip-copy-in { from { opacity: 0; transform: translateY(0.75rem); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .strip__body > * { animation: none !important; } }
-
-// Destination panel buttons match the standard .btn size
-.dh-panel__go { padding: 0.875rem 1.875rem; font-size: 1.25rem; letter-spacing: 0.04em; line-height: 1.2; gap: 0.75rem; }
 
 // Below desktop: the copy always starts below the number badge (and a strip of photo remains visible)
 @include m.down(lg) { .bring-tile .purpose-tile__body { padding-top: 5.5rem; } .purpose-tile:not(.bring-tile) .purpose-tile__body, .strip .strip__body { padding-top: 6rem; } }
