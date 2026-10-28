@@ -4146,8 +4146,23 @@ html.is-loading, html.is-loading body {
 }
 
 @media (max-width: 767.98px) {
+  .mice-split {
+    gap: 1.25rem;
+  }
+  .mice-split > .stack {
+    display: contents;
+  }
+  .mice-split > .stack > * {
+    margin-top: 0;
+  }
+  .mice-split > .stack > :not(h2) {
+    order: 2;
+  }
   .mice-split .mice-gallery {
-    order: -1;
+    order: 1;
+  }
+  .mice-split .btn {
+    justify-self: start;
   }
   .mice-section.section {
     padding-block: 3rem;

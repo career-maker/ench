@@ -432,7 +432,8 @@
 
 // ---- Mobile: tighter vertical rhythm, MICE photos before copy ----
 @include m.down(md) {
-  .mice-split .mice-gallery { order: -1; }
+  // heading, then photos, then copy
+  .mice-split { gap: 1.25rem; > .stack { display: contents; > * { margin-top: 0; } > :not(h2) { order: 2; } } .mice-gallery { order: 1; } .btn { justify-self: start; } }
   .mice-section.section { padding-block: 3rem; }
   .why.section { padding-block: 3rem; }
   .section--blue.section { padding-block: 3rem; .section-heading { margin-bottom: 1.75rem; } }
