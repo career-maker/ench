@@ -9,3 +9,6 @@
   Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'sha256-HkGMStIp1ccXSPCA8iuG8olx4MCgXjxHLRWTR0Hs6lo='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-ancestors 'self'; form-action 'self'; base-uri 'self'; object-src 'none'"
 </IfModule>
 ErrorDocument 404 /404.html
+# Hide build tooling, sources and docs from the web (only built pages, css/, js/, assets/ are public)
+RedirectMatch 404 /(\.git|\.deploy|node_modules|scripts|src|scss|docs|qa-report|design-mockups)(/|$)
+RedirectMatch 404 /(package(-lock)?\.json|README\.md|Design\.pdf)$
