@@ -93,7 +93,7 @@
 .dh-panels { padding-bottom: clamp(3rem, 6vw, 6rem); }
 .dh-grid { @include m.up(lg) { height: clamp(34rem, 80vh, 46rem); } }
 .dh-panel { display: block; min-height: 22rem;
-  .strip__body { display: grid; gap: 0.5rem; padding: clamp(1.25rem, 2vw, 2rem); h3 { font-size: clamp(1.5rem, 2.4vw, 2.5rem); } p { font-family: v.$font-serif; font-size: 1.125rem; color: #e6eef8; } }
+  .strip__body { display: grid; gap: 0.5rem; }
   &__num { font-size: 0.8125rem; letter-spacing: 0.2em; color: rgba(255, 255, 255, 0.8); }
   &__go { display: inline-flex; gap: 0.5rem; align-items: center; justify-self: start; margin-top: 0.5rem; padding: 0.5rem 1.125rem; border-radius: v.$radius-pill; background: rgba(255, 255, 255, 0.16); backdrop-filter: blur(0.5rem); border: 1px solid rgba(255, 255, 255, 0.4); font-size: 0.9375rem; transition: background v.$t-fast, color v.$t-fast; i { font-style: normal; transition: transform v.$t-med; } }
   &:hover &__go { background: v.$color-white; color: v.$color-ink; } &:hover &__go i { transform: translateX(0.25rem); }
