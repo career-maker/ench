@@ -30,7 +30,8 @@
   &__photo { border-radius: v.$radius-md; overflow: hidden; aspect-ratio: 4 / 3.1; img { width: 100%; height: 100%; object-fit: cover; } } }
 .cta { position: relative; isolation: isolate; text-align: center; color: v.$color-white; padding-block: clamp(5rem, 11vw, 11.875rem); overflow: hidden;
   &__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
-  &::after { content: ''; position: absolute; inset: 0; z-index: -1; background: rgba(0, 18, 36, 0.5); }
+  &::after { content: ''; position: absolute; inset: 0; z-index: -1; background: rgba(0, 18, 36, 0.62); }
+  text-shadow: 0 1px 3px rgba(2, 16, 40, 0.6), 0 0 1.5rem rgba(2, 16, 40, 0.45);
   &__title { color: v.$color-white; max-width: 22ch; margin-inline: auto; }
   &__text { max-width: 70ch; margin: 1.375rem auto 0; font-weight: 300; }
   &__ghost { position: absolute; inset: clamp(0.5rem, 2vw, 2.5rem) 0 auto; font-size: clamp(2.5rem, 7.5vw, 9rem); line-height: 1; color: rgba(255, 255, 255, 0.1); white-space: nowrap; z-index: -1; text-align: center; user-select: none; }
@@ -417,7 +418,7 @@
 // Home "About" band: team photo background with a brand-blue overlay
 .about-band { position: relative; isolation: isolate; display: flex; align-items: center; min-height: clamp(34rem, 90vh, 52rem); padding-block: clamp(4rem, 8vw, 7rem); color: v.$color-white;
   &__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 62%; z-index: -2; }
-  &::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(4, 36, 82, 0.62) 0%, rgba(6, 70, 140, 0.34) 50%, rgba(4, 36, 82, 0.46) 100%), linear-gradient(0deg, rgba(4, 24, 52, 0.3), rgba(4, 24, 52, 0) 40%); }
+  &::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(4, 36, 82, 0.75) 0%, rgba(6, 70, 140, 0.5) 50%, rgba(4, 36, 82, 0.6) 100%), linear-gradient(0deg, rgba(4, 24, 52, 0.3), rgba(4, 24, 52, 0) 40%); }
   &__head, &__body { text-shadow: 0 1px 2px rgba(2, 16, 40, 0.75), 0 0 1.25rem rgba(2, 16, 40, 0.5); }
   &__grid { display: grid; gap: clamp(2rem, 5vw, 5rem); align-items: center; @include m.up(lg) { grid-template-columns: 1fr 1fr; } }
   &__head { display: grid; gap: 1.5rem; .h-1 { color: v.$color-white; } }
