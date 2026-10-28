@@ -10,6 +10,10 @@ const SITE = 'https://www.enchantiveasia.com/'; // ponytail: canonical base; con
 const BUILD = Date.now().toString(36); // cache-buster so browsers never serve stale CSS/JS
 const STAGING = true; // set false at launch to remove the noindex tag (see README)
 
+// 404 is served at any depth (/a/b/c), so its relative URLs must be absolute paths. Staging lives in a subfolder.
+const BASE_404 = STAGING ? '/enchantiveasia/' : '/';
+const abs404 = (h) => h.replace(/(href|src)="(?![a-z][a-z0-9+.-]*:|#|\/)([^"]*)"/g, `$1="${BASE_404}$2"`);
+
 const sprite = part('sprite.html');
 const footer = part('footer.html');
 const cta = part('cta.html');
@@ -70,7 +74,7 @@ ${footer}
 </body>
 </html>
 `;
-  writeFileSync(join(root, file), html);
+  writeFileSync(join(root, file), file === '404.html' ? abs404(html) : html);
   built.push(file);
   console.log('built', file);
 }

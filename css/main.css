@@ -7461,3 +7461,31 @@ body.is-lightbox {
   -webkit-text-stroke: 1px rgba(255, 255, 255, 0.7);
   margin-bottom: 0.5rem;
 }
+.notfound__links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1.5rem;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  color: #fff;
+}
+.notfound__links a {
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
+  text-decoration-color: rgba(255, 255, 255, 0.45);
+  transition: text-decoration-color 0.2s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.notfound__links a:hover, .notfound__links a:focus-visible {
+  text-decoration-color: #fff;
+}
+.notfound__links-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
