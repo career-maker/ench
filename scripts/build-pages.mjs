@@ -46,7 +46,8 @@ ${STAGING ? '<meta name="robots" content="noindex, nofollow">\n' : ''}<link rel=
 <meta property="og:image" content="${og}">
 <meta property="og:url" content="${SITE}${file === 'index.html' ? '' : file}">
 <meta name="theme-color" content="#0658a7">
-<link rel="icon" href="assets/logos/enchantive-asia-logo-black.svg" type="image/svg+xml">
+<link rel="icon" href="assets/icons/favicon.png" type="image/png" sizes="150x150">
+<link rel="apple-touch-icon" href="assets/icons/favicon.png">
 <link rel="preload" href="assets/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/figtree-latin-300-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="css/main.min.css?v=${BUILD}">
