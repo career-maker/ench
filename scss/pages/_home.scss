@@ -462,3 +462,5 @@
 
 // Plain CTA: light tint background, no photo
 .cta.cta--plain { background: v.$color-tint; color: v.$color-text; text-shadow: none; &::after { content: none; } .cta__title { color: v.$color-ink; } }
+// Testimonials: centred title only, no intro paragraph or button
+.hear .section-heading { margin-bottom: 2.5rem; }
