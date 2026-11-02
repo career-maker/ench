@@ -211,3 +211,6 @@
 
 // Below desktop: the copy always starts below the number badge (and a strip of photo remains visible)
 @include m.down(lg) { .bring-tile .purpose-tile__body { padding-top: 5.5rem; } .purpose-tile:not(.bring-tile) .purpose-tile__body, .strip .strip__body { padding-top: 6rem; } }
+
+// Destinations accordion: any number of strips share the row; collapsed strips never get narrower than a readable vertical title.
+@include m.up(lg) { .dh-grid .dh-panel { min-width: 3.25rem; } }

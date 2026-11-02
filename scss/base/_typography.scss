@@ -1,14 +1,9 @@
 @use '../abstracts/variables' as v;
 @use '../abstracts/mixins' as m;
 
-@font-face { font-family: 'Libre Caslon Display'; font-weight: 400; font-display: swap; src: url('../assets/fonts/libre-caslon-display-latin-400-normal.woff2') format('woff2'); }
-@font-face { font-family: 'Figtree'; font-weight: 300; font-display: swap; src: url('../assets/fonts/figtree-latin-300-normal.woff2') format('woff2'); }
-@font-face { font-family: 'Figtree'; font-weight: 400; font-display: swap; src: url('../assets/fonts/figtree-latin-400-normal.woff2') format('woff2'); }
-@font-face { font-family: 'Figtree'; font-weight: 500; font-display: swap; src: url('../assets/fonts/figtree-latin-500-normal.woff2') format('woff2'); }
-@font-face { font-family: 'Figtree'; font-weight: 700; font-display: swap; src: url('../assets/fonts/figtree-latin-700-normal.woff2') format('woff2'); }
-@font-face { font-family: 'Figtree'; font-weight: 800; font-display: swap; src: url('../assets/fonts/figtree-latin-800-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Fraunces'; font-weight: 100 900; font-style: normal; font-display: swap; src: url('../assets/fonts/fraunces-latin-opsz-normal.woff2') format('woff2'); }
 
-body { font-family: v.$font-sans; font-weight: 300; font-size: 1.2rem; line-height: 1.46; color: v.$color-text; background: v.$color-white; }
+body { font-family: v.$font-sans; font-weight: 350; font-optical-sizing: auto; font-size: 1.2rem; line-height: 1.46; color: v.$color-text; background: v.$color-white; }
 p + p { margin-top: 1.1em; }
 
 // Heading classes are decoupled from tags (use the right tag, pick the look).
@@ -22,3 +17,9 @@ p + p { margin-top: 1.1em; }
 .lead { font-size: 1.375rem; line-height: 1.4; }
 .sr-only { @include m.visually-hidden; }
 .eyebrow--light { color: #fff; }
+
+// Fraunces tuning: headings use the high-contrast display optical size; body copy balances/pretties line breaks.
+.h-display, .h-1, .h-2, .h-3 { font-weight: 360; letter-spacing: -0.015em; text-wrap: balance; }
+.h-display { letter-spacing: -0.02em; }
+p, li { text-wrap: pretty; }
+::selection { background: rgba(6, 88, 167, 0.18); color: v.$color-ink; }

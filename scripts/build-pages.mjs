@@ -48,8 +48,7 @@ ${STAGING ? '<meta name="robots" content="noindex, nofollow">\n' : ''}<link rel=
 <meta name="theme-color" content="#0658a7">
 <link rel="icon" href="assets/icons/favicon.png" type="image/png" sizes="150x150">
 <link rel="apple-touch-icon" href="assets/icons/favicon.png">
-<link rel="preload" href="assets/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/fonts/figtree-latin-300-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/fraunces-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="css/main.min.css?v=${BUILD}">
 <script>document.documentElement.classList.remove('no-js')</script>
 </head>
@@ -63,9 +62,9 @@ ${src.trim().replace("{{CTA}}", cta)}
 </main>
 ${footer}
 <aside class="float-contact" aria-label="Quick contact">
-  <a class="float-contact__btn float-contact__btn--call" href="tel:+66985922848" aria-label="Call +66 985922848"><svg aria-hidden="true"><use href="#i-phone"/></svg><span>Call</span></a>
+  <a class="float-contact__btn float-contact__btn--call" href="tel:+6620282867" aria-label="Call +66 2028 2867"><svg aria-hidden="true"><use href="#i-phone"/></svg><span>Call</span></a>
   <a class="float-contact__btn float-contact__btn--mail" href="mailto:info@enchantiveasia.com" aria-label="Email info@enchantiveasia.com"><svg aria-hidden="true"><use href="#i-mail"/></svg><span>Email</span></a>
-  <a class="float-contact__btn float-contact__btn--wa" href="https://wa.me/66985922848" rel="noopener" aria-label="WhatsApp +66 985922848"><svg aria-hidden="true"><use href="#i-whatsapp"/></svg><span>WhatsApp</span></a>
+  <a class="float-contact__btn float-contact__btn--wa" href="https://wa.me/6620282867" rel="noopener" aria-label="WhatsApp +66 2028 2867"><svg aria-hidden="true"><use href="#i-whatsapp"/></svg><span>WhatsApp</span></a>
 </aside>
 <script src="js/components/navigation.js?v=${BUILD}" defer></script>
 <script src="js/components/forms.js?v=${BUILD}" defer></script>

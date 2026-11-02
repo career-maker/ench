@@ -42,7 +42,7 @@
 
 @media (prefers-reduced-motion: reduce) { .site-footer__mark-track { animation: none; } }
 
-// Watermark: hairline outlined caps, 207px (12.9rem) Figtree 800, baseline on the top of the bottom bar (PDF geometry)
+// Watermark: hairline outlined caps, 207px (12.9rem) 800, baseline on the top of the bottom bar (PDF geometry)
 .site-footer {
   &__mark { position: relative; z-index: 0; height: clamp(2.2rem, 9.1vw, 9.1rem); margin: 0; overflow: hidden; line-height: 1;
     &-track { display: flex; width: max-content; animation: footer-mark 20s linear infinite; transform: translateY(-0.15em); font-size: clamp(2.25rem, 12.9vw, 12.9rem); }
@@ -125,3 +125,7 @@
 @media (prefers-reduced-motion: reduce) {
   .site-footer__links a, .site-footer__links a::after, .site-footer__contact a::after, .site-footer__legal a::after { transition: none; }
 }
+
+// Phone + Email columns sized to content with a proper gap (old fixed widths were for two phone numbers)
+.site-footer__contact { @include m.up(xl) { grid-template-columns: repeat(2, max-content); column-gap: clamp(3rem, 5vw, 5rem); } }
+.site-footer__address { @include m.down(xl) { margin-top: 0; } }

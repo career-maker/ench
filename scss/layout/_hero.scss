@@ -1,6 +1,6 @@
 @use '../abstracts/variables' as v;
 @use '../abstracts/mixins' as m;
-.hero { position: relative; display: flex; align-items: flex-end; min-height: clamp(35rem, 56.25vw, 67.5rem); color: v.$color-white; isolation: isolate; overflow: hidden;
+.hero { position: relative; display: flex; align-items: flex-end; min-height: min(clamp(35rem, 56.25vw, 67.5rem), 100vh); min-height: min(clamp(35rem, 56.25vw, 67.5rem), 100svh); color: v.$color-white; isolation: isolate; overflow: hidden;
   &__slides { position: absolute; inset: 0; z-index: -2; }
   &__slide { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1s v.$ease; &.is-active { opacity: 1; } }
   &::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to bottom, rgba(0, 20, 40, 0.55), rgba(0, 20, 40, 0.38) 45%, rgba(0, 20, 40, 0.68)); }
@@ -11,7 +11,7 @@
   &__sub { margin-top: 2.3rem; font-size: 1.2rem; max-width: 56ch; }
   &__actions { margin-top: 3.1rem; display: flex; flex-wrap: wrap; gap: 1rem; }
   &__dots { display: flex; gap: 2.2rem; padding-left: 0.4rem; margin-top: 3.5rem; button { width: 0.625rem; height: 0.625rem; border-radius: 50%; background: rgba(255, 255, 255, 0.7); position: relative; &[aria-current='true']::after { content: ''; position: absolute; inset: -7px; border: 2px solid v.$color-white; border-radius: 50%; } } }
-  &__rail { position: absolute; right: 2.08vw; bottom: 10.4vw; display: none; flex-direction: column; align-items: center; gap: 1.375rem; @include m.up(lg) { display: flex; } }
+  &__rail { position: absolute; right: 2.08vw; top: 5rem; bottom: 0; margin-block: auto; height: fit-content; display: none; flex-direction: column; align-items: center; gap: 1.375rem; @include m.up(lg) { display: flex; } }
   &__vertical { writing-mode: vertical-rl; transform: rotate(180deg); display: flex; align-items: center; gap: 0.5rem; font-size: 1.0625rem; letter-spacing: 0.04em; }
   // Premium hover: the label rolls out and a gold copy rolls in, a gold hairline draws along it, the other links step back.
   &__vertical a { position: relative; display: block; overflow: hidden; padding-left: 0.45rem; transition: opacity 0.5s v.$ease;

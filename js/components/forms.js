@@ -30,6 +30,15 @@ function initForms() {
     const show = (i) => {
       cur = i;
       steps.forEach((s, k) => { s.hidden = k !== i; });
+      // A step with data-title-from takes its title from the option chosen in an earlier step (falls back to its own title).
+      steps.forEach((s) => {
+        const src = s.dataset.titleFrom; if (!src) return;
+        const picked = form.querySelector(`[name="${src}"]:checked`);
+        const title = s.querySelector('[data-step-title]'), sub = s.querySelector('.legend__sub');
+        if (!title.dataset.default) title.dataset.default = title.textContent;
+        title.textContent = picked ? picked.value : title.dataset.default;
+        if (sub) sub.hidden = !picked;
+      });
       dots.forEach((d, k) => { d.classList.toggle('is-active', k === i); d.classList.toggle('is-done', k < i); });
       form.querySelector('[data-prev]').hidden = i === 0;
       form.querySelector('[data-next]').hidden = i === steps.length - 1;

@@ -10,8 +10,9 @@ $color-dark: #1a1717;
 $color-white: #fff;
 $color-line: #dfe6ef;
 
-$font-serif: 'Libre Caslon Display', 'Times New Roman', serif;
-$font-sans: 'Figtree', 'Helvetica Neue', Arial, sans-serif;
+// Single family site-wide (Fraunces variable, opsz+wght). Both tokens kept so existing rules resolve.
+$font-serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+$font-sans: $font-serif;
 
 $container: 106.25rem;
 $gutter: clamp(1.25rem, 5.7vw, 6.875rem);

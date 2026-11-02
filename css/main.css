@@ -64,44 +64,16 @@ a {
   }
 }
 @font-face {
-  font-family: "Libre Caslon Display";
-  font-weight: 400;
+  font-family: "Fraunces";
+  font-weight: 100 900;
+  font-style: normal;
   font-display: swap;
-  src: url("../assets/fonts/libre-caslon-display-latin-400-normal.woff2") format("woff2");
-}
-@font-face {
-  font-family: "Figtree";
-  font-weight: 300;
-  font-display: swap;
-  src: url("../assets/fonts/figtree-latin-300-normal.woff2") format("woff2");
-}
-@font-face {
-  font-family: "Figtree";
-  font-weight: 400;
-  font-display: swap;
-  src: url("../assets/fonts/figtree-latin-400-normal.woff2") format("woff2");
-}
-@font-face {
-  font-family: "Figtree";
-  font-weight: 500;
-  font-display: swap;
-  src: url("../assets/fonts/figtree-latin-500-normal.woff2") format("woff2");
-}
-@font-face {
-  font-family: "Figtree";
-  font-weight: 700;
-  font-display: swap;
-  src: url("../assets/fonts/figtree-latin-700-normal.woff2") format("woff2");
-}
-@font-face {
-  font-family: "Figtree";
-  font-weight: 800;
-  font-display: swap;
-  src: url("../assets/fonts/figtree-latin-800-normal.woff2") format("woff2");
+  src: url("../assets/fonts/fraunces-latin-opsz-normal.woff2") format("woff2");
 }
 body {
-  font-family: "Figtree", "Helvetica Neue", Arial, sans-serif;
-  font-weight: 300;
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
+  font-weight: 350;
+  font-optical-sizing: auto;
   font-size: 1.2rem;
   line-height: 1.46;
   color: #2b2b2b;
@@ -113,7 +85,7 @@ p + p {
 }
 
 .h-display, .h-1, .h-2, .h-3 {
-  font-family: "Libre Caslon Display", "Times New Roman", serif;
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
   font-weight: 400;
   color: #111111;
   line-height: 1.2;
@@ -164,6 +136,25 @@ p + p {
 
 .eyebrow--light {
   color: #fff;
+}
+
+.h-display, .h-1, .h-2, .h-3 {
+  font-weight: 360;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+.h-display {
+  letter-spacing: -0.02em;
+}
+
+p, li {
+  text-wrap: pretty;
+}
+
+::selection {
+  background: rgba(6, 88, 167, 0.18);
+  color: #111111;
 }
 
 body.is-menu-open {
@@ -244,6 +235,14 @@ html {
 ::selection {
   background: #0658a7;
   color: #fff;
+}
+
+body {
+  overflow-wrap: break-word;
+}
+
+[class*=grid] > *, [class*=cards] > *, .steps > *, .route > *, .feature-grid > *, .tile-grid > * {
+  min-width: 0;
 }
 
 .word {
@@ -573,7 +572,8 @@ body.is-menu-open {
   position: relative;
   display: flex;
   align-items: flex-end;
-  min-height: clamp(35rem, 56.25vw, 67.5rem);
+  min-height: min(clamp(35rem, 56.25vw, 67.5rem), 100vh);
+  min-height: min(clamp(35rem, 56.25vw, 67.5rem), 100svh);
   color: #fff;
   isolation: isolate;
   overflow: hidden;
@@ -650,7 +650,10 @@ body.is-menu-open {
 .hero__rail {
   position: absolute;
   right: 2.08vw;
-  bottom: 10.4vw;
+  top: 5rem;
+  bottom: 0;
+  margin-block: auto;
+  height: fit-content;
   display: none;
   flex-direction: column;
   align-items: center;
@@ -820,7 +823,7 @@ body.is-menu-open {
   max-width: 34ch;
 }
 .site-footer__title {
-  font-family: "Libre Caslon Display", "Times New Roman", serif;
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
   font-size: 1.375rem;
   letter-spacing: 0.06em;
   margin-bottom: 1.375rem;
@@ -1309,6 +1312,19 @@ body.is-menu-open {
     transition: none;
   }
 }
+@media (min-width: 1200px) {
+  .site-footer__contact {
+    grid-template-columns: repeat(2, max-content);
+    column-gap: clamp(3rem, 5vw, 5rem);
+  }
+}
+
+@media (max-width: 1199.98px) {
+  .site-footer__address {
+    margin-top: 0;
+  }
+}
+
 .btn {
   --btn-fill: #04447f;
   position: relative;
@@ -1714,7 +1730,7 @@ a:hover .icon-btn--diag svg {
   transform: translateY(-4px);
 }
 .feature-card__num {
-  font-family: "Libre Caslon Display", "Times New Roman", serif;
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
   font-size: 2.5rem;
   line-height: 1;
   color: #0658a7;
@@ -1727,7 +1743,7 @@ a:hover .icon-btn--diag svg {
   font-weight: 500;
 }
 .feature-card__title {
-  font-family: "Libre Caslon Display", "Times New Roman", serif;
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
   font-size: clamp(1.25rem, 1.5vw, 1.625rem);
   line-height: 1.25;
   color: #111111;
@@ -1747,7 +1763,7 @@ a:hover .icon-btn--diag svg {
   margin-bottom: 1.125rem;
 }
 .quote-card__title {
-  font-family: "Libre Caslon Display", "Times New Roman", serif;
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
   font-size: clamp(1.125rem, 1.35vw, 1.375rem);
   color: #111111;
   margin-bottom: 0.625rem;
@@ -1770,7 +1786,7 @@ a:hover .icon-btn--diag svg {
 }
 .quote-card__who strong {
   display: block;
-  font-family: "Libre Caslon Display", "Times New Roman", serif;
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
   font-weight: 400;
   color: #0658a7;
   font-size: 1.125rem;
@@ -2250,7 +2266,7 @@ html:not(.no-js) .preloader {
   gap: clamp(1rem, 2vw, 2.5rem);
 }
 .intro__num {
-  font-family: "Libre Caslon Display", "Times New Roman", serif;
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
   color: #0658a7;
   font-size: clamp(5rem, 11vw, 11rem);
   line-height: 0.9;
@@ -2459,7 +2475,7 @@ html:not(.no-js) .preloader {
   margin-inline: auto;
 }
 .cta__text {
-  max-width: 70ch;
+  max-width: none;
   margin: 1.375rem auto 0;
   font-weight: 300;
 }
@@ -3497,7 +3513,7 @@ html:not(.no-js) .preloader {
   gap: 0.75rem;
   padding: 0.8rem 1rem;
   color: #fff;
-  font-family: "Libre Caslon Display", "Times New Roman", serif;
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
   font-size: 1.1rem;
   line-height: 1.2;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.08));
@@ -3713,7 +3729,7 @@ html:not(.no-js) .preloader {
   margin-top: 0.75rem;
 }
 .heritage__num {
-  font-family: "Libre Caslon Display", "Times New Roman", serif;
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
   font-size: clamp(4rem, 6.5vw, 6.25rem);
   line-height: 0.85;
   color: transparent;
@@ -3746,7 +3762,7 @@ html:not(.no-js) .preloader {
   margin-top: 0.75rem;
 }
 .heritage .heritage__lead {
-  font-family: "Libre Caslon Display", "Times New Roman", serif;
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
   font-size: clamp(1.25rem, 1.6vw, 1.625rem);
   line-height: 1.5;
   color: #fff;
@@ -4176,7 +4192,7 @@ html:not(.no-js) .preloader {
   line-height: 1.4;
 }
 .about-band__num {
-  font-family: "Libre Caslon Display", "Times New Roman", serif;
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
   font-size: clamp(4rem, 8vw, 7rem);
   line-height: 1;
   color: transparent;
@@ -4191,7 +4207,7 @@ html:not(.no-js) .preloader {
   color: #fff;
 }
 .about-band__lead {
-  font-family: "Libre Caslon Display", "Times New Roman", serif;
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
   font-size: clamp(1.25rem, 1.9vw, 1.75rem);
   line-height: 1.35;
   color: #fff !important;
@@ -4308,6 +4324,44 @@ html:not(.no-js) .preloader {
   margin-bottom: 2.5rem;
 }
 
+.carousel--tiles {
+  --gap: clamp(1rem, 1.6vw, 1.875rem);
+}
+.carousel--tiles .carousel__viewport {
+  scroll-padding-inline: 1.25rem;
+}
+.carousel--tiles .carousel__track {
+  width: 100%;
+  gap: var(--gap);
+}
+.carousel--tiles .carousel__track .tile {
+  width: auto;
+  flex: 0 0 min(78vw, 17rem);
+  aspect-ratio: 4/5;
+}
+@media (min-width: 992px) {
+  .carousel--tiles .carousel__track .tile {
+    flex-basis: calc((100% - 3 * var(--gap)) / 4);
+  }
+}
+.carousel--tiles .carousel__track .tile__label {
+  font-size: clamp(1.4rem, 1.7vw, 1.75rem);
+}
+.carousel--tiles .carousel__nav {
+  justify-content: center;
+}
+.carousel--tiles .carousel__btn {
+  border-color: rgba(6, 88, 167, 0.4);
+  background: #fff;
+  color: #0658a7;
+  box-shadow: 0 0.5rem 1.2rem rgba(6, 40, 90, 0.1);
+}
+.carousel--tiles .carousel__btn:hover:not(:disabled) {
+  background: #0658a7;
+  border-color: #0658a7;
+  color: #fff;
+}
+
 .about-vision {
   background: #f4f8fe;
 }
@@ -4319,7 +4373,7 @@ html:not(.no-js) .preloader {
   display: grid;
   place-items: center;
   color: #0658a7;
-  font-family: "Libre Caslon Display", "Times New Roman", serif;
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
   font-size: 1.25rem;
   text-align: center;
   padding: 1.5rem;
@@ -4413,14 +4467,14 @@ html:not(.no-js) .preloader {
   line-height: 1.65;
 }
 .luxe-item__num {
-  font-family: "Libre Caslon Display", "Times New Roman", serif;
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
   font-size: clamp(3.5rem, 6vw, 5.5rem);
   line-height: 0.95;
   color: #c8a27a;
   font-variant-numeric: lining-nums;
 }
 .luxe-item__title {
-  font-family: "Libre Caslon Display", "Times New Roman", serif;
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
   font-weight: 400;
   font-size: clamp(1.625rem, 2.2vw, 2.25rem);
   line-height: 1.15;
@@ -4428,7 +4482,7 @@ html:not(.no-js) .preloader {
   text-wrap: balance;
 }
 .luxe-item__tag {
-  font-family: "Libre Caslon Display", "Times New Roman", serif;
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
   font-size: clamp(1.0625rem, 1.3vw, 1.25rem);
   line-height: 1.35;
   color: #8a6a44;
@@ -4603,7 +4657,7 @@ html:not(.no-js) .preloader {
   }
 }
 .luxe-item__text .luxe-item__tag {
-  font-family: "Libre Caslon Display", "Times New Roman", serif;
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
   font-size: clamp(1.375rem, 1.9vw, 1.75rem);
   line-height: 1.3;
   color: #8a6a44;
@@ -4670,7 +4724,7 @@ html:not(.no-js) .preloader {
   box-shadow: 0 1rem 2rem rgba(6, 88, 167, 0.14);
 }
 .mice-intro__facts strong {
-  font-family: "Libre Caslon Display", "Times New Roman", serif;
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
   font-weight: 400;
   font-size: 2rem;
   line-height: 1;
@@ -4709,7 +4763,7 @@ html:not(.no-js) .preloader {
   gap: 0.1rem;
   padding: 1rem 1.25rem;
   color: #fff;
-  font-family: "Libre Caslon Display", "Times New Roman", serif;
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
   font-size: 1.25rem;
   line-height: 1.25;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.08));
@@ -4793,7 +4847,7 @@ html:not(.no-js) .preloader {
   position: absolute;
   top: 1.1rem;
   left: 1.2rem;
-  font-family: "Libre Caslon Display", "Times New Roman", serif;
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
   font-size: 1.4rem;
   line-height: 1;
   padding: 0.45rem 0.7rem;
@@ -4808,7 +4862,7 @@ html:not(.no-js) .preloader {
   padding: 1.4rem 1.4rem 1.6rem;
 }
 .photo-card__title {
-  font-family: "Libre Caslon Display", "Times New Roman", serif;
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
   font-weight: 400;
   font-size: clamp(1.35rem, 1.6vw, 1.65rem);
   line-height: 1.15;
@@ -4873,7 +4927,7 @@ html:not(.no-js) .preloader {
 }
 
 .contact__intro {
-  max-width: 52rem;
+  max-width: none;
   margin: 0 auto clamp(2rem, 4vw, 3.5rem);
   text-align: center;
 }
@@ -4920,7 +4974,10 @@ html:not(.no-js) .preloader {
 
 .contact-card {
   display: grid;
-  gap: 0.5rem;
+  grid-template-columns: 1.5rem 1fr;
+  column-gap: 0.75rem;
+  row-gap: 0.5rem;
+  align-items: center;
   align-content: start;
   padding: 1.5rem 1.75rem;
   background: #fff;
@@ -4935,7 +4992,7 @@ html:not(.no-js) .preloader {
   fill: currentColor;
 }
 .contact-card__title {
-  font-family: "Libre Caslon Display", "Times New Roman", serif;
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
   font-weight: 400;
   font-size: 1.5rem;
   color: #0658a7;
@@ -4945,6 +5002,9 @@ html:not(.no-js) .preloader {
 }
 .contact-card a:hover {
   text-decoration: underline;
+}
+.contact-card > :not(svg):not(.contact-card__title) {
+  grid-column: 1/-1;
 }
 .contact-card__link {
   color: #0658a7;
@@ -5016,7 +5076,7 @@ html:not(.no-js) .preloader {
 .enquiry legend {
   padding: 0;
   margin-bottom: 1.25rem;
-  font-family: "Libre Caslon Display", "Times New Roman", serif;
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
 }
 
 .choices {
@@ -5025,7 +5085,7 @@ html:not(.no-js) .preloader {
 }
 @media (min-width: 576px) {
   .choices {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -5055,7 +5115,7 @@ html:not(.no-js) .preloader {
   transition: border-color 0.2s cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 0.2s cubic-bezier(0.22, 0.61, 0.36, 1), background 0.2s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 .choice__title {
-  font-family: "Libre Caslon Display", "Times New Roman", serif;
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
   font-size: 1.375rem;
   line-height: 1.2;
 }
@@ -5138,7 +5198,7 @@ input:focus-visible + .choice__body {
 
 .optional {
   margin-left: 0.5rem;
-  font-family: "Figtree", "Helvetica Neue", Arial, sans-serif;
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
   font-size: 0.75rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -5266,7 +5326,7 @@ input:focus-visible + .choice__body {
   display: grid;
 }
 .quick-link__text strong {
-  font-family: "Libre Caslon Display", "Times New Roman", serif;
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
   font-weight: 400;
   font-size: 1.25rem;
 }
@@ -5304,7 +5364,7 @@ input:focus-visible + .choice__body {
   gap: 0;
 }
 .quick-link__text strong {
-  font-family: "Figtree", "Helvetica Neue", Arial, sans-serif;
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
   font-weight: 500;
   font-size: 1rem;
   line-height: 1.3;
@@ -5356,7 +5416,7 @@ input:focus-visible + .choice__body {
   background: rgba(4, 30, 62, 0.58);
 }
 .say-hello__title {
-  font-family: "Libre Caslon Display", "Times New Roman", serif;
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
   font-weight: 400;
   font-size: clamp(1.75rem, 3.4vw, 3rem);
   line-height: 1.15;
@@ -5429,6 +5489,12 @@ input:focus-visible + .choice__body {
 }
 .say-hello .quick-link--mail {
   background: #e8372a;
+}
+.say-hello .quick-link--line {
+  background: #06c755;
+}
+.say-hello .quick-link--ig {
+  background: linear-gradient(45deg, #f09433, #dc2743 55%, #bc1888);
 }
 .say-hello .quick-link:hover {
   transform: translateY(-0.25rem) scale(1.06);
@@ -5828,6 +5894,65 @@ li:nth-child(3) > .say-hello .quick-link {
     height: 3rem;
   }
 }
+.say-hello .quick-link__icon--line {
+  background: #06c755;
+  --glow: rgba(6, 199, 85, 0.5);
+}
+.say-hello .quick-link__icon--line::after {
+  border-color: #06c755;
+}
+
+.say-hello .quick-link__icon--ig {
+  background: linear-gradient(45deg, #f09433, #dc2743 55%, #bc1888);
+  --glow: rgba(220, 39, 67, 0.5);
+}
+.say-hello .quick-link__icon--ig::after {
+  border-color: #dc2743;
+}
+
+.legend__sub {
+  display: block;
+  margin-top: 0.25rem;
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
+  font-size: 0.875rem;
+  letter-spacing: 0.04em;
+  color: #6b6b6b;
+}
+
+.choices > *, .choice__body > *, .contact-cards > *, .form > *, .quick-links > * {
+  min-width: 0;
+}
+
+.choice__body {
+  grid-template-columns: auto minmax(0, 1fr);
+}
+
+.choice__title, .choice__sub {
+  overflow-wrap: anywhere;
+}
+
+.stepper {
+  flex-wrap: wrap;
+}
+.stepper li {
+  flex: 1 1 6rem;
+  min-width: 0;
+}
+
+.enquiry__actions {
+  flex-wrap: wrap;
+}
+
+.enquiry {
+  min-width: 0;
+}
+
+@media (min-width: 768px) {
+  .contact-cards {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  }
+}
+
 .topic-grid {
   display: grid;
   gap: clamp(1.25rem, 2.2vw, 2.25rem) clamp(1rem, 1.6vw, 1.75rem);
@@ -5875,7 +6000,7 @@ li:nth-child(3) > .say-hello .quick-link {
   font-weight: 500;
 }
 .topic-card__title {
-  font-family: "Libre Caslon Display", "Times New Roman", serif;
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
   font-weight: 400;
   font-size: clamp(1.375rem, 1.9vw, 1.75rem);
   line-height: 1.2;
@@ -5946,7 +6071,7 @@ li:nth-child(3) > .say-hello .quick-link {
   padding: 1.25rem 1.5rem;
   border: 1px solid #dfe6ef;
   border-radius: 0.875rem;
-  font-family: "Libre Caslon Display", "Times New Roman", serif;
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
   font-size: 1.375rem;
   transition: border-color 0.2s cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 0.45s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
@@ -5955,7 +6080,7 @@ li:nth-child(3) > .say-hello .quick-link {
   box-shadow: 0 1.125rem 2.5rem rgba(6, 40, 90, 0.12);
 }
 .pager a span {
-  font-family: "Figtree", "Helvetica Neue", Arial, sans-serif;
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
   font-size: 0.8125rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -6127,7 +6252,7 @@ li:nth-child(3) > .say-hello .quick-link {
   border-radius: 62.4375rem;
   background: #0658a7;
   color: #fff;
-  font-family: "Libre Caslon Display", "Times New Roman", serif;
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
 }
 
 .purpose-tile {
@@ -6162,7 +6287,7 @@ li:nth-child(3) > .say-hello .quick-link {
   padding: 1.5rem;
 }
 .purpose-tile__body h3 {
-  font-family: "Libre Caslon Display", "Times New Roman", serif;
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
   font-weight: 400;
   font-size: clamp(1.375rem, 1.8vw, 1.75rem);
   line-height: 1.2;
@@ -6236,7 +6361,7 @@ li:nth-child(3) > .say-hello .quick-link {
   padding: 1.25rem;
 }
 .strip__body h3 {
-  font-family: "Libre Caslon Display", "Times New Roman", serif;
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
   font-weight: 400;
   font-size: 1.375rem;
   line-height: 1.2;
@@ -6309,7 +6434,7 @@ li:nth-child(3) > .say-hello .quick-link {
   max-width: 28em;
   margin-inline: auto;
   text-align: center;
-  font-family: "Libre Caslon Display", "Times New Roman", serif;
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
   font-size: clamp(1.5rem, 2.6vw, 2.5rem);
   line-height: 1.25;
   color: #111111;
@@ -6342,7 +6467,7 @@ li:nth-child(3) > .say-hello .quick-link {
   margin: clamp(2.5rem, 5vw, 4rem) 0 0;
 }
 .lz-marquee li {
-  font-family: "Libre Caslon Display", "Times New Roman", serif;
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
   font-size: clamp(1.25rem, 2.2vw, 2rem);
   color: #0658a7;
 }
@@ -6395,14 +6520,14 @@ li:nth-child(3) > .say-hello .quick-link {
   align-content: center;
 }
 .lz-item__num {
-  font-family: "Libre Caslon Display", "Times New Roman", serif;
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
   font-size: clamp(3.5rem, 7vw, 6rem);
   line-height: 1;
   color: transparent;
   -webkit-text-stroke: 1px #0658a7;
 }
 .lz-item__tag {
-  font-family: "Libre Caslon Display", "Times New Roman", serif;
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
   font-size: clamp(1.125rem, 1.6vw, 1.5rem);
   color: #0658a7;
 }
@@ -6457,14 +6582,14 @@ li:nth-child(3) > .say-hello .quick-link {
   color: #fff;
 }
 .lz-pane__num {
-  font-family: "Libre Caslon Display", "Times New Roman", serif;
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
   font-size: clamp(3.5rem, 7vw, 6rem);
   line-height: 1;
   color: transparent;
   -webkit-text-stroke: 1px rgba(255, 255, 255, 0.85);
 }
 .lz-pane__tag {
-  font-family: "Libre Caslon Display", "Times New Roman", serif;
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
   font-size: clamp(1.125rem, 1.6vw, 1.5rem);
   color: #cfe3f8;
 }
@@ -6588,7 +6713,7 @@ li:nth-child(3) > .say-hello .quick-link {
   display: grid;
   justify-items: center;
   gap: 0.75rem;
-  font-family: "Libre Caslon Display", "Times New Roman", serif;
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
   font-size: clamp(1.125rem, 1.6vw, 1.5rem);
   transition: color 0.2s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
@@ -7038,6 +7163,11 @@ li:nth-child(3) > .say-hello .quick-link {
     padding-top: 6rem;
   }
 }
+@media (min-width: 992px) {
+  .dh-grid .dh-panel {
+    min-width: 3.25rem;
+  }
+}
 .gallery {
   background: linear-gradient(180deg, #fff, #f4f8fe 140%);
 }
@@ -7151,7 +7281,7 @@ li:nth-child(3) > .say-hello .quick-link {
   gap: 1rem;
   padding: 1.1rem 1.25rem;
   color: #fff;
-  font-family: "Libre Caslon Display", "Times New Roman", serif;
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
   font-size: 1.3rem;
   text-align: left;
   opacity: 0;
@@ -7252,11 +7382,11 @@ body.is-lightbox {
   gap: 1.25rem;
   align-items: baseline;
   justify-content: center;
-  font-family: "Libre Caslon Display", "Times New Roman", serif;
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
   font-size: 1.25rem;
 }
 .lightbox__count {
-  font-family: "Figtree", "Helvetica Neue", Arial, sans-serif;
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
   font-size: 0.95rem;
   opacity: 0.7;
 }
@@ -7446,7 +7576,7 @@ body.is-lightbox {
   padding-block: 9rem 4rem;
 }
 .notfound__code {
-  font-family: "Libre Caslon Display", "Times New Roman", serif;
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
   font-size: clamp(5rem, 14vw, 13rem);
   line-height: 0.9;
   color: transparent;

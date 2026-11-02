@@ -17,3 +17,7 @@ html { scrollbar-width: thin; scrollbar-color: v.$color-blue v.$color-tint; }
 ::-webkit-scrollbar-thumb:hover { background: v.$color-blue-dark; }
 // Solid, clearly visible text selection (also inside the moving testimonial cards)
 ::selection { background: v.$color-blue; color: v.$color-white; }
+
+// Layout safety net: long words wrap, and grid/flex children can shrink instead of overflowing.
+body { overflow-wrap: break-word; }
+[class*='grid'] > *, [class*='cards'] > *, .steps > *, .route > *, .feature-grid > *, .tile-grid > * { min-width: 0; }

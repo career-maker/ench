@@ -1,6 +1,17 @@
 // Generic scroll-snap carousel: prev/next arrows (hidden when nothing overflows),
 // auto-advance on small screens, pause on hover/touch/focus, respects reduced motion.
 function initCarousels() {
+  // A grid marked data-auto-carousel="N" becomes a carousel once it holds more than N items.
+  document.querySelectorAll('[data-auto-carousel]').forEach((grid) => {
+    if (grid.children.length <= Number(grid.dataset.autoCarousel)) return;
+    const root = document.createElement('div');
+    root.className = 'carousel carousel--tiles';
+    root.setAttribute('data-carousel', '');
+    root.innerHTML = '<div class="carousel__viewport" tabindex="0" role="group" aria-roledescription="carousel" aria-label="' + (grid.getAttribute('aria-label') || 'Carousel') + '"><div class="carousel__track"></div></div>' +
+      '<div class="carousel__nav"><button class="carousel__btn" type="button" data-dir="-1" aria-label="Previous"><span aria-hidden="true"></span></button><button class="carousel__btn carousel__btn--next" type="button" data-dir="1" aria-label="Next"><span aria-hidden="true"></span></button></div>';
+    root.querySelector('.carousel__track').append(...grid.children);
+    grid.replaceWith(root);
+  });
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const small = window.matchMedia('(max-width: 991.98px)');
   document.querySelectorAll('[data-carousel]').forEach((root) => {
