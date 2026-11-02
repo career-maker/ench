@@ -1,14 +1,20 @@
 @use '../abstracts/variables' as v;
-// Preloader: sky-blue screen, green circle with the logo; on load the circle expands and the page appears.
-.preloader { position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center; overflow: hidden; background: #87ceeb; transition: opacity 0.5s ease;
-  &__dot { display: grid; place-items: center; width: clamp(7.5rem, 18vmin, 11rem); aspect-ratio: 1; border-radius: 50%; background: #1f9d55; transition: transform 1s cubic-bezier(0.7, 0, 0.2, 1);
-    img { width: 62%; height: auto; transition: opacity 0.25s ease; } }
-  &.is-expanding &__dot { transform: scale(60); }
-  &.is-expanding &__dot img { opacity: 0; }
-  &.is-hidden { opacity: 0; pointer-events: none; visibility: hidden; } }
-// The page is revealed as the circle expands: the green fill fades once it has covered the screen.
-.preloader.is-expanding { animation: preFade 0.5s ease 0.85s forwards; }
-@keyframes preFade { to { opacity: 0; } }
-html.is-loading, html.is-loading body { overflow: hidden; }
-.no-js .preloader { display: none; }
-@media (prefers-reduced-motion: reduce) { .preloader__dot, .preloader.is-expanding { transition: none; animation-duration: 0.01s; } }
+// Preloader: brand-blue screen, a Thai chedi (spire) is drawn stroke by stroke, the logo settles beneath it, then the screen lifts away.
+// Hidden without JS (html.no-js) and for reduced motion. Animates only transform, opacity and stroke-dashoffset.
+.preloader { position: fixed; inset: 0; z-index: 1000; display: none; place-items: center; background: v.$color-blue; transition: transform 0.7s cubic-bezier(0.7, 0, 0.2, 1);
+  &__inner { display: grid; justify-items: center; gap: 0.25rem; width: min(86vw, 22.5rem); transition: opacity 0.4s ease, transform 0.7s cubic-bezier(0.7, 0, 0.2, 1); }
+  &__spire { width: 32%; height: auto; overflow: visible; }
+  &__logo { width: 100%; height: auto; opacity: 0; animation: plRise 0.6s v.$ease 0.7s forwards; }
+  &.is-exit { transform: translateY(-100%); }
+  &.is-exit &__inner { opacity: 0; transform: translateY(-3rem); } }
+html:not(.no-js) .preloader { display: grid; }
+.pl-d { stroke-dasharray: 1 1; stroke-dashoffset: 1; animation: plDraw 0.5s ease-in-out forwards; }
+.pl-base { animation-duration: 0.4s; }
+.pl-side { animation-duration: 0.6s; animation-delay: 0.25s; }
+.pl-rings { animation-duration: 0.35s; animation-delay: 0.75s; }
+.pl-tip { animation-duration: 0.25s; animation-delay: 0.9s; }
+.pl-dot { opacity: 0; animation: plFade 0.2s ease 1.05s forwards; }
+@keyframes plDraw { to { stroke-dashoffset: 0; } }
+@keyframes plFade { to { opacity: 1; } }
+@keyframes plRise { from { opacity: 0; transform: translateY(0.6rem); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { html:not(.no-js) .preloader { display: none; } }

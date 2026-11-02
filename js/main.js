@@ -18,21 +18,19 @@ initCarousels();
   addEventListener('resize', update);
 })();
 
-// Preloader: once the page has loaded (min. 600 ms so it is seen), the green circle expands and the page appears.
+// Preloader: stays at least 1.6 s from navigation start (so the animation reads), leaves on window load, always gone by 6 s.
 (() => {
-  const root = document.documentElement;
   const pre = document.querySelector('.preloader');
-  if (!pre) return root.classList.remove('is-loading');
-  const t0 = performance.now();
+  if (!pre) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return pre.remove();
   let done = false;
   const finish = () => {
     if (done) return;
     done = true;
-    setTimeout(() => {
-      pre.classList.add('is-expanding');
-      setTimeout(() => { pre.classList.add('is-hidden'); root.classList.remove('is-loading'); }, 1100);
-    }, Math.max(0, 600 - (performance.now() - t0)));
+    pre.classList.add('is-exit');
+    setTimeout(() => pre.remove(), 800);
   };
-  if (document.readyState === 'complete') finish(); else addEventListener('load', finish);
-  setTimeout(finish, 5000); // failsafe if a resource hangs
+  const at = (ms, fn) => setTimeout(fn, Math.max(0, ms - performance.now()));
+  if (document.readyState === 'complete') at(1600, finish); else addEventListener('load', () => at(1600, finish));
+  at(6000, finish); // failsafe if a resource hangs
 })();

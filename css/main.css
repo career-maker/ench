@@ -1913,59 +1913,94 @@ a:hover .icon-btn--diag svg {
   position: fixed;
   inset: 0;
   z-index: 1000;
-  display: grid;
+  display: none;
   place-items: center;
-  overflow: hidden;
-  background: #87ceeb;
-  transition: opacity 0.5s ease;
+  background: #0658a7;
+  transition: transform 0.7s cubic-bezier(0.7, 0, 0.2, 1);
 }
-.preloader__dot {
+.preloader__inner {
   display: grid;
-  place-items: center;
-  width: clamp(7.5rem, 18vmin, 11rem);
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: #1f9d55;
-  transition: transform 1s cubic-bezier(0.7, 0, 0.2, 1);
+  justify-items: center;
+  gap: 0.25rem;
+  width: min(86vw, 22.5rem);
+  transition: opacity 0.4s ease, transform 0.7s cubic-bezier(0.7, 0, 0.2, 1);
 }
-.preloader__dot img {
-  width: 62%;
+.preloader__spire {
+  width: 32%;
   height: auto;
-  transition: opacity 0.25s ease;
+  overflow: visible;
 }
-.preloader.is-expanding .preloader__dot {
-  transform: scale(60);
-}
-.preloader.is-expanding .preloader__dot img {
+.preloader__logo {
+  width: 100%;
+  height: auto;
   opacity: 0;
+  animation: plRise 0.6s cubic-bezier(0.22, 0.61, 0.36, 1) 0.7s forwards;
 }
-.preloader.is-hidden {
+.preloader.is-exit {
+  transform: translateY(-100%);
+}
+.preloader.is-exit .preloader__inner {
   opacity: 0;
-  pointer-events: none;
-  visibility: hidden;
+  transform: translateY(-3rem);
 }
 
-.preloader.is-expanding {
-  animation: preFade 0.5s ease 0.85s forwards;
+html:not(.no-js) .preloader {
+  display: grid;
 }
 
-@keyframes preFade {
+.pl-d {
+  stroke-dasharray: 1 1;
+  stroke-dashoffset: 1;
+  animation: plDraw 0.5s ease-in-out forwards;
+}
+
+.pl-base {
+  animation-duration: 0.4s;
+}
+
+.pl-side {
+  animation-duration: 0.6s;
+  animation-delay: 0.25s;
+}
+
+.pl-rings {
+  animation-duration: 0.35s;
+  animation-delay: 0.75s;
+}
+
+.pl-tip {
+  animation-duration: 0.25s;
+  animation-delay: 0.9s;
+}
+
+.pl-dot {
+  opacity: 0;
+  animation: plFade 0.2s ease 1.05s forwards;
+}
+
+@keyframes plDraw {
   to {
-    opacity: 0;
+    stroke-dashoffset: 0;
   }
 }
-html.is-loading, html.is-loading body {
-  overflow: hidden;
+@keyframes plFade {
+  to {
+    opacity: 1;
+  }
 }
-
-.no-js .preloader {
-  display: none;
+@keyframes plRise {
+  from {
+    opacity: 0;
+    transform: translateY(0.6rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
-
 @media (prefers-reduced-motion: reduce) {
-  .preloader__dot, .preloader.is-expanding {
-    transition: none;
-    animation-duration: 0.01s;
+  html:not(.no-js) .preloader {
+    display: none;
   }
 }
 .float-contact {
