@@ -241,6 +241,11 @@ html {
   background: #04447f;
 }
 
+::selection {
+  background: #0658a7;
+  color: #fff;
+}
+
 .word {
   display: inline-block;
   overflow: hidden;
@@ -4318,8 +4323,6 @@ html:not(.no-js) .preloader {
 }
 
 .service-intro {
-  max-width: 90ch;
-  margin-inline: auto;
   text-align: center;
 }
 
@@ -5068,10 +5071,6 @@ input:checked + .choice__body .choice__title {
 }
 input:focus-visible + .choice__body {
   box-shadow: 0 0 0 3px rgba(6, 88, 167, 0.3);
-}
-
-::selection {
-  background: rgba(6, 88, 167, 0.2);
 }
 
 .contact {

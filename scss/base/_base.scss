@@ -15,3 +15,5 @@ html { scrollbar-width: thin; scrollbar-color: v.$color-blue v.$color-tint; }
 ::-webkit-scrollbar-track { background: v.$color-tint; }
 ::-webkit-scrollbar-thumb { background: v.$color-blue; border-radius: 0.625rem; border: 2px solid v.$color-tint; }
 ::-webkit-scrollbar-thumb:hover { background: v.$color-blue-dark; }
+// Solid, clearly visible text selection (also inside the moving testimonial cards)
+::selection { background: v.$color-blue; color: v.$color-white; }
